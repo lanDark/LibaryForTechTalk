@@ -8,8 +8,10 @@ package com.DAOImpl;
 import com.DAO.ProductDAO;
 import com.model.*;
 import java.util.List;
+import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.criterion.Order;
 import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -26,11 +28,11 @@ public class ProductDAOImpl implements ProductDAO {
     @Override
     public List<Sach> getNewProductView() {
         Session session=sessionFactory.getCurrentSession();
-        String hql="FROM Sach S"
-                + " WHERE "
-                + " ORDER BY E.ngayMuon DESC";
-        Query query=session.createQuery(hql).setMaxResults(10);
-        return query.list();
+
+        Criteria cr=session.createCriteria(Sach.class);
+        cr.addOrder(Order.desc("ngayTao"));
+        cr.setMaxResults(10);
+        return cr.list();
     }
 
     @Override
