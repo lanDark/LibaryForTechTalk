@@ -27,8 +27,8 @@ public class ProductDAOImpl implements ProductDAO {
     public List<Sach> getNewProductView() {
         Session session=sessionFactory.getCurrentSession();
         String hql="FROM Sach S"
-                + " WHERE "
-                + " ORDER BY E.ngayMuon DESC";
+                + "  "
+                + " ORDER BY S.ngayMuon DESC";
         Query query=session.createQuery(hql).setMaxResults(10);
         return query.list();
     }
