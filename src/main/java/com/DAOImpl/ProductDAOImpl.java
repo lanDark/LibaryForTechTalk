@@ -30,8 +30,15 @@ public class ProductDAOImpl implements ProductDAO {
         Session session=sessionFactory.getCurrentSession();
 
         Criteria cr=session.createCriteria(Sach.class);
+<<<<<<< HEAD
         cr.addOrder(Order.desc("ngayTao"));
         cr.setMaxResults(10);
+=======
+        cr.setMaxResults(10);
+        cr.addOrder(Order.desc("ngayTao"));
+        cr.setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY);
+        System.out.println(cr.list().size());
+>>>>>>> feature-productNews
         return cr.list();
     }
 

@@ -2448,7 +2448,7 @@ nav.menu {
           color: #959595;
           font-weight: 500;
           margin: 0 5px;
-          text-decoration: line-through; }
+           }
       .product .product__thumb .prize.position__right__bottom {
         bottom: 11px;
         right: 11px; }
@@ -2621,7 +2621,7 @@ nav.menu {
       font-weight: 700; }
       .product.product__style--3 .product__content .prize li.old_prize {
         color: #7d7d7d;
-        text-decoration: line-through; }
+        }
 .brown--color .rating li.on i {
   color: #ce7852; }
 .color--pink .product.product__style--3 .product__thumb .action .actions_inner .add_to_links li a.quickview:hover,
@@ -3940,7 +3940,7 @@ h3.widget-title-modal {
         font-weight: 400; }
         .module__product .content .module__prize li.old_prize {
           color: #7d7d7d;
-          text-decoration: line-through; }
+          }
 
 /*--------------------------
   Breadcaump Styles

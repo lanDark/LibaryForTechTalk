@@ -205,7 +205,7 @@ public class Sach  implements java.io.Serializable {
         this.ngayTao = ngayTao;
     }
 
-@OneToMany(fetch=FetchType.LAZY, mappedBy="sach")
+@OneToMany(fetch=FetchType.EAGER, mappedBy="sach")
     public Set<HinhAnh> getHinhAnhs() {
         return this.hinhAnhs;
     }
@@ -223,7 +223,7 @@ public class Sach  implements java.io.Serializable {
         this.luotThiches = luotThiches;
     }
 
-@ManyToMany(fetch=FetchType.LAZY, mappedBy="saches")
+@ManyToMany(fetch=FetchType.EAGER, mappedBy="saches")
     public Set<Tacgia> getTacgias() {
         return this.tacgias;
     }
@@ -251,7 +251,7 @@ public class Sach  implements java.io.Serializable {
     }
 
 
-
+ 
 
 }
 
