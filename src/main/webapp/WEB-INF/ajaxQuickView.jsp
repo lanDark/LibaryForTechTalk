@@ -1,5 +1,14 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html;charset=UTF-8" %>
+                    <c:forEach var="tacGia" items="${sach.tacgias}">
+                        <c:set var="tenTacGia" value="${tacGia.hoTen}"/>
+                    </c:forEach>   
+                    
+                    <c:forEach var="hinhAnhs"  items="${sach.hinhAnhs}">
+                        <c:if test="${ empty srcHinhAnh1}">
+                             <c:set var="srcHinhAnh1" value="${hinhAnhs.src}"/>
+                        </c:if>
+                    </c:forEach>
 		    <!-- Modal -->
 		    <div class="modal fade" id="productmodal" tabindex="-1" role="dialog">
 		        <div class="modal-dialog modal__container" role="document">
@@ -12,7 +21,7 @@
 		                        <!-- Start product images -->
 		                        <div class="product-images">
 		                            <div class="main-image images">
-                                                <img alt="big images" src='<c:url value="Resource/images/product/big-img/1.jpg"/>' >
+                                                <img alt="big images" src='<c:url value="Resource/images/books/${srcHinhAnh1}"/>' >
 		                            </div>
 		                        </div>
 		                        <!-- end product images -->
@@ -32,31 +41,18 @@
 		                            </div>
 		                            <div class="price-box-3">
 		                                <div class="s-price-box">
-		                                    <span class="new-price">Tác giả</span>
-		                                    <span class="old-price"></span>
+		                                    <span class="new-price">Tác giả:</span>
+		                                    <span class="old-price">${tenTacGia}</span>
 		                                </div>
 		                            </div>
 		                            <div class="quick-desc">
 		                                Designed for simplicity and made from high quality materials. Its sleek geometry and material combinations creates a modern look.
 		                            </div>
 		                            <div class="select__color">
-		                                <h2>Select color</h2>
-		                                <ul class="color__list">
-		                                    <li class="red"><a title="Red" href="#">Red</a></li>
-		                                    <li class="gold"><a title="Gold" href="#">Gold</a></li>
-		                                    <li class="orange"><a title="Orange" href="#">Orange</a></li>
-		                                    <li class="orange"><a title="Orange" href="#">Orange</a></li>
-		                                </ul>
+		                          
 		                            </div>
 		                            <div class="select__size">
-		                                <h2>Select size</h2>
-		                                <ul class="color__list">
-		                                    <li class="l__size"><a title="L" href="#">L</a></li>
-		                                    <li class="m__size"><a title="M" href="#">M</a></li>
-		                                    <li class="s__size"><a title="S" href="#">S</a></li>
-		                                    <li class="xl__size"><a title="XL" href="#">XL</a></li>
-		                                    <li class="xxl__size"><a title="XXL" href="#">XXL</a></li>
-		                                </ul>
+		                               
 		                            </div>
 		                            <div class="social-sharing">
 		                                <div class="widget widget_socialsharing_widget">
@@ -70,7 +66,7 @@
 		                                </div>
 		                            </div>
 		                            <div class="addtocart-btn">
-		                                <a href="#">Add to cart</a>
+                                                <a href="#" id="addToCart"><p hidden>${sach.maSach}</p>Add to cart</a>
 		                            </div>
 		                        </div>
 		                    </div>
@@ -78,5 +74,29 @@
 		            </div>
 		        </div>
 		    </div>
+                                            <script>
+                                                // this is the id of the form
+                                                $("#addToCart").click(function(e) {
 
+                                                    e.preventDefault(); 
+
+                                                    var maSach=$(this).children("p").text();
+                                                    console.log(maSach);
+                                                    $.ajax({
+                                                        type: "POST",
+                                                        url:'<c:url value="/addToCart"/>',
+                                                        data : {
+                                                            maSach : maSach
+                                                        },
+                                                        success: function()
+                                                        {
+                                                            alert("thanh cong"); // show response from the php script.
+                                                        },
+                                                        error: function (jqXHR, textStatus, errorThrown) {
+                                                                alert(xhr.status);
+                                                                alert(thrownError);
+                                                        }
+                                                    });
+                                                });
+                                            </script>                     
 		<!-- END QUICKVIEW PRODUCT -->
