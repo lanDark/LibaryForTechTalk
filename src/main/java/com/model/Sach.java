@@ -250,6 +250,11 @@ public class Sach  implements java.io.Serializable {
         this.ctPhieuNhaps = ctPhieuNhaps;
     }
 
+    @Override
+    public String toString() {
+        return "Sach{" + "maSach=" + maSach + ", nhaCungCap=" + nhaCungCap + ", theLoai=" + theLoai + ", tenSach=" + tenSach + ", trongLuong=" + trongLuong + ", loaiBia=" + loaiBia + ", soTrang=" + soTrang + ", kichThuoc=" + kichThuoc + ", namXuatBan=" + namXuatBan + ", gia=" + gia + ", soLuong=" + soLuong + ", url=" + url + ", ngayTao=" + ngayTao + ", hinhAnhs=" + hinhAnhs + ", luotThiches=" + luotThiches + ", tacgias=" + tacgias + ", ctPhieumuons=" + ctPhieumuons + ", ctPhieuNhaps=" + ctPhieuNhaps + '}';
+    }
+
 
  
 

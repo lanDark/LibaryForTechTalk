@@ -7,6 +7,7 @@ package com.ServiceImpl;
 
 import com.DAO.ProductDAO;
 import com.Service.ProductService;
+import com.model.Sach;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -26,7 +27,7 @@ public class ProductServiceImpl implements ProductService{
     public List getNewProductView() {
         return productDAOImpl.getNewProductView();
     }
-
+    
     @Override
     public List getProductByCategoryView() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
@@ -50,6 +51,11 @@ public class ProductServiceImpl implements ProductService{
     @Override
     public boolean deleteProduct() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public Sach getSach(String maSach) {
+        return productDAOImpl.getSach(maSach);
     }
     
 }

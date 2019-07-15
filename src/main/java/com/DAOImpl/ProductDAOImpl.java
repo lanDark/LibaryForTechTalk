@@ -61,6 +61,13 @@ public class ProductDAOImpl implements ProductDAO {
     public boolean deleteProduct() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+
+    @Override
+    public Sach getSach(String maSach) {
+        Session session=sessionFactory.getCurrentSession();
+        Sach sach=session.get(Sach.class, maSach);
+        return sach;
+    }
     
     
 }

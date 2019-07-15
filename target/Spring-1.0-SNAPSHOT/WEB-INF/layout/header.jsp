@@ -27,6 +27,7 @@
 
 	<!-- Modernizer js -->
 	<script src="<c:url value="Resource/js/vendor/modernizr-3.5.0.min.js" />"></script>
+        <script src="<c:url value="Resource/js/vendor/jquery-3.2.1.min.js" />"></script>
 </head>
 <body>
 	<!--[if lte IE 9]>

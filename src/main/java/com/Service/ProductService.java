@@ -5,6 +5,7 @@
  */
 package com.Service;
 
+import com.model.Sach;
 import java.util.List;
 
 /**
@@ -23,6 +24,7 @@ public interface ProductService {
      * Lấy sách theo loại của danh mục
      */
     public List getProductByKindView();
+    public Sach getSach(String maSach);
     public boolean updateProduct();
     public boolean insertProduct();
     public boolean deleteProduct();

@@ -16,29 +16,6 @@
 				<div class="furniture--4 border--round arrows_style owl-carousel owl-theme row mt--50">
 					<!-- Start Single Product -->
                                     <c:forEach var="newProduct" items="${productNews}">
-<<<<<<< HEAD
-
-					<div class="product product__style--3">
-						<div class="col-lg-3 col-md-4 col-sm-6 col-12">
-							<div class="product__thumb">
-                                                            <a class="first__img" href=""><img src='<c:url value="Resource/images/books/1.jpg"/>' alt="product image"></a>
-                                                                <a class="second__img animation1" href="single-product.html"><img src='<c:url value= "Resource/images/books/2.jpg"/>' alt="product image"></a>
-=======
-                                        <%--
-                                        <c:set var="srcHinhAnh1" value=""/>
-                                        <c:set var="srcHinhAnh2" value=""/>
-                                        <c:forEach var="hinhAnhs"  items="${newProduct.hinhAnhs}">
-                                        
-                                            <c:if test="${  (srcHinhAnh1 == '') || (srcHinhAnh2 == '') }">
-                                                <c:if test="${ srcHinhAnh1 != ''}">
-                                                     <c:set var="srcHinhAnh2" value="${hinhAnhs.src}"/>
-                                                </c:if>
-                                                <c:if test="${ srcHinhAnh1 == ''}">
-                                                     <c:set var="srcHinhAnh1" value="${hinhAnhs.src}"/>
-                                                </c:if>
-                                            </c:if>
-                                        </c:forEach>
-                                        --%>
                                             <c:forEach var="hinhAnhs"  items="${newProduct.hinhAnhs}">
                                                 <c:if test="${not empty srcHinhAnh1}">
                                                      <c:set var="srcHinhAnh2" value="${hinhAnhs.src}"/>
@@ -54,8 +31,7 @@
 						<div class="col-lg-3 col-md-4 col-sm-6 col-12">
 							<div class="product__thumb">
                                                             <a class="first__img" href=""><img src='<c:url value="Resource/images/books/${srcHinhAnh1}"/>' alt="product image"></a>
-                                                                <a class="second__img animation1" href="<c:url value="/product/${newProduct.url}"/>"><img src='<c:url value= "Resource/images/books/${srcHinhAnh2}"/>' alt="product image" ></a>
->>>>>>> feature-productNews
+                                                                <a class="second__img animation1" href="singe-product.html"><img src='<c:url value= "Resource/images/books/${srcHinhAnh2}"/>' alt="product image" ></a>
 								<div class="hot__box">
 									<span class="hot-label">NEW BOOK</span>
 								</div>
@@ -72,7 +48,7 @@
 											<li><a class="cart" href="cart.html"><i class="bi bi-shopping-bag4"></i></a></li>
 											<li><a class="wishlist" href="wishlist.html"><i class="bi bi-shopping-cart-full"></i></a></li>
 											<li><a class="compare" href="#"><i class="bi bi-heart-beat"></i></a></li>
-											<li><a data-toggle="modal" title="Quick View" class="quickview modal-view detail-link" href="#productmodal"><i class="bi bi-search"></i></a></li>
+                                                                                        <li class=""><a data-toggle="modal" title="Quick View" class="showProductModal quickview modal-view detail-link " href="#productmodal"><p hidden>${newProduct.maSach}</p><i class="bi bi-search"></i></a></li>
 										</ul>
 									</div>
 								</div>
