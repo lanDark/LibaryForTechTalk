@@ -6,9 +6,11 @@ import com.model.*;
 import java.util.ArrayList;
 import javax.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
+import static org.springframework.http.HttpMethod.GET;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import static org.springframework.web.bind.annotation.RequestMethod.POST;
 
 /**
@@ -27,6 +29,11 @@ public class AjaxController  {
         System.out.println("********\n**********\n*************"+sach.getMaSach()+"\n***\n"+sach.getTenSach());
         model.addAttribute("sach",sach);
         return "ajaxQuickView";
+    }
+    
+    @RequestMapping(value="/CartView",method=RequestMethod.GET)
+    public String CartView(HttpServletRequest request,Model model){
+        return "cart";
     }
     
     @RequestMapping(value="/addToCart",method=POST)
