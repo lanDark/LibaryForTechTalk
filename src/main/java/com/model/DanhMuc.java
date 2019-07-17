@@ -1,5 +1,5 @@
 package com.model;
-// Generated Jul 12, 2019 12:14:04 PM by Hibernate Tools 4.3.1
+// Generated Jul 17, 2019 3:18:33 PM by Hibernate Tools 4.3.1
 
 
 import java.util.HashSet;
@@ -31,8 +31,7 @@ public class DanhMuc  implements java.io.Serializable {
     }
 
 	
-    public DanhMuc(int idDanhMuc,String url) {
-        this.url=url;
+    public DanhMuc(int idDanhMuc) {
         this.idDanhMuc = idDanhMuc;
     }
     public DanhMuc(int idDanhMuc, String tenDanhMuc, String url, Set<TheLoai> theLoais) {

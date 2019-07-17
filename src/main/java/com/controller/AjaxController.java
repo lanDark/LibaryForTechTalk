@@ -31,26 +31,5 @@ public class AjaxController  {
         return "ajaxQuickView";
     }
     
-    @RequestMapping(value="/CartView",method=RequestMethod.GET)
-    public String CartView(HttpServletRequest request,Model model){
-        return "cart";
-    }
-    
-    @RequestMapping(value="/addToCart",method=POST)
-    public void addToCartItem(HttpServletRequest request,Model model){
-        ArrayList<Sach> cart;
-        String maSach = request.getParameter("maSach");
-        Sach sach=productServiceImpl.getSach(maSach);
-        if(request.getSession().getAttribute("cartItems")== null)
-        {
-           cart =new ArrayList();
-           cart.add(sach);
-           request.getSession().setAttribute("cartItems", cart);
-        }else
-        {
-            cart=(ArrayList<Sach>) request.getSession().getAttribute("cartItems");
-            cart.add(sach);
-        }
-        System.out.println("** Cart "+cart.size() + "  **\n**********\n*************"+sach.getMaSach()+"\n***\n"+sach.getTenSach());
-    }
+
 }

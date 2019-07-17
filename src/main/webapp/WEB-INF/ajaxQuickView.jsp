@@ -66,7 +66,7 @@
 		                                </div>
 		                            </div>
 		                            <div class="addtocart-btn">
-                                                <a href="#" id="addToCart"><p hidden>${sach.maSach}</p>Add to cart</a>
+                                                <a href="#" class="addToCart"><p hidden>${sach.maSach}</p>Add to cart</a>
 		                            </div>
 		                        </div>
 		                    </div>
@@ -74,29 +74,6 @@
 		            </div>
 		        </div>
 		    </div>
-                                            <script>
-                                                // this is the id of the form
-                                                $("#addToCart").click(function(e) {
-
-                                                    e.preventDefault(); 
-
-                                                    var maSach=$(this).children("p").text();
-                                                    console.log(maSach);
-                                                    $.ajax({
-                                                        type: "POST",
-                                                        url:'<c:url value="/addToCart"/>',
-                                                        data : {
-                                                            maSach : maSach
-                                                        },
-                                                        success: function()
-                                                        {
-                                                            alert("thanh cong"); // show response from the php script.
-                                                        },
-                                                        error: function (jqXHR, textStatus, errorThrown) {
-                                                                alert(xhr.status);
-                                                                alert(thrownError);
-                                                        }
-                                                    });
-                                                });
-                                            </script>                     
+                         <script src='<c:url value="Resource/js/ajax.js"/>'>  </script>
+                         //hoanglena
 		<!-- END QUICKVIEW PRODUCT -->

@@ -1,5 +1,5 @@
 package com.model;
-// Generated Jul 12, 2019 12:14:04 PM by Hibernate Tools 4.3.1
+// Generated Jul 17, 2019 3:18:33 PM by Hibernate Tools 4.3.1
 
 
 import java.util.HashSet;
@@ -29,9 +29,6 @@ public class CtPhieumuon  implements java.io.Serializable {
      private Sach sach;
      private String ghiChu;
      private String ngayTra;
-     private Integer tienMuon;
-     private Integer tiencoc;
-     private Integer tienDu;
      private Set<CtLoi> ctLois = new HashSet<CtLoi>(0);
 
     public CtPhieumuon() {
@@ -41,15 +38,12 @@ public class CtPhieumuon  implements java.io.Serializable {
     public CtPhieumuon(int maCtpm) {
         this.maCtpm = maCtpm;
     }
-    public CtPhieumuon(int maCtpm, PhieuMuon phieuMuon, Sach sach, String ghiChu, String ngayTra, Integer tienMuon, Integer tiencoc, Integer tienDu, Set<CtLoi> ctLois) {
+    public CtPhieumuon(int maCtpm, PhieuMuon phieuMuon, Sach sach, String ghiChu, String ngayTra, Set<CtLoi> ctLois) {
        this.maCtpm = maCtpm;
        this.phieuMuon = phieuMuon;
        this.sach = sach;
        this.ghiChu = ghiChu;
        this.ngayTra = ngayTra;
-       this.tienMuon = tienMuon;
-       this.tiencoc = tiencoc;
-       this.tienDu = tienDu;
        this.ctLois = ctLois;
     }
    
@@ -103,36 +97,6 @@ public class CtPhieumuon  implements java.io.Serializable {
     
     public void setNgayTra(String ngayTra) {
         this.ngayTra = ngayTra;
-    }
-
-    
-    @Column(name="tienMuon")
-    public Integer getTienMuon() {
-        return this.tienMuon;
-    }
-    
-    public void setTienMuon(Integer tienMuon) {
-        this.tienMuon = tienMuon;
-    }
-
-    
-    @Column(name="tiencoc")
-    public Integer getTiencoc() {
-        return this.tiencoc;
-    }
-    
-    public void setTiencoc(Integer tiencoc) {
-        this.tiencoc = tiencoc;
-    }
-
-    
-    @Column(name="tienDu")
-    public Integer getTienDu() {
-        return this.tienDu;
-    }
-    
-    public void setTienDu(Integer tienDu) {
-        this.tienDu = tienDu;
     }
 
 @OneToMany(fetch=FetchType.LAZY, mappedBy="ctPhieumuon")

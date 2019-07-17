@@ -1,5 +1,5 @@
 package com.model;
-// Generated Jul 12, 2019 12:14:04 PM by Hibernate Tools 4.3.1
+// Generated Jul 17, 2019 3:18:33 PM by Hibernate Tools 4.3.1
 
 
 import java.util.HashSet;
@@ -32,10 +32,6 @@ public class PhieuMuon  implements java.io.Serializable {
      private String ngayMuon;
      private String ngayPhaiTra;
      private String ngayDat;
-     private Integer tongTienMuon;
-     private Integer tongTienPhat;
-     private Integer tongTienCoc;
-     private Integer tongTienDu;
      private Set<CtPhieumuon> ctPhieumuons = new HashSet<CtPhieumuon>(0);
 
     public PhieuMuon() {
@@ -46,7 +42,7 @@ public class PhieuMuon  implements java.io.Serializable {
         this.maPm = maPm;
         this.trangThai = trangThai;
     }
-    public PhieuMuon(int maPm, NguoiDung nguoiDungByMaThuThu, NguoiDung nguoiDungByMaNguoiDung, NguoiDung nguoiDungByNguoiNhanTra, int trangThai, String ngayMuon, String ngayPhaiTra, String ngayDat, Integer tongTienMuon, Integer tongTienPhat, Integer tongTienCoc, Integer tongTienDu, Set<CtPhieumuon> ctPhieumuons) {
+    public PhieuMuon(int maPm, NguoiDung nguoiDungByMaThuThu, NguoiDung nguoiDungByMaNguoiDung, NguoiDung nguoiDungByNguoiNhanTra, int trangThai, String ngayMuon, String ngayPhaiTra, String ngayDat, Set<CtPhieumuon> ctPhieumuons) {
        this.maPm = maPm;
        this.nguoiDungByMaThuThu = nguoiDungByMaThuThu;
        this.nguoiDungByMaNguoiDung = nguoiDungByMaNguoiDung;
@@ -55,10 +51,6 @@ public class PhieuMuon  implements java.io.Serializable {
        this.ngayMuon = ngayMuon;
        this.ngayPhaiTra = ngayPhaiTra;
        this.ngayDat = ngayDat;
-       this.tongTienMuon = tongTienMuon;
-       this.tongTienPhat = tongTienPhat;
-       this.tongTienCoc = tongTienCoc;
-       this.tongTienDu = tongTienDu;
        this.ctPhieumuons = ctPhieumuons;
     }
    
@@ -142,46 +134,6 @@ public class PhieuMuon  implements java.io.Serializable {
     
     public void setNgayDat(String ngayDat) {
         this.ngayDat = ngayDat;
-    }
-
-    
-    @Column(name="tongTienMuon")
-    public Integer getTongTienMuon() {
-        return this.tongTienMuon;
-    }
-    
-    public void setTongTienMuon(Integer tongTienMuon) {
-        this.tongTienMuon = tongTienMuon;
-    }
-
-    
-    @Column(name="tongTienPhat")
-    public Integer getTongTienPhat() {
-        return this.tongTienPhat;
-    }
-    
-    public void setTongTienPhat(Integer tongTienPhat) {
-        this.tongTienPhat = tongTienPhat;
-    }
-
-    
-    @Column(name="TongTienCoc")
-    public Integer getTongTienCoc() {
-        return this.tongTienCoc;
-    }
-    
-    public void setTongTienCoc(Integer tongTienCoc) {
-        this.tongTienCoc = tongTienCoc;
-    }
-
-    
-    @Column(name="TongTienDu")
-    public Integer getTongTienDu() {
-        return this.tongTienDu;
-    }
-    
-    public void setTongTienDu(Integer tongTienDu) {
-        this.tongTienDu = tongTienDu;
     }
 
 @OneToMany(fetch=FetchType.LAZY, mappedBy="phieuMuon")

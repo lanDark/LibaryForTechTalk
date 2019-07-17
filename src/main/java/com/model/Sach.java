@@ -1,5 +1,5 @@
 package com.model;
-// Generated Jul 12, 2019 12:14:04 PM by Hibernate Tools 4.3.1
+// Generated Jul 17, 2019 3:18:33 PM by Hibernate Tools 4.3.1
 
 
 import java.math.BigDecimal;
@@ -250,13 +250,8 @@ public class Sach  implements java.io.Serializable {
         this.ctPhieuNhaps = ctPhieuNhaps;
     }
 
-    @Override
-    public String toString() {
-        return "Sach{" + "maSach=" + maSach + ", nhaCungCap=" + nhaCungCap + ", theLoai=" + theLoai + ", tenSach=" + tenSach + ", trongLuong=" + trongLuong + ", loaiBia=" + loaiBia + ", soTrang=" + soTrang + ", kichThuoc=" + kichThuoc + ", namXuatBan=" + namXuatBan + ", gia=" + gia + ", soLuong=" + soLuong + ", url=" + url + ", ngayTao=" + ngayTao + ", hinhAnhs=" + hinhAnhs + ", luotThiches=" + luotThiches + ", tacgias=" + tacgias + ", ctPhieumuons=" + ctPhieumuons + ", ctPhieuNhaps=" + ctPhieuNhaps + '}';
-    }
 
 
- 
 
 }
 

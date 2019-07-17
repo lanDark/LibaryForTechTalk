@@ -1,6 +1,8 @@
 com\DAOImpl\ProductDAOImpl.class
 com\model\Loi.class
-Class\Man.class
+com\ServiceImpl\CartServiceImpl.class
+com\Service\CartService.class
+com\controller\CartController.class
 com\controller\UserController.class
 com\model\Rules.class
 com\controller\CategoryController.class
@@ -28,4 +30,5 @@ com\model\Sach.class
 com\ServiceImpl\ProductServiceImpl.class
 com\DAOImpl\DanhMucDAOImpl.class
 com\model\Phat.class
+com\controller\AjaxController.class
 com\configuration\HelloWorldInitializer.class
