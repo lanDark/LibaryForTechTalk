@@ -1,5 +1,7 @@
 com\DAOImpl\ProductDAOImpl.class
+com\DAOImpl\UserDAOImpl.class
 com\model\Loi.class
+com\DAO\UserDAO.class
 com\ServiceImpl\CartServiceImpl.class
 com\Service\CartService.class
 com\controller\CartController.class
@@ -21,6 +23,7 @@ com\model\HinhAnh.class
 com\model\NhaCungCap.class
 com\configuration\HibernateConfig.class
 com\model\DanhMuc.class
+com\Service\UserService.class
 com\ServiceImpl\DanhMucServiceImpl.class
 com\model\CtPhieuNhap.class
 com\Service\ProductService.class
@@ -29,6 +32,7 @@ com\model\PhieuMuon.class
 com\model\Sach.class
 com\ServiceImpl\ProductServiceImpl.class
 com\DAOImpl\DanhMucDAOImpl.class
+com\ServiceImpl\UserServiceImpl.class
 com\model\Phat.class
 com\controller\AjaxController.class
 com\configuration\HelloWorldInitializer.class

@@ -1,4 +1,5 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!doctype html>
 <html class="no-js" lang="zxx">
 <head>
@@ -186,7 +187,7 @@
 											<span>$66.00</span>
 										</div>
 										<div class="mini_action checkout">
-											<a class="checkout__btn" href="cart.html">Go to Checkout</a>
+                                                                                    <a class="checkout__btn" href="<c:url value="CartView"/>">Go to Checkout</a>
 										</div>
 										<div class="single__items">
 											<div class="miniproduct">
@@ -306,7 +307,7 @@
 														<span><a href="#">Compare Product</a></span>
 														<span><a href="#">My Account</a></span>
 														<span><a href="#">My Wishlist</a></span>
-														<span><a href="#">Sign In</a></span>
+                                                                                                                <span><a href="<c:url value="Login" />">Đăng nhập</a></span>
 														<span><a href="#">Create An Account</a></span>
 													</div>
 												</div>

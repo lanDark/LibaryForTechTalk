@@ -16,7 +16,7 @@
 				<div class="furniture--4 border--round arrows_style owl-carousel owl-theme row mt--50">
 					<!-- Start Single Product -->
                                     <c:forEach var="newProduct" items="${productNews}">
-                                            <c:forEach var="hinhAnhs"  items="${newProduct.hinhAnhs}">
+                                        <c:forEach var="hinhAnhs" begin="0" end="1"  items="${newProduct.hinhAnhs}">
                                                 <c:if test="${not empty srcHinhAnh1}">
                                                      <c:set var="srcHinhAnh2" value="${hinhAnhs.src}"/>
                                                 </c:if>
@@ -47,7 +47,6 @@
 										<ul class="add_to_links">
                                                                                     <li><a class="cart addToCart" ><p hidden>${newProduct.maSach}</p><i class="bi bi-shopping-bag4"></i></a></li>
 											<li><a class="wishlist" href="wishlist.html"><i class="bi bi-shopping-cart-full"></i></a></li>
-											<li><a class="compare" href="#"><i class="bi bi-heart-beat"></i></a></li>
                                                                                         <li class=""><a data-toggle="modal" title="Quick View" class="showProductModal quickview modal-view detail-link " href="#productmodal"><p hidden>${newProduct.maSach}</p><i class="bi bi-search"></i></a></li>
 										</ul>
 									</div>

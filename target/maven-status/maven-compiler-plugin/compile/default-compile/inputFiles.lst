@@ -2,14 +2,17 @@ F:\Documents\NetBeansProjects\Spring\src\main\java\com\model\NhaCungCap.java
 F:\Documents\NetBeansProjects\Spring\src\main\java\com\ServiceImpl\ProductServiceImpl.java
 F:\Documents\NetBeansProjects\Spring\src\main\java\com\DAOImpl\ProductDAOImpl.java
 F:\Documents\NetBeansProjects\Spring\src\main\java\com\model\CtPhieumuon.java
+F:\Documents\NetBeansProjects\Spring\src\main\java\com\DAO\UserDAO.java
 F:\Documents\NetBeansProjects\Spring\src\main\java\com\controller\CategoryController.java
 F:\Documents\NetBeansProjects\Spring\src\main\java\com\model\CtLoi.java
 F:\Documents\NetBeansProjects\Spring\src\main\java\com\model\CtPhieuNhap.java
 F:\Documents\NetBeansProjects\Spring\src\main\java\com\configuration\HelloWorldConfig.java
 F:\Documents\NetBeansProjects\Spring\src\main\java\com\model\Phat.java
 F:\Documents\NetBeansProjects\Spring\src\main\java\com\DAO\DanhMucDAO.java
+F:\Documents\NetBeansProjects\Spring\src\main\java\com\DAOImpl\UserDAOImpl.java
 F:\Documents\NetBeansProjects\Spring\src\main\java\com\controller\MainController.java
 F:\Documents\NetBeansProjects\Spring\src\main\java\com\DAOImpl\DanhMucDAOImpl.java
+F:\Documents\NetBeansProjects\Spring\src\main\java\com\Service\UserService.java
 F:\Documents\NetBeansProjects\Spring\src\main\java\com\model\DanhMuc.java
 F:\Documents\NetBeansProjects\Spring\src\main\java\com\model\Rules.java
 F:\Documents\NetBeansProjects\Spring\src\main\java\com\configuration\HelloWorldInitializer.java
@@ -25,6 +28,7 @@ F:\Documents\NetBeansProjects\Spring\src\main\java\com\controller\CartController
 F:\Documents\NetBeansProjects\Spring\src\main\java\com\ServiceImpl\CartServiceImpl.java
 F:\Documents\NetBeansProjects\Spring\src\main\java\Class\Man.java
 F:\Documents\NetBeansProjects\Spring\src\main\java\com\Service\CartService.java
+F:\Documents\NetBeansProjects\Spring\src\main\java\com\ServiceImpl\UserServiceImpl.java
 F:\Documents\NetBeansProjects\Spring\src\main\java\com\model\PhieuMuon.java
 F:\Documents\NetBeansProjects\Spring\src\main\java\com\model\Tacgia.java
 F:\Documents\NetBeansProjects\Spring\src\main\java\com\ServiceImpl\DanhMucServiceImpl.java
