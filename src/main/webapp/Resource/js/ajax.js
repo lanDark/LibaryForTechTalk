@@ -8,21 +8,85 @@ $(".addToCart").click(function(e) {
     e.stopPropagation();
     e.stopImmediatePropagation(); 
     var maSach=$(this).children("p").text();
-    var urlS='addToCart';
-    console.log(maSach);
     $.ajax({
-        type: "POST",
-        url:urlS,
+        type: "post",
+        url:'/Spring/addToCart',
         data : {
             maSach : maSach
         },
-        success: function()
+        dataType : 'html',
+        timeout:10000,
+        success : function(data)
         {
-            alert("thanh cong"); // show response from the php script.
-        },
-        error: function (jqXHR, textStatus, errorThrown) {
-                alert(xhr.status);
-                alert(thrownError);
+           $('.modal-body').html(data);
+           $('#alertAddToCart').modal('show');
         }
+    });
+});
+
+$("#addToCartInQuickView").click(function(e) {
+
+    e.preventDefault(); 
+    e.stopPropagation();
+    e.stopImmediatePropagation(); 
+    var maSach=$(this).children("p").text();
+    $.ajax({
+        type: "post",
+        url:'/Spring/addToCart',
+        data : {
+            maSach : maSach
+        },
+        dataType : 'html',
+        timeout:10000,
+        success : function(data)
+        {
+           $('.modal-body').html(data);
+            $("#productmodal").modal('toggle');
+           $('#alertAddToCart').modal('show');
+        }
+    });
+});
+// -------------  Xác nhận đặt ------------------
+$("#datGiu").click(function(e) {
+
+    e.preventDefault(); 
+    e.stopPropagation();
+    e.stopImmediatePropagation(); 
+    $.ajax({
+        type: "GET",
+        url:'/Spring/datMuon',
+        dataType : 'html',
+        timeout:10000,
+        success : function(data)
+        {
+             $('.modal-body').html(data);
+             if(data.search(" Xin lỗi") == -1 ){
+                $('tbody > tr > td').remove();
+             }
+             $('#alertAddToCart').modal('show');
+        }
+        
+    });
+});
+// -------------  Show quickView ------------------
+$(".showProductModal").on('click', function(event){
+    event.stopPropagation();
+    event.stopImmediatePropagation();
+    var maSach=$(this).children("p").text();
+    console.log(maSach);
+    //(... rest of your JS code)
+    $.ajax({
+        type:'post',
+        url:'/Spring/quickview',
+        data : {
+            maSach : maSach
+        },
+        dataType : 'html',
+        timeout:10000,
+        success : function(data){
+            $("#quickview-wrapper").html(data);
+            $("#productmodal").modal('show');
+        }
+
     });
 });

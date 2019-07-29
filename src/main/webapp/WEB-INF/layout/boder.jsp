@@ -45,9 +45,9 @@
 								<div class="action">
 									<div class="actions_inner">
 										<ul class="add_to_links">
-                                                                                    <li><a class="cart addToCart" ><p hidden>${newProduct.maSach}</p><i class="bi bi-shopping-bag4"></i></a></li>
+                                                                                    <li><a class="cart addToCart"  data-toggle="modal" data-target="#alertAddToCart"><p hidden>${newProduct.maSach}</p><i class="bi bi-shopping-bag4"></i></a></li>
 											<li><a class="wishlist" href="wishlist.html"><i class="bi bi-shopping-cart-full"></i></a></li>
-                                                                                        <li class=""><a data-toggle="modal" title="Quick View" class="showProductModal quickview modal-view detail-link " href="#productmodal"><p hidden>${newProduct.maSach}</p><i class="bi bi-search"></i></a></li>
+                                                                                        <li class=""><a data-toggle="modal" title="Quick View" class="showProductModal quickview modal-view detail-link " data-target="#productmodal"><p hidden>${newProduct.maSach}</p><i class="bi bi-search"></i></a></li>
 										</ul>
 									</div>
 								</div>
@@ -97,3 +97,23 @@
 			</div>
 		</section>
 		<!-- End NEwsletter Area -->
+  <!-- Modal -->
+  <div class="modal fade" id="alertAddToCart" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+            <h4 class="modal-title">Thông báo</h4>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+        <div class="modal-body">
+        
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+      
+    </div>
+  </div>

@@ -13,8 +13,10 @@ com\model\CtPhieumuon.class
 com\controller\MainController.class
 com\DAO\ProductDAO.class
 com\model\NguoiDung.class
+com\model\Cart.class
 com\model\LuotThich.class
 com\model\Tacgia.class
+Class\SearchItemInCart.class
 com\model\CtLoi.class
 com\Service\DanhMucService.class
 com\configuration\HelloWorldConfig.class

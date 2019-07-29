@@ -43,7 +43,7 @@
 				<div class="row">
 					<div class="col-md-6 col-sm-6 col-6 col-lg-2">
 						<div class="logo">
-							<a href="index.html">
+                                                    <a href="<c:url value="/"/>">
                                                             <img src="<c:url value="Resource/images/logo/logo.png" />" alt="logo images">
 							</a>
 						</div>
@@ -51,7 +51,7 @@
 					<div class="col-lg-8 d-none d-lg-block">
 						<nav class="mainmenu__nav">
 							<ul class="meninmenu d-flex justify-content-start">
-								<li class="drop with--one--item"><a href="index.html">Home</a></li>
+								<li class="drop with--one--item"><a href="<c:url value="/"/>">Home</a></li>
 								<li class="drop"><a href="#">Shop</a>
 									<div class="megamenu mega03">
 										<ul class="item item03">
@@ -89,14 +89,7 @@
                                                                                                 </c:if>
                                                                                             </c:forEach>
                                                                                         </c:forEach>
-                                                                                        <%--
-                                                                                        <c:if test="${not empty category}">
-                                                                                            <c:set var = "listDanhMuc" value = "${category[0]}"/>
-                                                                                            <c:forEach var="danhMuc" items="${listDanhMuc}">
-                                                                                            <li><a href="<c:url value="category/${danhMuc.url}"/>"> <c:out value="${danhMuc.tenDanhMuc}"/> </a></li>
-                                                                                            </c:forEach>
-                                                                                        </c:if>
-                                                                                            --%>
+                                                                                  
 										</ul>
 										<ul class="item item03">
 											<li class="title">Customer Favourite</li>

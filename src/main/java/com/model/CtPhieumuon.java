@@ -1,12 +1,15 @@
 package com.model;
-// Generated Jul 17, 2019 3:18:33 PM by Hibernate Tools 4.3.1
+// Generated Jul 20, 2019 1:55:41 AM by Hibernate Tools 4.3.1
 
 
+import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -27,8 +30,7 @@ public class CtPhieumuon  implements java.io.Serializable {
      private int maCtpm;
      private PhieuMuon phieuMuon;
      private Sach sach;
-     private String ghiChu;
-     private String ngayTra;
+     private Date ngayTra;
      private Set<CtLoi> ctLois = new HashSet<CtLoi>(0);
 
     public CtPhieumuon() {
@@ -38,18 +40,16 @@ public class CtPhieumuon  implements java.io.Serializable {
     public CtPhieumuon(int maCtpm) {
         this.maCtpm = maCtpm;
     }
-    public CtPhieumuon(int maCtpm, PhieuMuon phieuMuon, Sach sach, String ghiChu, String ngayTra, Set<CtLoi> ctLois) {
+    public CtPhieumuon(int maCtpm, PhieuMuon phieuMuon, Sach sach, Date ngayTra, Set<CtLoi> ctLois) {
        this.maCtpm = maCtpm;
        this.phieuMuon = phieuMuon;
        this.sach = sach;
-       this.ghiChu = ghiChu;
        this.ngayTra = ngayTra;
        this.ctLois = ctLois;
     }
    
      @Id 
-
-    
+     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="maCTPM", unique=true, nullable=false)
     public int getMaCtpm() {
         return this.maCtpm;
@@ -80,22 +80,12 @@ public class CtPhieumuon  implements java.io.Serializable {
     }
 
     
-    @Column(name="ghiChu", length=100)
-    public String getGhiChu() {
-        return this.ghiChu;
-    }
-    
-    public void setGhiChu(String ghiChu) {
-        this.ghiChu = ghiChu;
-    }
-
-    
-    @Column(name="ngayTra", length=10)
-    public String getNgayTra() {
+    @Column(name="ngayTra")
+    public Date getNgayTra() {
         return this.ngayTra;
     }
     
-    public void setNgayTra(String ngayTra) {
+    public void setNgayTra(Date ngayTra) {
         this.ngayTra = ngayTra;
     }
 

@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletRequest;
  * @author vital
  */
 public interface CartService {
-    public boolean addItem(HttpServletRequest request, ProductService productServiceImpl);
+    public boolean addItem(HttpServletRequest request, ProductService productServiceImpl) throws Exception;
     public void deleteItem();
     
 }

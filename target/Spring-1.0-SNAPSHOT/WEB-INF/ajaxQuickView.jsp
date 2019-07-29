@@ -1,5 +1,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html;charset=UTF-8" %>
+   <script src='<c:url value="Resource/js/ajax.js"/>'>  </script>
                     <c:forEach var="tacGia" items="${sach.tacgias}">
                         <c:set var="tenTacGia" value="${tacGia.hoTen}"/>
                     </c:forEach>   
@@ -66,7 +67,7 @@
 		                                </div>
 		                            </div>
 		                            <div class="addtocart-btn">
-                                                <a href="#" class="addToCart"><p hidden>${sach.maSach}</p>Add to cart</a>
+                                                <a  id="addToCartInQuickView" data-toggle="modal" href="#alertAddToCart"><p hidden>${sach.maSach}</p>Add to cart</a>
 		                            </div>
 		                        </div>
 		                    </div>
@@ -74,6 +75,5 @@
 		            </div>
 		        </div>
 		    </div>
-                         <script src='<c:url value="Resource/js/ajax.js"/>'>  </script>
                          //hoanglena
 		<!-- END QUICKVIEW PRODUCT -->

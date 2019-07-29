@@ -1,12 +1,15 @@
 package com.model;
-// Generated Jul 17, 2019 3:18:33 PM by Hibernate Tools 4.3.1
+// Generated Jul 20, 2019 1:55:41 AM by Hibernate Tools 4.3.1
 
 
+import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -29,9 +32,9 @@ public class PhieuMuon  implements java.io.Serializable {
      private NguoiDung nguoiDungByMaNguoiDung;
      private NguoiDung nguoiDungByNguoiNhanTra;
      private int trangThai;
-     private String ngayMuon;
-     private String ngayPhaiTra;
-     private String ngayDat;
+     private Date ngayMuon;
+     private Date ngayPhaiTra;
+     private Date ngayDat;
      private Set<CtPhieumuon> ctPhieumuons = new HashSet<CtPhieumuon>(0);
 
     public PhieuMuon() {
@@ -42,7 +45,7 @@ public class PhieuMuon  implements java.io.Serializable {
         this.maPm = maPm;
         this.trangThai = trangThai;
     }
-    public PhieuMuon(int maPm, NguoiDung nguoiDungByMaThuThu, NguoiDung nguoiDungByMaNguoiDung, NguoiDung nguoiDungByNguoiNhanTra, int trangThai, String ngayMuon, String ngayPhaiTra, String ngayDat, Set<CtPhieumuon> ctPhieumuons) {
+    public PhieuMuon(int maPm, NguoiDung nguoiDungByMaThuThu, NguoiDung nguoiDungByMaNguoiDung, NguoiDung nguoiDungByNguoiNhanTra, int trangThai, Date ngayMuon, Date ngayPhaiTra, Date ngayDat, Set<CtPhieumuon> ctPhieumuons) {
        this.maPm = maPm;
        this.nguoiDungByMaThuThu = nguoiDungByMaThuThu;
        this.nguoiDungByMaNguoiDung = nguoiDungByMaNguoiDung;
@@ -56,7 +59,7 @@ public class PhieuMuon  implements java.io.Serializable {
    
      @Id 
 
-    
+     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="maPM", unique=true, nullable=false)
     public int getMaPm() {
         return this.maPm;
@@ -106,33 +109,30 @@ public class PhieuMuon  implements java.io.Serializable {
         this.trangThai = trangThai;
     }
 
-    
     @Column(name="ngayMuon", length=10)
-    public String getNgayMuon() {
+    public Date getNgayMuon() {
         return this.ngayMuon;
     }
     
-    public void setNgayMuon(String ngayMuon) {
+    public void setNgayMuon(Date ngayMuon) {
         this.ngayMuon = ngayMuon;
     }
 
-    
-    @Column(name="ngay_Phai_tra", length=10)
-    public String getNgayPhaiTra() {
+    @Column(name="ngay_Phai_tra")
+    public Date getNgayPhaiTra() {
         return this.ngayPhaiTra;
     }
     
-    public void setNgayPhaiTra(String ngayPhaiTra) {
+    public void setNgayPhaiTra(Date ngayPhaiTra) {
         this.ngayPhaiTra = ngayPhaiTra;
     }
 
-    
-    @Column(name="ngay_dat", length=10)
-    public String getNgayDat() {
+    @Column(name="ngay_dat")
+    public Date getNgayDat() {
         return this.ngayDat;
     }
     
-    public void setNgayDat(String ngayDat) {
+    public void setNgayDat(Date ngayDat) {
         this.ngayDat = ngayDat;
     }
 
@@ -143,6 +143,11 @@ public class PhieuMuon  implements java.io.Serializable {
     
     public void setCtPhieumuons(Set<CtPhieumuon> ctPhieumuons) {
         this.ctPhieumuons = ctPhieumuons;
+    }
+
+    @Override
+    public String toString() {
+        return "PhieuMuon{" + "maPm=" + maPm + ", nguoiDungByMaThuThu=" + nguoiDungByMaThuThu + ", nguoiDungByMaNguoiDung=" + nguoiDungByMaNguoiDung + ", nguoiDungByNguoiNhanTra=" + nguoiDungByNguoiNhanTra + ", trangThai=" + trangThai + ", ngayMuon=" + ngayMuon + ", ngayPhaiTra=" + ngayPhaiTra + ", ngayDat=" + ngayDat + ", ctPhieumuons=" + ctPhieumuons + '}';
     }
 
 

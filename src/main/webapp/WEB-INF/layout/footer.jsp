@@ -71,29 +71,8 @@
         </script>
         <script src='<c:url value="Resource/js/active.js"/>'>
         </script>
-        <script src='<c:url value="Resource/js/ajax.js"/>'>
-        </script>
-        <script>
-            $(".showProductModal").on('click', function(event){
-                event.stopPropagation();
-                event.stopImmediatePropagation();
-                var maSach=$(this).children("p").text();
-                console.log(maSach);
-                //(... rest of your JS code)
-                $.ajax({
-                    type:'post',
-                    url:'<c:url value="/quickview"/>',
-                    data : {
-                        maSach : maSach
-                    },
-                    dataType : 'html',
-                    timeout:10000,
-                    success : function(data){
-                        $("#quickview-wrapper").html(data);
-                        $("#productmodal").modal('show');
-                    }
-                });
-            });
-        </script>
+        <script src='<c:url value="Resource/js/ajax.js"/>'></script>
+
+
 </body>
 </html>

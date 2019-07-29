@@ -15,4 +15,5 @@ public interface UserService {
     public boolean login(HttpServletRequest req,String email,String password);
     public boolean signIn();
     public boolean logOut();
+    public boolean datMuon(HttpServletRequest req) throws Exception;
 }
