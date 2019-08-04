@@ -27,8 +27,11 @@
                                         <tr>
                                             <td class="product-thumbnail"><a href="#"><img src="<c:url value="Resource/images/books/${srcHinhAnh}"/> " alt="product img"></a></td>
                                             <td class="product-name"><a href="#">${items.sach.tenSach}</a></td>
-                                            <td class="product-quantity"><input type="number" value="${items.soLuong}"></td>
-                                            <td class="product-remove"><a href="#">X</a></td>
+                                            <td class="product-quantity"><input class="soLuong" type="number" value="${items.soLuong}">
+                                                <input class="maSach" value="${items.sach.maSach}" hidden/>  
+                                            </td>
+                                             
+                                            <td class="product-remove"><a href="#" class="remove">X</a><input class="maSach" value="${items.sach.maSach}" hidden/></td>
                                         </tr>
                                         </c:forEach>     
                                 </table>

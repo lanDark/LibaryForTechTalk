@@ -86,7 +86,7 @@ public class UserController {
             }
         } catch (Exception ex) {
             Logger.getLogger(UserController.class.getName()).log(Level.SEVERE, null, ex);
-             return "<p> "+ex.getMessage()+"</p>";
+            return "<p> "+ex.getMessage()+"</p>";
             
         }
     }

@@ -7,6 +7,7 @@ com\Service\CartService.class
 com\controller\CartController.class
 com\controller\UserController.class
 com\model\Rules.class
+Class\FunctionCart.class
 com\controller\CategoryController.class
 com\DAO\DanhMucDAO.class
 com\model\CtPhieumuon.class
@@ -16,7 +17,6 @@ com\model\NguoiDung.class
 com\model\Cart.class
 com\model\LuotThich.class
 com\model\Tacgia.class
-Class\SearchItemInCart.class
 com\model\CtLoi.class
 com\Service\DanhMucService.class
 com\configuration\HelloWorldConfig.class

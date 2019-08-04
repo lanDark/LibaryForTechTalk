@@ -13,6 +13,6 @@ import javax.servlet.http.HttpServletRequest;
  */
 public interface CartService {
     public boolean addItem(HttpServletRequest request, ProductService productServiceImpl) throws Exception;
-    public void deleteItem();
-    
+    public void deleteItem(HttpServletRequest req) throws Exception;
+    public void updateItem(HttpServletRequest req) throws Exception;
 }

@@ -90,3 +90,41 @@ $(".showProductModal").on('click', function(event){
 
     });
 });
+
+// -------------  Cart update số lượng  ------------------
+$("tbody tr td ").on("change", "input", function(event) {
+   
+   var maSach=$(this).next(".maSach").val();
+   var soLuong=$(this).val();
+    $.ajax({
+        type:'GET',
+        url:'/Spring/updateItemCart',
+        data : {
+            maSach : maSach,
+            soLuong: soLuong
+        },
+        dataType : 'html',
+        timeout:10000,
+        success : function(data){
+           
+        }
+    });
+});
+// -------------  Xoá item trong Cart List  ------------------
+$("tbody tr td ").on("click", ".remove", function(event) {
+     event.preventDefault();
+    var maSach=$(this).next(".maSach").val();
+    $(this).parent().parent().remove();
+    $.ajax({
+        type:'GET',
+        url:'/Spring/deleteItemCart',
+        data : {
+            maSach : maSach
+        },
+        dataType : 'html',
+        timeout:10000,
+        success : function(data){
+         
+        }
+    });
+});
