@@ -5,11 +5,15 @@
  */
 package com.controller;
 
+import Class.CacheMap;
+import com.Service.DanhMucService;
 import com.Service.UserService;
 import com.model.NguoiDung;
+import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,20 +33,21 @@ import org.springframework.web.bind.annotation.ResponseBody;
 public class UserController {
     @Autowired
     UserService userServiceImpl;
-    
+    @Autowired
+    DanhMucService danhMucServiceImpl;
     @RequestMapping(value = { "/Login"}, method = RequestMethod.GET)
     public String login(Model model,HttpServletRequest req,HttpServletResponse res){
            NguoiDung nguoiDung = (NguoiDung) req.getSession().getAttribute("nguoiDung");
             try {
-                if(nguoiDung != null)
+                if(nguoiDung != null) // Nếu người dùng != null nghĩa là người dùng đã đăng nhập
                 {
                        model.addAttribute("success","Đăng nhập thành công");
                        RequestDispatcher dispatcher = req.getServletContext().getRequestDispatcher("/");
                        dispatcher.forward(req, res);
                        return "index";
                 }
-                else{
-                     model.addAttribute("nguoiDung",new NguoiDung());
+                else{ //xảy ra khi người dùng rỗng
+                     model.addAttribute("category", danhMucServiceImpl.getDanhMucAll(CacheMap.getDanhMucAll));
                      return "Login"; 
                 }
             } catch (Exception ex) {
@@ -51,7 +56,7 @@ public class UserController {
         return null;
     }
     @RequestMapping(value={"/Login"},method=RequestMethod.POST)
-    public String exceCuteLogin(HttpServletRequest request,HttpServletResponse res,@ModelAttribute("nguoiDung")NguoiDung nguoiDung,Model model)
+    public String exceCuteLogin(HttpServletRequest request,HttpServletResponse res,Model model)
     {
         String email=request.getParameter("email");
         String password=request.getParameter("password");
@@ -68,7 +73,7 @@ public class UserController {
         } catch (Exception ex) {
             Logger.getLogger(UserController.class.getName()).log(Level.SEVERE, null, ex);
         } 
-        return "/";
+        return "index";
     }
      @RequestMapping(value="/datMuon", method=RequestMethod.GET, produces = "text/plain;charset=UTF-8")
      @ResponseBody
@@ -90,5 +95,16 @@ public class UserController {
             
         }
     }
-
+    @RequestMapping(value="/LogOut",method = RequestMethod.GET)
+    public void LogOut(HttpServletRequest req,HttpServletResponse res) {
+        try {
+            req.getSession().removeAttribute("nguoiDung");
+            RequestDispatcher dispatcher = req.getServletContext().getRequestDispatcher("/");
+            dispatcher.forward(req, res);
+        } catch (ServletException ex) {
+            Logger.getLogger(UserController.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
+            Logger.getLogger(UserController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
 }

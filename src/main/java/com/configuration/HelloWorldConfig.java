@@ -63,11 +63,6 @@ public class HelloWorldConfig extends WebMvcConfigurerAdapter {
         return new TheLoai();
     }
     @Bean
-    public CacheMap cache()
-    {
-        return new CacheMap();
-    }
-    @Bean
     public DanhMucService danhMucService(){
         return new DanhMucServiceImpl();
     }
