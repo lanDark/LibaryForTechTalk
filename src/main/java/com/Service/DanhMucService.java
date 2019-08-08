@@ -13,5 +13,5 @@ import java.util.List;
  * @author vital
  */
 public interface DanhMucService {
-     public List<DanhMuc> getDanhMucAll();
+     public List<DanhMuc> getDanhMucAll(String getDanhMucAll);
 }

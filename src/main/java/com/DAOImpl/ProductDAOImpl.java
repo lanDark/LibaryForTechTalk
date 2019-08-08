@@ -27,6 +27,7 @@ public class ProductDAOImpl implements ProductDAO {
     
     @Override
     public List<Sach> getNewProductView() {
+         System.out.println("Getting new Product");
         Session session=sessionFactory.getCurrentSession();
         Criteria cr=session.createCriteria(Sach.class);
         cr.setMaxResults(10);

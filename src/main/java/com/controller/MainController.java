@@ -1,16 +1,11 @@
 package com.controller;
+import Class.CacheMap;
 import com.Service.DanhMucService;
 import com.Service.ProductService;
-import com.model.*;
-import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;  
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;  
-import org.springframework.web.bind.annotation.RequestMethod;
-import static org.springframework.web.bind.annotation.RequestMethod.GET;
-import org.springframework.web.bind.annotation.RequestParam;
 @Controller  
 public class MainController {  
     
@@ -21,8 +16,8 @@ public class MainController {
   ProductService productService;
   @RequestMapping("/")
   public String home(Model map) {
-    map.addAttribute("category", danhMucService.getDanhMucAll());
-    map.addAttribute("productNews",productService.getNewProductView());
+    map.addAttribute("category", danhMucService.getDanhMucAll(CacheMap.getDanhMucAll));
+    map.addAttribute("productNews",productService.getNewProductView(CacheMap.getNewProductView));
     return "index";
   }
   

@@ -6,6 +6,7 @@ com\ServiceImpl\CartServiceImpl.class
 com\Service\CartService.class
 com\controller\CartController.class
 com\controller\UserController.class
+Class\CacheMap.class
 com\model\Rules.class
 Class\FunctionCart.class
 com\controller\CategoryController.class

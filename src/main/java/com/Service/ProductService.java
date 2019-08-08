@@ -15,7 +15,7 @@ public interface ProductService {
     /**
      * Lấy sách mới nhất
      */
-    public List getNewProductView();
+    public List getNewProductView(String getNewProductView);
     /**
      * Lấy sách theo danh mục
      */
