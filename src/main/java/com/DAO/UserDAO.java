@@ -7,6 +7,7 @@ package com.DAO;
 
 import com.model.Cart;
 import com.model.NguoiDung;
+import com.securityImpl.CustomUser;
 import java.util.ArrayList;
 
 /**
@@ -16,5 +17,5 @@ import java.util.ArrayList;
 public interface UserDAO {
     public NguoiDung login(String email);
     public boolean signIn();
-    public boolean datMuon(ArrayList<Cart> listSach,NguoiDung maNguoiDung) throws Exception ;
+    public boolean datMuon(ArrayList<Cart> listSach,CustomUser maNguoiDung) throws Exception ;
 }

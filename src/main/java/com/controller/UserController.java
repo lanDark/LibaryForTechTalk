@@ -8,7 +8,7 @@ package com.controller;
 import Class.CacheMap;
 import com.Service.DanhMucService;
 import com.Service.UserService;
-import com.model.NguoiDung;
+import com.securityImpl.CustomUser;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -17,9 +17,11 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -35,66 +37,68 @@ public class UserController {
     UserService userServiceImpl;
     @Autowired
     DanhMucService danhMucServiceImpl;
+    private static final Logger LOG = Logger.getLogger(UserController.class.getName());
+    
     @RequestMapping(value = { "/Login"}, method = RequestMethod.GET)
     public String login(Model model,HttpServletRequest req,HttpServletResponse res){
-           NguoiDung nguoiDung = (NguoiDung) req.getSession().getAttribute("nguoiDung");
+           
+            Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
             try {
-                if(nguoiDung != null) // Nếu người dùng != null nghĩa là người dùng đã đăng nhập
+                if(principal instanceof CustomUser) //Xác thực người dùng đã đăng nhập chưa
                 {
-                       model.addAttribute("success","Đăng nhập thành công");
-                       RequestDispatcher dispatcher = req.getServletContext().getRequestDispatcher("/");
-                       dispatcher.forward(req, res);
-                       return "index";
+                    LOG.info("request to : /Login - "+((CustomUser) principal).getUsername());
+                    RequestDispatcher dispatcher = req.getServletContext().getRequestDispatcher("/");
+                    dispatcher.forward(req, res);
                 }
-                else{ //xảy ra khi người dùng rỗng
+                else{ //xảy ra khi người dùng chưa xác thực
                      model.addAttribute("category", danhMucServiceImpl.getDanhMucAll(CacheMap.getDanhMucAll));
                      return "Login"; 
                 }
             } catch (Exception ex) {
                    Logger.getLogger(UserController.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        return null;
-    }
-    @RequestMapping(value={"/Login"},method=RequestMethod.POST)
-    public String exceCuteLogin(HttpServletRequest request,HttpServletResponse res,Model model)
-    {
-        String email=request.getParameter("email");
-        String password=request.getParameter("password");
-        Boolean bool= userServiceImpl.login(request,email,password);
-        try {
-            if(bool){
-                    model.addAttribute("success","Đăng nhập thành công");
-                    RequestDispatcher dispatcher = request.getServletContext().getRequestDispatcher("/");
-                    dispatcher.forward(request, res);
-            }else{
-                model.addAttribute("failed","Đăng nhập thất bại sai tên tài khoản hoặc mật khẩu");
-                return "Login";
             }
-        } catch (Exception ex) {
-            Logger.getLogger(UserController.class.getName()).log(Level.SEVERE, null, ex);
-        } 
-        return "index";
+        return "/";
     }
-     @RequestMapping(value="/datMuon", method=RequestMethod.GET, produces = "text/plain;charset=UTF-8")
-     @ResponseBody
+    
+    @RequestMapping(value={"/Login"},method=RequestMethod.POST)
+    public void exceCuteLogin(HttpServletRequest request,HttpServletResponse res,Model model)
+    {
+        login(model, request, res);
+    }
+    
+    
+    @RequestMapping(value="/datMuon", method=RequestMethod.GET, produces = "text/plain;charset=UTF-8")
+    @ResponseBody
     public String datMuon(HttpServletRequest request,HttpServletResponse res,Model model){
+         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+         Object printical= auth.getPrincipal();
+         LOG.info("request to : /datMuon - "+ request.getUserPrincipal());
         try {
             res.setContentType("text/html;charset=UTF-8");
-            if( userServiceImpl.datMuon(request) )
+            if(printical instanceof UserDetails)
             {
-                return "<p>Đặt giữ thành công</p>";
+                if( userServiceImpl.datMuon(request) )
+                {
+                    return "<p>Đặt giữ thành công</p>";
+                }
+
+                else
+                {
+                      return "<p>Đặt giữ thất bại</p>";
+                }
             }
-            
             else
             {
-                  return "<p>Đặt giữ thất bại</p>";
+                request.getServletContext().getRequestDispatcher("/Login").forward(request, res);
             }
         } catch (Exception ex) {
             Logger.getLogger(UserController.class.getName()).log(Level.SEVERE, null, ex);
             return "<p> "+ex.getMessage()+"</p>";
             
         }
+        return "";
     }
+    
     @RequestMapping(value="/LogOut",method = RequestMethod.GET)
     public void LogOut(HttpServletRequest req,HttpServletResponse res) {
         try {

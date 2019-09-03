@@ -1,5 +1,10 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<sec:authorize access="not isAnonymous()">
+    <sec:authentication var="user" property="principal" />
+    <c:set var="nguoiDung" value="true" />
+</sec:authorize>
 <!doctype html>
 <html class="no-js" lang="zxx">
 <head>
@@ -247,7 +252,7 @@
 										
 										<div class="switcher-currency">
 											<strong class="label switcher-label">
-												<span>My Account</span>
+												<span><c:choose> <c:when test="${empty pageScope.nguoiDung}"> My Account</c:when><c:otherwise>Xin chào: ${user.hoTen}</c:otherwise></c:choose></span>
 											</strong>
 											<div class="switcher-options">
 												<div class="switcher-currency-trigger">
@@ -256,7 +261,7 @@
 														<span><a href="#">My Account</a></span>
 														<span><a href="#">My Wishlist</a></span>
                                                                                                                 <c:choose>
-                                                                                                                    <c:when test="${empty sessionScope.nguoiDung}">
+                                                                                                                    <c:when test="${empty pageScope.nguoiDung}">
                                                                                                                     <span><a href="<c:url value="Login" />">Đăng nhập</a></span>
                                                                                                                     <span><a href="<c:url value="Login" />">Tạo tài khoản</a></span>
                                                                                                                     </c:when>

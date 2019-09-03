@@ -9,10 +9,15 @@ import com.DAO.UserDAO;
 import com.Service.UserService;
 import com.model.Cart;
 import com.model.NguoiDung;
-import com.model.Sach;
+import com.securityImpl.CustomUser;
+import java.security.Principal;
 import java.util.ArrayList;
 import javax.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContext;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 
 /**
@@ -54,14 +59,12 @@ public class UserServiceImpl implements UserService{
     @Override
     public boolean datMuon(HttpServletRequest req) throws Exception {
         ArrayList<Cart> cartItems = (ArrayList<Cart>) req.getSession().getAttribute("cartItems");
-        NguoiDung nguoiDung = (NguoiDung) req.getSession().getAttribute("nguoiDung");
-        if(nguoiDung != null && nguoiDung.getRules().getId() == 2){
-            if(cartItems.size()>0)
-            {
-                if( userDAOImpl.datMuon(cartItems,nguoiDung) ){
-                    req.getSession().removeAttribute("cartItems");
-                    return true;
-                }
+        Object principal= SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        if(cartItems.size()>0)
+        {
+            if( userDAOImpl.datMuon(cartItems,(CustomUser)principal) ){
+                req.getSession().removeAttribute("cartItems");
+                return true;
             }
         }
         return false;

@@ -1,5 +1,5 @@
 package com.model;
-// Generated Jul 20, 2019 1:55:41 AM by Hibernate Tools 4.3.1
+// Generated Aug 24, 2019 11:38:04 PM by Hibernate Tools 4.3.1
 
 
 import java.util.HashSet;
@@ -75,7 +75,7 @@ public class DanhMuc  implements java.io.Serializable {
         this.url = url;
     }
 
-@OneToMany(fetch=FetchType.LAZY, mappedBy="danhMuc")
+@OneToMany(fetch=FetchType.EAGER, mappedBy="danhMuc")
     public Set<TheLoai> getTheLoais() {
         return this.theLoais;
     }

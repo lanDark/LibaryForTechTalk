@@ -1,8 +1,7 @@
 package com.model;
-// Generated Jul 20, 2019 1:55:41 AM by Hibernate Tools 4.3.1
+// Generated Aug 24, 2019 11:38:04 PM by Hibernate Tools 4.3.1
 
 
-import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 import javax.persistence.Column;
@@ -30,7 +29,7 @@ public class CtPhieumuon  implements java.io.Serializable {
      private int maCtpm;
      private PhieuMuon phieuMuon;
      private Sach sach;
-     private Date ngayTra;
+     private Integer soLuong;
      private Set<CtLoi> ctLois = new HashSet<CtLoi>(0);
 
     public CtPhieumuon() {
@@ -40,16 +39,16 @@ public class CtPhieumuon  implements java.io.Serializable {
     public CtPhieumuon(int maCtpm) {
         this.maCtpm = maCtpm;
     }
-    public CtPhieumuon(int maCtpm, PhieuMuon phieuMuon, Sach sach, Date ngayTra, Set<CtLoi> ctLois) {
+    public CtPhieumuon(int maCtpm, PhieuMuon phieuMuon, Sach sach, Integer soLuong, Set<CtLoi> ctLois) {
        this.maCtpm = maCtpm;
        this.phieuMuon = phieuMuon;
        this.sach = sach;
-       this.ngayTra = ngayTra;
+       this.soLuong = soLuong;
        this.ctLois = ctLois;
     }
    
      @Id 
-     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="maCTPM", unique=true, nullable=false)
     public int getMaCtpm() {
         return this.maCtpm;
@@ -80,13 +79,13 @@ public class CtPhieumuon  implements java.io.Serializable {
     }
 
     
-    @Column(name="ngayTra")
-    public Date getNgayTra() {
-        return this.ngayTra;
+    @Column(name="soLuong")
+    public Integer getSoLuong() {
+        return this.soLuong;
     }
     
-    public void setNgayTra(Date ngayTra) {
-        this.ngayTra = ngayTra;
+    public void setSoLuong(Integer soLuong) {
+        this.soLuong = soLuong;
     }
 
 @OneToMany(fetch=FetchType.LAZY, mappedBy="ctPhieumuon")

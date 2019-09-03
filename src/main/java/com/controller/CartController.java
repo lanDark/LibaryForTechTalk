@@ -8,11 +8,16 @@ import Class.FunctionCart;
 import com.Service.CartService;
 import com.Service.ProductService;
 import com.model.Cart;
+import com.securityImpl.CustomUser;
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -40,23 +45,31 @@ public class CartController {
     }
     
     @RequestMapping(value="/addToCart",method=POST)
-    public String addToCartItem(HttpServletRequest request,Model model,HttpServletResponse res){
-        System.out.println(request.getParameter("maSach"));
+    public String addToCartItem(HttpServletRequest request,Model model,HttpServletResponse res) throws IOException {
         boolean bool;
-        try {
-            bool = cartServiceImpl.addItem(request, productServiceImpl);
-            res.setContentType("text/html;charset=UTF-8");
-            if(bool)
-            {   model.addAttribute("messenger","Thêm vào giỏ thành công");
+        Object printical= SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        if(printical instanceof CustomUser)//Kiểm tra bạn đọc đã xác thực chưa
+        {
+            try {
+                bool = cartServiceImpl.addItem(request, productServiceImpl);
+                res.setContentType("text/html;charset=UTF-8");
+                if(bool)
+                {   model.addAttribute("messenger","Thêm vào giỏ thành công");
+                    return "ajax/ShowModal";
+                }else
+                {
+                      model.addAttribute("messenger","Thêm vào giỏ thất bại"); 
+                      return "ajax/ShowModal";
+                }
+            } catch (Exception ex) {
+                model.addAttribute("messenger",ex.getMessage());
                 return "ajax/ShowModal";
-            }else
-            {
-                  model.addAttribute("messenger","Thêm vào giỏ thất bại"); 
-                  return "ajax/ShowModal";
             }
-        } catch (Exception ex) {
-            model.addAttribute("messenger",ex.getMessage());
-            return "ajax/ShowModal";
+        }
+        else // nếu chưa xác thực thì chuyển hướng đến trang đăng nhập
+        {
+            res.sendError(403);//Jquery bắt lỗi và tự động redirectt đến trang Login
+            return "index";
         }
     }
     

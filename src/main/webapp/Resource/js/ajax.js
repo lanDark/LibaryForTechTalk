@@ -16,10 +16,16 @@ $(".addToCart").click(function(e) {
         },
         dataType : 'html',
         timeout:10000,
-        success : function(data)
+        success : function(data,xhr)
         {
-           $('.modal-body').html(data);
-           $('#alertAddToCart').modal('show');
+            $('.modal-body').html(data);
+            $('#alertAddToCart').modal('show');
+        },
+        error: function (xhr, ajaxOptions, thrownError) {
+          if(xhr.status==403)
+          {
+              window.location.href=window.location.pathname="Login";
+          }
         }
     });
 });

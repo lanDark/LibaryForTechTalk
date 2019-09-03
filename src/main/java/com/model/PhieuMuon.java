@@ -1,5 +1,5 @@
 package com.model;
-// Generated Jul 20, 2019 1:55:41 AM by Hibernate Tools 4.3.1
+// Generated Aug 24, 2019 11:38:04 PM by Hibernate Tools 4.3.1
 
 
 import java.util.Date;
@@ -35,17 +35,17 @@ public class PhieuMuon  implements java.io.Serializable {
      private Date ngayMuon;
      private Date ngayPhaiTra;
      private Date ngayDat;
+     private Date ngayTra;
      private Set<CtPhieumuon> ctPhieumuons = new HashSet<CtPhieumuon>(0);
 
     public PhieuMuon() {
     }
-
 	
     public PhieuMuon(int maPm, int trangThai) {
         this.maPm = maPm;
         this.trangThai = trangThai;
     }
-    public PhieuMuon(int maPm, NguoiDung nguoiDungByMaThuThu, NguoiDung nguoiDungByMaNguoiDung, NguoiDung nguoiDungByNguoiNhanTra, int trangThai, Date ngayMuon, Date ngayPhaiTra, Date ngayDat, Set<CtPhieumuon> ctPhieumuons) {
+    public PhieuMuon(int maPm, NguoiDung nguoiDungByMaThuThu, NguoiDung nguoiDungByMaNguoiDung, NguoiDung nguoiDungByNguoiNhanTra, int trangThai, Date ngayMuon, Date ngayPhaiTra, Date ngayDat, Date ngayTra, Set<CtPhieumuon> ctPhieumuons) {
        this.maPm = maPm;
        this.nguoiDungByMaThuThu = nguoiDungByMaThuThu;
        this.nguoiDungByMaNguoiDung = nguoiDungByMaNguoiDung;
@@ -54,12 +54,12 @@ public class PhieuMuon  implements java.io.Serializable {
        this.ngayMuon = ngayMuon;
        this.ngayPhaiTra = ngayPhaiTra;
        this.ngayDat = ngayDat;
+       this.ngayTra = ngayTra;
        this.ctPhieumuons = ctPhieumuons;
     }
    
      @Id 
-
-     @GeneratedValue(strategy = GenerationType.IDENTITY)
+      @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="maPM", unique=true, nullable=false)
     public int getMaPm() {
         return this.maPm;
@@ -109,6 +109,7 @@ public class PhieuMuon  implements java.io.Serializable {
         this.trangThai = trangThai;
     }
 
+    
     @Column(name="ngayMuon", length=10)
     public Date getNgayMuon() {
         return this.ngayMuon;
@@ -118,7 +119,8 @@ public class PhieuMuon  implements java.io.Serializable {
         this.ngayMuon = ngayMuon;
     }
 
-    @Column(name="ngay_Phai_tra")
+    
+    @Column(name="ngay_Phai_tra", length=10)
     public Date getNgayPhaiTra() {
         return this.ngayPhaiTra;
     }
@@ -127,13 +129,24 @@ public class PhieuMuon  implements java.io.Serializable {
         this.ngayPhaiTra = ngayPhaiTra;
     }
 
-    @Column(name="ngay_dat")
+    
+    @Column(name="ngay_dat", length=10)
     public Date getNgayDat() {
         return this.ngayDat;
     }
     
     public void setNgayDat(Date ngayDat) {
         this.ngayDat = ngayDat;
+    }
+
+    
+    @Column(name="ngayTra", length=10)
+    public Date getNgayTra() {
+        return this.ngayTra;
+    }
+    
+    public void setNgayTra(Date ngayTra) {
+        this.ngayTra = ngayTra;
     }
 
 @OneToMany(fetch=FetchType.LAZY, mappedBy="phieuMuon")
@@ -143,11 +156,6 @@ public class PhieuMuon  implements java.io.Serializable {
     
     public void setCtPhieumuons(Set<CtPhieumuon> ctPhieumuons) {
         this.ctPhieumuons = ctPhieumuons;
-    }
-
-    @Override
-    public String toString() {
-        return "PhieuMuon{" + "maPm=" + maPm + ", nguoiDungByMaThuThu=" + nguoiDungByMaThuThu + ", nguoiDungByMaNguoiDung=" + nguoiDungByMaNguoiDung + ", nguoiDungByNguoiNhanTra=" + nguoiDungByNguoiNhanTra + ", trangThai=" + trangThai + ", ngayMuon=" + ngayMuon + ", ngayPhaiTra=" + ngayPhaiTra + ", ngayDat=" + ngayDat + ", ctPhieumuons=" + ctPhieumuons + '}';
     }
 
 

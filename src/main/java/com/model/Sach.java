@@ -1,5 +1,5 @@
 package com.model;
-// Generated Jul 20, 2019 1:55:41 AM by Hibernate Tools 4.3.1
+// Generated Aug 24, 2019 11:38:04 PM by Hibernate Tools 4.3.1
 
 
 import java.math.BigDecimal;
@@ -45,6 +45,7 @@ public class Sach  implements java.io.Serializable {
      private Set<Tacgia> tacgias = new HashSet<Tacgia>(0);
      private Set<CtPhieumuon> ctPhieumuons = new HashSet<CtPhieumuon>(0);
      private Set<HinhAnh> hinhAnhs = new HashSet<HinhAnh>(0);
+     private Set<DauSach> dauSaches = new HashSet<DauSach>(0);
      private Set<CtPhieuNhap> ctPhieuNhaps = new HashSet<CtPhieuNhap>(0);
 
     public Sach() {
@@ -54,7 +55,7 @@ public class Sach  implements java.io.Serializable {
     public Sach(String maSach) {
         this.maSach = maSach;
     }
-    public Sach(String maSach, NhaCungCap nhaCungCap, TheLoai theLoai, String tenSach, BigDecimal trongLuong, String loaiBia, Integer soTrang, String kichThuoc, String namXuatBan, Integer gia, Integer soLuong, String url, String ngayTao, Set<LuotThich> luotThiches, Set<Tacgia> tacgias, Set<CtPhieumuon> ctPhieumuons, Set<HinhAnh> hinhAnhs, Set<CtPhieuNhap> ctPhieuNhaps) {
+    public Sach(String maSach, NhaCungCap nhaCungCap, TheLoai theLoai, String tenSach, BigDecimal trongLuong, String loaiBia, Integer soTrang, String kichThuoc, String namXuatBan, Integer gia, Integer soLuong, String url, String ngayTao, Set<LuotThich> luotThiches, Set<Tacgia> tacgias, Set<CtPhieumuon> ctPhieumuons, Set<HinhAnh> hinhAnhs, Set<DauSach> dauSaches, Set<CtPhieuNhap> ctPhieuNhaps) {
        this.maSach = maSach;
        this.nhaCungCap = nhaCungCap;
        this.theLoai = theLoai;
@@ -72,6 +73,7 @@ public class Sach  implements java.io.Serializable {
        this.tacgias = tacgias;
        this.ctPhieumuons = ctPhieumuons;
        this.hinhAnhs = hinhAnhs;
+       this.dauSaches = dauSaches;
        this.ctPhieuNhaps = ctPhieuNhaps;
     }
    
@@ -241,6 +243,15 @@ public class Sach  implements java.io.Serializable {
     
     public void setHinhAnhs(Set<HinhAnh> hinhAnhs) {
         this.hinhAnhs = hinhAnhs;
+    }
+
+@OneToMany(fetch=FetchType.LAZY, mappedBy="sach")
+    public Set<DauSach> getDauSaches() {
+        return this.dauSaches;
+    }
+    
+    public void setDauSaches(Set<DauSach> dauSaches) {
+        this.dauSaches = dauSaches;
     }
 
 @OneToMany(fetch=FetchType.LAZY, mappedBy="sach")

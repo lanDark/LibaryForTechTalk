@@ -1,5 +1,5 @@
 package com.model;
-// Generated Jul 17, 2019 3:18:33 PM by Hibernate Tools 4.3.1
+// Generated Aug 24, 2019 11:38:04 PM by Hibernate Tools 4.3.1
 
 
 import javax.persistence.Column;
@@ -7,6 +7,7 @@ import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinColumns;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
@@ -23,8 +24,8 @@ public class CtLoi  implements java.io.Serializable {
 
      private int maCtl;
      private CtPhieumuon ctPhieumuon;
+     private DauSachCtpm dauSachCtpm;
      private Loi loi;
-     private Integer soTien;
 
     public CtLoi() {
     }
@@ -33,11 +34,11 @@ public class CtLoi  implements java.io.Serializable {
     public CtLoi(int maCtl) {
         this.maCtl = maCtl;
     }
-    public CtLoi(int maCtl, CtPhieumuon ctPhieumuon, Loi loi, Integer soTien) {
+    public CtLoi(int maCtl, CtPhieumuon ctPhieumuon, DauSachCtpm dauSachCtpm, Loi loi) {
        this.maCtl = maCtl;
        this.ctPhieumuon = ctPhieumuon;
+       this.dauSachCtpm = dauSachCtpm;
        this.loi = loi;
-       this.soTien = soTien;
     }
    
      @Id 
@@ -63,6 +64,18 @@ public class CtLoi  implements java.io.Serializable {
     }
 
 @ManyToOne(fetch=FetchType.LAZY)
+    @JoinColumns( { 
+        @JoinColumn(name="maCTPM", referencedColumnName="maCTPM", insertable=false, updatable=false), 
+        @JoinColumn(name="barcode", referencedColumnName="barcode", insertable=false, updatable=false) } )
+    public DauSachCtpm getDauSachCtpm() {
+        return this.dauSachCtpm;
+    }
+    
+    public void setDauSachCtpm(DauSachCtpm dauSachCtpm) {
+        this.dauSachCtpm = dauSachCtpm;
+    }
+
+@ManyToOne(fetch=FetchType.LAZY)
     @JoinColumn(name="maLoi")
     public Loi getLoi() {
         return this.loi;
@@ -70,16 +83,6 @@ public class CtLoi  implements java.io.Serializable {
     
     public void setLoi(Loi loi) {
         this.loi = loi;
-    }
-
-    
-    @Column(name="soTien")
-    public Integer getSoTien() {
-        return this.soTien;
-    }
-    
-    public void setSoTien(Integer soTien) {
-        this.soTien = soTien;
     }
 
 

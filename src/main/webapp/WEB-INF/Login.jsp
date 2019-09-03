@@ -26,16 +26,17 @@
 										<input type="password" name='password'/>
 									</div>
 									<div class="form__btn">
+                                                                            <c:if test="${not empty param.error}">
+                                                                                <div class='col-md-12'>
+                                                                                    <p style="color: red">Sai tên đăng nhập hoặc mật khẩu, Vui lòng nhập lại!.</p>
+                                                                                </div>
+                                                                            </c:if>
                                                                             <button type="submit" form="executeLogin">Login</button>
 										<label class="label-for-checkbox">
 											<input id="rememberme" class="input-checkbox" name="rememberme" value="forever" type="checkbox">
 											<span>Remember me</span>
 										</label>
-                                                                            <c:if test="${not empty failed}">
-                                                                            <div class='col-md-12'>
-                                                                                <p>${failed}</p>
-                                                                            </div>
-                                                                            </c:if>
+                                                        
 									</div>
 									<a class="forget_pass" href="#">Lost your password?</a>
 								</div>
