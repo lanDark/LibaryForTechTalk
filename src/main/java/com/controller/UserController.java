@@ -8,6 +8,7 @@ package com.controller;
 import Class.CacheMap;
 import com.Service.DanhMucService;
 import com.Service.UserService;
+import com.model.NguoiDung;
 import com.securityImpl.CustomUser;
 import java.io.IOException;
 import java.util.logging.Level;
@@ -16,12 +17,14 @@ import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -37,6 +40,7 @@ public class UserController {
     UserService userServiceImpl;
     @Autowired
     DanhMucService danhMucServiceImpl;
+
     private static final Logger LOG = Logger.getLogger(UserController.class.getName());
     
     @RequestMapping(value = { "/Login"}, method = RequestMethod.GET)
@@ -110,5 +114,9 @@ public class UserController {
         } catch (IOException ex) {
             Logger.getLogger(UserController.class.getName()).log(Level.SEVERE, null, ex);
         }
+    }
+    @RequestMapping(value="/Register",method=RequestMethod.POST)
+    public void Register(@Valid NguoiDung nguoiDung,BindingResult binDing){
+        
     }
 }

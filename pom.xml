@@ -49,6 +49,12 @@
             <type>jar</type>
         </dependency>
         <dependency>
+            <groupId>org.apache.ant</groupId>
+            <artifactId>ant</artifactId>
+            <version>1.8.1</version>
+            <type>jar</type>
+        </dependency>
+        <dependency>
             <groupId>javax</groupId>
             <artifactId>javaee-web-api</artifactId>
             <version>7.0</version>
@@ -156,7 +162,19 @@
         <dependency>
             <groupId>org.hibernate</groupId>
             <artifactId>hibernate-entitymanager</artifactId>
-            <version>5.2.9.Final</version>
+            <version>5.2.5.Final</version>
+        </dependency>
+        
+        <dependency>
+          <groupId>org.hibernate</groupId>
+          <artifactId>hibernate-validator</artifactId>
+          <version>5.2.5.Final</version>
+        </dependency>
+        
+        <dependency>
+          <groupId>javax.validation</groupId>
+          <artifactId>validation-api</artifactId>
+          <version>1.1.0.Final</version>
         </dependency>
         
         <dependency>
@@ -173,7 +191,16 @@
         </dependency>
         <!-- END HIBERNATE -->
 
-
+        <dependency>
+            <groupId>org.thymeleaf</groupId>
+            <artifactId>thymeleaf</artifactId>
+            <version>3.0.9.RELEASE</version>
+        </dependency>
+        <dependency>
+            <groupId>org.thymeleaf</groupId>
+            <artifactId>thymeleaf-spring4</artifactId>
+            <version>3.0.9.RELEASE</version>
+        </dependency>
   
     </dependencies>
 

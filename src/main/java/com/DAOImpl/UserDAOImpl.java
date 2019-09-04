@@ -97,8 +97,6 @@ public class UserDAOImpl implements UserDAO {
             phieuMuon.setTrangThai(1);
             phieuMuon.setNgayDat(c.getTime());
             phieuMuon.setNguoiDungByMaNguoiDung(nguoiDung);
-            c.add(Calendar.DAY_OF_MONTH, 30);
-            phieuMuon.setNgayPhaiTra(c.getTime());
             return phieuMuon;
         } catch (Exception ex) {
             Logger.getLogger(UserDAOImpl.class.getName()).log(Level.SEVERE, null, ex);

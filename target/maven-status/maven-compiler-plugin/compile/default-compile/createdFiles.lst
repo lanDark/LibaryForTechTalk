@@ -22,7 +22,9 @@ com\DAOImpl\UserDAOImpl.class
 com\securityImpl\CustomUserDetail.class
 com\model\Loi.class
 com\model\DauSach.class
+com\Validator\EmailValidator.class
 com\DAO\UserDAO.class
+com\Anotaiton\Email.class
 com\controller\CartController.class
 com\configuration\SecurityConfig.class
 com\controller\UserController.class

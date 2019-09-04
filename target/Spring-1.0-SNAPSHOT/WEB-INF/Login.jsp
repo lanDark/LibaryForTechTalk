@@ -46,34 +46,34 @@
 					<div class="col-lg-6 col-12">
 						<div class="my__account__wrapper">
 							<h3 class="account__title">Register</h3>
-							<form action="#">
+							<form action="#" th:object="${nguoiDung}" th:action="@{/Register}" method="POST">
 								<div class="account__form">
 									<div class="input__box">
 										<label>Email <span>*</span></label>
-										<input type="email">
+										<input type="email" th:field="*{email}">
 									</div>
 									<div class="input__box">
 										<label>Mật khẩu<span>*</span></label>
-										<input type="password">
+										<input type="password" th:field="*{matKhau}">
 									</div>
 									<div class="input__box">
 										<label>Nhập lại mật khẩu<span>*</span></label>
 										<input type="password">
 									<div class="input__box">
 										<label>số điện thoại<span>*</span></label>
-										<input type="password">
+										<input type="text" th:field="*{sdt}">
 									</div>		
 									<div class="input__box">
 										<label>Mã chứng minh thư<span>*</span></label>
-										<input type="password">
+										<input type="text"th:field="*{cmnd}">
 									</div>	
 									<div class="input__box">
 										<label>Họ tên<span>*</span></label>
-										<input type="password">
+										<input type="text" th:filed="*{hoTen}">
 									</div>		
 									<div class="input__box">
 										<label>Địa chỉ<span>*</span></label>
-										<input type="password">
+										<input type="text">
 									</div>		
 									</div>									<div class="form__btn">
 										<button>Đăng ký</button>

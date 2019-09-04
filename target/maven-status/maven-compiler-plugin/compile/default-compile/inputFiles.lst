@@ -16,6 +16,7 @@ F:\Documents\NetBeansProjects\Spring\src\main\java\com\controller\AjaxController
 F:\Documents\NetBeansProjects\Spring\src\main\java\com\securityImpl\CustomUser.java
 F:\Documents\NetBeansProjects\Spring\src\main\java\com\model\TheLoai.java
 F:\Documents\NetBeansProjects\Spring\src\main\java\com\configuration\UserDetailsServiceImpl.java
+F:\Documents\NetBeansProjects\Spring\src\main\java\com\Anotaiton\Email.java
 F:\Documents\NetBeansProjects\Spring\src\main\java\com\Service\CartService.java
 F:\Documents\NetBeansProjects\Spring\src\main\java\com\ServiceImpl\UserServiceImpl.java
 F:\Documents\NetBeansProjects\Spring\src\main\java\com\model\Tacgia.java
@@ -47,4 +48,5 @@ F:\Documents\NetBeansProjects\Spring\src\main\java\Class\Man.java
 F:\Documents\NetBeansProjects\Spring\src\main\java\com\model\PhieuMuon.java
 F:\Documents\NetBeansProjects\Spring\src\main\java\com\controller\UserController.java
 F:\Documents\NetBeansProjects\Spring\src\main\java\Class\CacheMap.java
+F:\Documents\NetBeansProjects\Spring\src\main\java\com\Validator\EmailValidator.java
 F:\Documents\NetBeansProjects\Spring\src\main\java\com\model\PhieuNhap.java
