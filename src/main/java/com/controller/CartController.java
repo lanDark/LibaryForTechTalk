@@ -4,16 +4,12 @@
  * and open the template in the editor.
  */
 package com.controller;
-import Class.FunctionCart;
 import com.Service.CartService;
 import com.Service.ProductService;
 import com.model.Cart;
 import com.securityImpl.CustomUser;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
