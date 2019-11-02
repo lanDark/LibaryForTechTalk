@@ -8,8 +8,10 @@ package com.DAOImpl;
 import com.DAO.ProductDAO;
 import com.model.*;
 import java.util.List;
+import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.criterion.Order;
 import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -25,12 +27,14 @@ public class ProductDAOImpl implements ProductDAO {
     
     @Override
     public List<Sach> getNewProductView() {
+         System.out.println("Getting new Product");
         Session session=sessionFactory.getCurrentSession();
-        String hql="FROM Sach S"
-                + " WHERE "
-                + " ORDER BY E.ngayMuon DESC";
-        Query query=session.createQuery(hql).setMaxResults(10);
-        return query.list();
+        Criteria cr=session.createCriteria(Sach.class);
+        cr.setMaxResults(10);
+        cr.addOrder(Order.desc("ngayTao"));
+        cr.setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY);
+        System.out.println(cr.list().size());
+        return cr.list();
     }
 
     @Override
@@ -56,6 +60,13 @@ public class ProductDAOImpl implements ProductDAO {
     @Override
     public boolean deleteProduct() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public Sach getSach(String maSach) {
+        Session session=sessionFactory.getCurrentSession();
+        Sach sach=session.get(Sach.class, maSach);
+        return sach;
     }
     
     

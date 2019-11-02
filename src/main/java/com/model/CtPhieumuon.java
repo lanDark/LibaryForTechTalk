@@ -1,5 +1,5 @@
 package com.model;
-// Generated Jul 12, 2019 12:14:04 PM by Hibernate Tools 4.3.1
+// Generated Aug 24, 2019 11:38:04 PM by Hibernate Tools 4.3.1
 
 
 import java.util.HashSet;
@@ -7,6 +7,8 @@ import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -27,11 +29,7 @@ public class CtPhieumuon  implements java.io.Serializable {
      private int maCtpm;
      private PhieuMuon phieuMuon;
      private Sach sach;
-     private String ghiChu;
-     private String ngayTra;
-     private Integer tienMuon;
-     private Integer tiencoc;
-     private Integer tienDu;
+     private Integer soLuong;
      private Set<CtLoi> ctLois = new HashSet<CtLoi>(0);
 
     public CtPhieumuon() {
@@ -41,21 +39,16 @@ public class CtPhieumuon  implements java.io.Serializable {
     public CtPhieumuon(int maCtpm) {
         this.maCtpm = maCtpm;
     }
-    public CtPhieumuon(int maCtpm, PhieuMuon phieuMuon, Sach sach, String ghiChu, String ngayTra, Integer tienMuon, Integer tiencoc, Integer tienDu, Set<CtLoi> ctLois) {
+    public CtPhieumuon(int maCtpm, PhieuMuon phieuMuon, Sach sach, Integer soLuong, Set<CtLoi> ctLois) {
        this.maCtpm = maCtpm;
        this.phieuMuon = phieuMuon;
        this.sach = sach;
-       this.ghiChu = ghiChu;
-       this.ngayTra = ngayTra;
-       this.tienMuon = tienMuon;
-       this.tiencoc = tiencoc;
-       this.tienDu = tienDu;
+       this.soLuong = soLuong;
        this.ctLois = ctLois;
     }
    
      @Id 
-
-    
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="maCTPM", unique=true, nullable=false)
     public int getMaCtpm() {
         return this.maCtpm;
@@ -86,53 +79,13 @@ public class CtPhieumuon  implements java.io.Serializable {
     }
 
     
-    @Column(name="ghiChu", length=100)
-    public String getGhiChu() {
-        return this.ghiChu;
+    @Column(name="soLuong")
+    public Integer getSoLuong() {
+        return this.soLuong;
     }
     
-    public void setGhiChu(String ghiChu) {
-        this.ghiChu = ghiChu;
-    }
-
-    
-    @Column(name="ngayTra", length=10)
-    public String getNgayTra() {
-        return this.ngayTra;
-    }
-    
-    public void setNgayTra(String ngayTra) {
-        this.ngayTra = ngayTra;
-    }
-
-    
-    @Column(name="tienMuon")
-    public Integer getTienMuon() {
-        return this.tienMuon;
-    }
-    
-    public void setTienMuon(Integer tienMuon) {
-        this.tienMuon = tienMuon;
-    }
-
-    
-    @Column(name="tiencoc")
-    public Integer getTiencoc() {
-        return this.tiencoc;
-    }
-    
-    public void setTiencoc(Integer tiencoc) {
-        this.tiencoc = tiencoc;
-    }
-
-    
-    @Column(name="tienDu")
-    public Integer getTienDu() {
-        return this.tienDu;
-    }
-    
-    public void setTienDu(Integer tienDu) {
-        this.tienDu = tienDu;
+    public void setSoLuong(Integer soLuong) {
+        this.soLuong = soLuong;
     }
 
 @OneToMany(fetch=FetchType.LAZY, mappedBy="ctPhieumuon")

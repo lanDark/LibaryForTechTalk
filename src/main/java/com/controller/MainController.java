@@ -1,29 +1,40 @@
 package com.controller;
+import com.Class.CacheMap;
 import com.Service.DanhMucService;
 import com.Service.ProductService;
-import com.model.*;
-import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;  
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;  
 import org.springframework.web.bind.annotation.RequestMethod;
-import static org.springframework.web.bind.annotation.RequestMethod.GET;
-import org.springframework.web.bind.annotation.RequestParam;
 @Controller  
 public class MainController {  
     
-  @Autowired
-  DanhMucService danhMucService;
-  
-  @Autowired
-  ProductService productService;
-  @RequestMapping("/")
-  public String home(Model map) {
-    map.addAttribute("category", danhMucService.getDanhMucAll());
-    map.addAttribute("productNews",productService.getNewProductView());
-    return "index";
-  }
-  
+    @Autowired
+    DanhMucService danhMucService;
+
+    @Autowired
+    ProductService productService;
+    
+
+    
+    @RequestMapping("/")
+    public String home(Model map) {
+        this.getCache(map);
+        return "index";
+    }
+    
+    @RequestMapping(value="/",method=RequestMethod.POST)
+    public String homePostMethod(Model map){
+        this.getCache(map);
+        return "index";
+    }
+    
+    public void getCache(Model map){
+        map.addAttribute("category", danhMucService.getDanhMucAll(CacheMap.getDanhMucAll));
+        map.addAttribute("productNews",productService.getNewProductView(CacheMap.getNewProductView));
+    }   
+    
+    
+    
 }  

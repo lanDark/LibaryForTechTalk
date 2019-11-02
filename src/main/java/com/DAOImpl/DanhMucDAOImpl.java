@@ -81,7 +81,7 @@ public class DanhMucDAOImpl implements Serializable,DanhMucDAO {
     public  Long countAllBookInCategory(int idDanhMuc){
        String hql="select count(s)"
                 + " FROM Sach as s"
-                + " WHERE s.theLoai.danhMuc.id_DanhMuc= :id_Param";
+                + " WHERE s.theLoai.danhMuc.idDanhMuc= :id_Param";
         Session session=sessionFactory.getCurrentSession();
         Query query= session.createQuery(hql);
         query.setParameter("id_Param",idDanhMuc);

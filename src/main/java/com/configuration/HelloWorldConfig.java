@@ -6,10 +6,15 @@
 package com.configuration;
 
 
-import com.DAOImpl.*;
 import com.Service.DanhMucService;
 import com.ServiceImpl.DanhMucServiceImpl;
 import com.model.*;
+import java.util.Arrays;
+import org.springframework.cache.Cache;
+import org.springframework.cache.CacheManager;
+import org.springframework.cache.annotation.EnableCaching;
+import org.springframework.cache.concurrent.ConcurrentMapCache;
+import org.springframework.cache.support.SimpleCacheManager;
 import org.springframework.context.annotation.*;
 import org.springframework.web.servlet.ViewResolver;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
@@ -19,8 +24,9 @@ import org.springframework.web.servlet.view.InternalResourceViewResolver;
 import org.springframework.web.servlet.view.JstlView;
 
 @Configuration
-@EnableWebMvc // (equivalent to <mvc:annotation-driven />
+@EnableWebMvc // (equivalent to <mvc:annotation-driven />   
 //@Import(HibernateConfig.class) import vào bị lỗi :(
+@EnableCaching
 @ComponentScan(basePackages = "com")
 public class HelloWorldConfig extends WebMvcConfigurerAdapter {
     @Bean
@@ -38,6 +44,14 @@ public class HelloWorldConfig extends WebMvcConfigurerAdapter {
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
         registry.addResourceHandler("/Resource/**").addResourceLocations("/Resource/");
     }
+    @Bean
+    public CacheManager cacheManager() {
+       SimpleCacheManager cacheManager = new SimpleCacheManager();
+       Cache cache = new ConcurrentMapCache("mycache");
+       cacheManager.setCaches(Arrays.asList(cache));
+       return cacheManager;
+    }
+    
     @Bean
     public DanhMuc danhMuc(){
         return new DanhMuc();

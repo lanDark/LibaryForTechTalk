@@ -1,6 +1,12 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<sec:authorize access="not isAnonymous()">
+    <sec:authentication var="user" property="principal" />
+    <c:set var="nguoiDung" value="true" />
+</sec:authorize>
 <!doctype html>
-<html class="no-js" lang="zxx">
+<html class="no-js" lang="zxx" xmlns:th="http://www.thymeleaf.org">
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="x-ua-compatible" content="ie=edge">
@@ -27,6 +33,7 @@
 
 	<!-- Modernizer js -->
 	<script src="<c:url value="Resource/js/vendor/modernizr-3.5.0.min.js" />"></script>
+        <script src="<c:url value="Resource/js/vendor/jquery-3.2.1.min.js" />"></script>
 </head>
 <body>
 	<!--[if lte IE 9]>
@@ -41,7 +48,7 @@
 				<div class="row">
 					<div class="col-md-6 col-sm-6 col-6 col-lg-2">
 						<div class="logo">
-							<a href="index.html">
+                                                    <a href="<c:url value="/"/>">
                                                             <img src="<c:url value="Resource/images/logo/logo.png" />" alt="logo images">
 							</a>
 						</div>
@@ -49,7 +56,7 @@
 					<div class="col-lg-8 d-none d-lg-block">
 						<nav class="mainmenu__nav">
 							<ul class="meninmenu d-flex justify-content-start">
-								<li class="drop with--one--item"><a href="index.html">Home</a></li>
+								<li class="drop with--one--item"><a href="<c:url value="/"/>">Home</a></li>
 								<li class="drop"><a href="#">Shop</a>
 									<div class="megamenu mega03">
 										<ul class="item item03">
@@ -87,14 +94,7 @@
                                                                                                 </c:if>
                                                                                             </c:forEach>
                                                                                         </c:forEach>
-                                                                                        <%--
-                                                                                        <c:if test="${not empty category}">
-                                                                                            <c:set var = "listDanhMuc" value = "${category[0]}"/>
-                                                                                            <c:forEach var="danhMuc" items="${listDanhMuc}">
-                                                                                            <li><a href="<c:url value="category/${danhMuc.url}"/>"> <c:out value="${danhMuc.tenDanhMuc}"/> </a></li>
-                                                                                            </c:forEach>
-                                                                                        </c:if>
-                                                                                            --%>
+                                                                                  
 										</ul>
 										<ul class="item item03">
 											<li class="title">Customer Favourite</li>
@@ -185,7 +185,7 @@
 											<span>$66.00</span>
 										</div>
 										<div class="mini_action checkout">
-											<a class="checkout__btn" href="cart.html">Go to Checkout</a>
+                                                                                    <a class="checkout__btn" href="<c:url value="CartView"/>">Go to Checkout</a>
 										</div>
 										<div class="single__items">
 											<div class="miniproduct">
@@ -249,55 +249,10 @@
 							<li class="setting__bar__icon"><a class="setting__active" href="#"></a>
 								<div class="searchbar__content setting__block">
 									<div class="content-inner">
+										
 										<div class="switcher-currency">
 											<strong class="label switcher-label">
-												<span>Currency</span>
-											</strong>
-											<div class="switcher-options">
-												<div class="switcher-currency-trigger">
-													<span class="currency-trigger">USD - US Dollar</span>
-													<ul class="switcher-dropdown">
-														<li>GBP - British Pound Sterling</li>
-														<li>EUR - Euro</li>
-													</ul>
-												</div>
-											</div>
-										</div>
-										<div class="switcher-currency">
-											<strong class="label switcher-label">
-												<span>Language</span>
-											</strong>
-											<div class="switcher-options">
-												<div class="switcher-currency-trigger">
-													<span class="currency-trigger">English01</span>
-													<ul class="switcher-dropdown">
-														<li>English02</li>
-														<li>English03</li>
-														<li>English04</li>
-														<li>English05</li>
-													</ul>
-												</div>
-											</div>
-										</div>
-										<div class="switcher-currency">
-											<strong class="label switcher-label">
-												<span>Select Store</span>
-											</strong>
-											<div class="switcher-options">
-												<div class="switcher-currency-trigger">
-													<span class="currency-trigger">Fashion Store</span>
-													<ul class="switcher-dropdown">
-														<li>Furniture</li>
-														<li>Shoes</li>
-														<li>Speaker Store</li>
-														<li>Furniture</li>
-													</ul>
-												</div>
-											</div>
-										</div>
-										<div class="switcher-currency">
-											<strong class="label switcher-label">
-												<span>My Account</span>
+												<span><c:choose> <c:when test="${empty pageScope.nguoiDung}"> My Account</c:when><c:otherwise>Xin chào: ${user.hoTen}</c:otherwise></c:choose></span>
 											</strong>
 											<div class="switcher-options">
 												<div class="switcher-currency-trigger">
@@ -305,8 +260,15 @@
 														<span><a href="#">Compare Product</a></span>
 														<span><a href="#">My Account</a></span>
 														<span><a href="#">My Wishlist</a></span>
-														<span><a href="#">Sign In</a></span>
-														<span><a href="#">Create An Account</a></span>
+                                                                                                                <c:choose>
+                                                                                                                    <c:when test="${empty pageScope.nguoiDung}">
+                                                                                                                    <span><a href="<c:url value="Login" />">Đăng nhập</a></span>
+                                                                                                                    <span><a href="<c:url value="Login" />">Tạo tài khoản</a></span>
+                                                                                                                    </c:when>
+                                                                                                                    <c:otherwise>
+                                                                                                                        <span><a href="<c:url value="LogOut" />">Đăng Xuất</a></span>
+                                                                                                                    </c:otherwise>                                                                                                                  
+                                                                                                                </c:choose>
 													</div>
 												</div>
 											</div>

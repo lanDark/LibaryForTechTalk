@@ -13,7 +13,7 @@
         <endorsed.dir>${project.build.directory}/endorsed</endorsed.dir>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         
-        <spring-security.version>5.0.6.RELEASE</spring-security.version>
+        <springsecurity.version>5.0.6.RELEASE</springsecurity.version>
     </properties>
     
     <dependencies>
@@ -38,9 +38,20 @@
             <type>jar</type>
         </dependency>
         <dependency>
-            <groupId>org.apache.logging.log4j</groupId>
-            <artifactId>log4j-core</artifactId>
-            <version>2.4</version>
+          <groupId>log4j</groupId>
+          <artifactId>log4j</artifactId>
+          <version>1.2.17</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-tx</artifactId>
+            <version>4.3.7.RELEASE</version>
+            <type>jar</type>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.ant</groupId>
+            <artifactId>ant</artifactId>
+            <version>1.8.1</version>
             <type>jar</type>
         </dependency>
         <dependency>
@@ -62,6 +73,7 @@
             <groupId>org.springframework</groupId>
             <artifactId>spring-context</artifactId>
             <version>4.3.7.RELEASE</version>
+            <type>jar</type>
         </dependency>
         
         <dependency>
@@ -76,30 +88,50 @@
           <version>4.3.7.RELEASE</version>
         </dependency>
         
-
+	<!-- Support for Ehcache and others -->
+	<dependency>
+		<groupId>org.springframework</groupId>
+		<artifactId>spring-context-support</artifactId>
+		<version>4.3.7.RELEASE</version>
+	</dependency>
         
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-webmvc</artifactId>
             <version>4.3.7.RELEASE</version>
         </dependency>
-         <!-- ************** spring security ************** -->
-        <dependency>
-            <groupId>org.springframework.security</groupId>
-            <artifactId>spring-security-web</artifactId>
-            <version>${spring-security.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.security</groupId>
-            <artifactId>spring-security-config</artifactId>
-            <version>${spring-security.version}</version>
-            <type>jar</type>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.security</groupId>
-            <artifactId>spring-security-core</artifactId>
-            <version>${spring-security.version}</version>
-        </dependency>
+        <!-- Spring Security -->
+		<dependency>
+
+			<groupId>org.springframework.security</groupId>
+
+			<artifactId>spring-security-web</artifactId>
+
+			<version>4.2.3.RELEASE</version>
+
+		</dependency>
+
+
+		<dependency>
+
+			<groupId>org.springframework.security</groupId>
+
+			<artifactId>spring-security-config</artifactId>
+
+			<version>4.2.3.RELEASE</version>
+
+		</dependency>
+
+
+		<dependency>
+
+			<groupId>org.springframework.security</groupId>
+
+			<artifactId>spring-security-taglibs</artifactId>
+
+			<version>4.2.3.RELEASE</version>
+
+		</dependency>
         <!-- end Srping   -->
         
         <!-- ************** JSON-MAP  ************** -->
@@ -130,7 +162,19 @@
         <dependency>
             <groupId>org.hibernate</groupId>
             <artifactId>hibernate-entitymanager</artifactId>
-            <version>5.2.9.Final</version>
+            <version>5.2.5.Final</version>
+        </dependency>
+        
+        <dependency>
+          <groupId>org.hibernate</groupId>
+          <artifactId>hibernate-validator</artifactId>
+          <version>5.2.5.Final</version>
+        </dependency>
+        
+        <dependency>
+          <groupId>javax.validation</groupId>
+          <artifactId>validation-api</artifactId>
+          <version>1.1.0.Final</version>
         </dependency>
         
         <dependency>
@@ -147,7 +191,16 @@
         </dependency>
         <!-- END HIBERNATE -->
 
-
+        <dependency>
+            <groupId>org.thymeleaf</groupId>
+            <artifactId>thymeleaf</artifactId>
+            <version>3.0.9.RELEASE</version>
+        </dependency>
+        <dependency>
+            <groupId>org.thymeleaf</groupId>
+            <artifactId>thymeleaf-spring4</artifactId>
+            <version>3.0.9.RELEASE</version>
+        </dependency>
   
     </dependencies>
 
@@ -198,6 +251,19 @@
                     </execution>
                 </executions>
             </plugin>
+        <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-jar-plugin</artifactId>
+            <version>2.4</version>
+            <configuration>
+                <archive>
+                    <index>true</index>
+                    <manifest>
+                        <mainClass>Class.Man</mainClass>
+                    </manifest>
+                </archive>
+            </configuration>
+        </plugin>
         </plugins>
     </build>
 
