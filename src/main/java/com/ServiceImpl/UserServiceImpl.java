@@ -10,30 +10,26 @@ import com.Service.UserService;
 import com.model.Cart;
 import com.model.NguoiDung;
 import com.securityImpl.CustomUser;
-import java.security.Principal;
 import java.util.ArrayList;
 import javax.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContext;
 import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 /**
  *
  * @author vital
  */
 @Service
+@Transactional
 public class UserServiceImpl implements UserService{
     @Autowired
     UserDAO userDAOImpl;
-    
     @Override
     public boolean login(HttpServletRequest rq,String email,String password) {
         NguoiDung nguoiDung= userDAOImpl.login(email);
         if(nguoiDung != null){
-            System.out.println("Nguoi Dung: "+ nguoiDung.getHoTen());
             if(nguoiDung.getEmail().equals(email) && nguoiDung.getMatKhau().equals(password))
             {
                 rq.getSession().setAttribute("nguoiDung", nguoiDung);

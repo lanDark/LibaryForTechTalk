@@ -27,7 +27,6 @@ import org.springframework.transaction.annotation.Transactional;
  * @author vital
  */
 @Repository
-@Transactional(rollbackFor = Exception.class)
 public class UserDAOImpl implements UserDAO {
     @Autowired
     SessionFactory sessionFactory;
@@ -37,13 +36,13 @@ public class UserDAOImpl implements UserDAO {
     public NguoiDung login(String email) {
         try
         {
-        LOG.info("Connect to method UserDAOIMPL.login :  "+email);
-        Session session=sessionFactory.getCurrentSession();
-        String hql="From NguoiDung ND where ND.email= :ND_email";
-        Query query=session.createQuery(hql);
-        query.setParameter("ND_email", email);
-        NguoiDung nguoiDung = (NguoiDung) query.list().get(0);
-        return nguoiDung;
+            LOG.info("Connect to method UserDAOIMPL.login :  "+email);
+            Session session=sessionFactory.getCurrentSession();
+            String hql="From NguoiDung ND where ND.email= :ND_email";
+            Query query=session.createQuery(hql);
+            query.setParameter("ND_email", email);
+            NguoiDung nguoiDung = (NguoiDung) query.list().get(0);
+            return nguoiDung;
         }catch(Exception e){
               Logger.getLogger(UserDAOImpl.class.getName()).log(Level.SEVERE, null, e);
               return null;

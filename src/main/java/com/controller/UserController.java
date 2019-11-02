@@ -5,16 +5,16 @@
  */
 package com.controller;
 
-import Class.CacheMap;
+import com.Class.CacheMap;
+import static com.Class.ForwardHandling.*;
 import com.Service.DanhMucService;
 import com.Service.UserService;
+import com.Validator.RegisterForm;
+import com.Validator.RegisterFormValidator;
 import com.model.NguoiDung;
 import com.securityImpl.CustomUser;
-import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.servlet.RequestDispatcher;
-import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
@@ -25,6 +25,8 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.WebDataBinder;
+import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -38,30 +40,41 @@ import org.springframework.web.bind.annotation.ResponseBody;
 public class UserController {
     @Autowired
     UserService userServiceImpl;
+    
     @Autowired
     DanhMucService danhMucServiceImpl;
 
+    @Autowired
+    RegisterFormValidator registerFormValidator;
+    
+    
     private static final Logger LOG = Logger.getLogger(UserController.class.getName());
+    
+    @InitBinder
+    protected void initBinder(WebDataBinder binder) {
+            binder.setValidator(registerFormValidator);
+    }
+    
+    public void getCache(Model map){
+        map.addAttribute("category", danhMucServiceImpl.getDanhMucAll(CacheMap.getDanhMucAll));
+        if(!map.containsAttribute("registerForm"))
+            map.addAttribute("registerForm",new RegisterForm());
+    }   
     
     @RequestMapping(value = { "/Login"}, method = RequestMethod.GET)
     public String login(Model model,HttpServletRequest req,HttpServletResponse res){
            
-            Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-            try {
-                if(principal instanceof CustomUser) //Xác thực người dùng đã đăng nhập chưa
-                {
-                    LOG.info("request to : /Login - "+((CustomUser) principal).getUsername());
-                    RequestDispatcher dispatcher = req.getServletContext().getRequestDispatcher("/");
-                    dispatcher.forward(req, res);
-                }
-                else{ //xảy ra khi người dùng chưa xác thực
-                     model.addAttribute("category", danhMucServiceImpl.getDanhMucAll(CacheMap.getDanhMucAll));
-                     return "Login"; 
-                }
-            } catch (Exception ex) {
-                   Logger.getLogger(UserController.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        return "/";
+        Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+
+        if(principal instanceof CustomUser) 
+        {
+            LOG.info("request to : /Login - "+((CustomUser) principal).getUsername());
+            forwardSRC(req, res, "/");
+        }else{
+            this.getCache(model);
+            return "Login"; 
+        }
+            return "/";
     }
     
     @RequestMapping(value={"/Login"},method=RequestMethod.POST)
@@ -105,18 +118,14 @@ public class UserController {
     
     @RequestMapping(value="/LogOut",method = RequestMethod.GET)
     public void LogOut(HttpServletRequest req,HttpServletResponse res) {
-        try {
-            req.getSession().removeAttribute("nguoiDung");
-            RequestDispatcher dispatcher = req.getServletContext().getRequestDispatcher("/");
-            dispatcher.forward(req, res);
-        } catch (ServletException ex) {
-            Logger.getLogger(UserController.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (IOException ex) {
-            Logger.getLogger(UserController.class.getName()).log(Level.SEVERE, null, ex);
-        }
+
     }
     @RequestMapping(value="/Register",method=RequestMethod.POST)
-    public void Register(@Valid NguoiDung nguoiDung,BindingResult binDing){
-        
+    public String Register(@Valid RegisterForm form,BindingResult binDing){
+        if(binDing.hasErrors())
+        {
+            return "/Login";
+        }
+        return"/";
     }
 }
