@@ -16,6 +16,7 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.web.access.channel.ChannelProcessingFilter;
 
 /**
  *
@@ -35,6 +36,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
     @Override
     protected void configure(final HttpSecurity http) throws Exception {
             System.out.println("IN configure");
+            http.addFilterBefore(new EncodingFilter(), ChannelProcessingFilter.class);
 	    http.authorizeRequests()
                 .antMatchers("/admin/**").hasRole("ADMIN")
                 .and()

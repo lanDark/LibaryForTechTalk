@@ -36,7 +36,7 @@ public class HelloWorldConfig extends WebMvcConfigurerAdapter {
         viewResolver.setViewClass(JstlView.class);
         viewResolver.setPrefix("/WEB-INF/");
         viewResolver.setSuffix(".jsp");
-
+        viewResolver.setContentType("UTF-8");
         return viewResolver;
     }
     

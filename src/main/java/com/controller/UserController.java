@@ -55,13 +55,13 @@ public class UserController {
             binder.setValidator(registerFormValidator);
     }
     
-    public void getCache(Model map){
+    public void getCacheForLoginPage(Model map){
         map.addAttribute("category", danhMucServiceImpl.getDanhMucAll(CacheMap.getDanhMucAll));
         if(!map.containsAttribute("registerForm"))
             map.addAttribute("registerForm",new RegisterForm());
     }   
     
-    @RequestMapping(value = { "/Login"}, method = RequestMethod.GET)
+    @RequestMapping(value = { "/Login"}, method = RequestMethod.GET,produces = "text/plain;charset=UTF-8")
     public String login(Model model,HttpServletRequest req,HttpServletResponse res){
            
         Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
@@ -71,13 +71,13 @@ public class UserController {
             LOG.info("request to : /Login - "+((CustomUser) principal).getUsername());
             forwardSRC(req, res, "/");
         }else{
-            this.getCache(model);
+            this.getCacheForLoginPage(model);
             return "Login"; 
         }
             return "/";
     }
     
-    @RequestMapping(value={"/Login"},method=RequestMethod.POST)
+    @RequestMapping(value={"/Login"},method=RequestMethod.POST,produces = "text/plain;charset=UTF-8")
     public void exceCuteLogin(HttpServletRequest request,HttpServletResponse res,Model model)
     {
         login(model, request, res);
@@ -87,45 +87,21 @@ public class UserController {
     @RequestMapping(value="/datMuon", method=RequestMethod.GET, produces = "text/plain;charset=UTF-8")
     @ResponseBody
     public String datMuon(HttpServletRequest request,HttpServletResponse res,Model model){
-         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-         Object printical= auth.getPrincipal();
-         LOG.info("request to : /datMuon - "+ request.getUserPrincipal());
-        try {
-            res.setContentType("text/html;charset=UTF-8");
-            if(printical instanceof UserDetails)
-            {
-                if( userServiceImpl.datMuon(request) )
-                {
-                    return "<p>Đặt giữ thành công</p>";
-                }
+        return null;
 
-                else
-                {
-                      return "<p>Đặt giữ thất bại</p>";
-                }
-            }
-            else
-            {
-                request.getServletContext().getRequestDispatcher("/Login").forward(request, res);
-            }
-        } catch (Exception ex) {
-            Logger.getLogger(UserController.class.getName()).log(Level.SEVERE, null, ex);
-            return "<p> "+ex.getMessage()+"</p>";
-            
-        }
-        return "";
     }
     
     @RequestMapping(value="/LogOut",method = RequestMethod.GET)
     public void LogOut(HttpServletRequest req,HttpServletResponse res) {
 
     }
-    @RequestMapping(value="/Register",method=RequestMethod.POST)
-    public String Register(@Valid RegisterForm form,BindingResult binDing){
+    @RequestMapping(value="/Register",method=RequestMethod.POST,produces = "text/plain;charset=UTF-8")
+    public String Register(@Valid RegisterForm form,BindingResult binDing,HttpServletRequest req,HttpServletResponse res){
         if(binDing.hasErrors())
         {
             return "/Login";
         }
-        return"/";
+        forwardSRC(req, res, "/");
+        return null;
     }
 }

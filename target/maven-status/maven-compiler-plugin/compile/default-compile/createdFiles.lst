@@ -1,7 +1,6 @@
 com\ServiceImpl\CartServiceImpl.class
 com\Service\CartService.class
 com\configuration\SpringSecurityInitializer.class
-Class\CacheMap.class
 com\model\Rules.class
 com\model\LuotThich.class
 com\model\Tacgia.class
@@ -25,7 +24,6 @@ com\DAO\UserDAO.class
 com\controller\CartController.class
 com\configuration\SecurityConfig.class
 com\controller\UserController.class
-Class\FunctionCart.class
 com\controller\CategoryController.class
 com\DAO\DanhMucDAO.class
 com\model\CtPhieumuon.class
