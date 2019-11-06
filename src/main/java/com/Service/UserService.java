@@ -5,6 +5,7 @@
  */
 package com.Service;
 
+import com.model.NguoiDung;
 import javax.servlet.http.HttpServletRequest;
 
 /**
@@ -13,7 +14,7 @@ import javax.servlet.http.HttpServletRequest;
  */
 public interface UserService {
     public boolean login(HttpServletRequest req,String email,String password);
-    public boolean signIn();
+    public boolean signUp(NguoiDung nguoiDung);
     public boolean logOut();
     public boolean datMuon(HttpServletRequest req) throws Exception;
 }

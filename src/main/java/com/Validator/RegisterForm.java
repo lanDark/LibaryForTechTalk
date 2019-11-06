@@ -5,7 +5,7 @@
  */
 package com.Validator;
 
-import org.springframework.stereotype.Component;
+import com.model.NguoiDung;
 
 /**
  *
@@ -92,4 +92,16 @@ public class RegisterForm implements  java.io.Serializable {
         this.cmnd = cmnd;
     }
     
+    public NguoiDung convertToNguoiDungClass(){
+        NguoiDung nguoiDung = new NguoiDung();
+        
+        nguoiDung.setEmail(this.getEmail());
+        nguoiDung.setMatKhau(this.getMatKhau()); 
+        nguoiDung.setDiaChi(this.getDiaChi());        
+        nguoiDung.setSdt(this.getSdt());                    
+        nguoiDung.setHoTen(this.getHoTen());             
+        nguoiDung.setCmnd(this.getCmnd());           
+        
+        return nguoiDung;
+    }
 }

@@ -6,30 +6,28 @@
 package com.controller;
 
 import com.Class.CacheMap;
+import static com.Class.CreateNameLog.*;
 import static com.Class.ForwardHandling.*;
 import com.Service.DanhMucService;
 import com.Service.UserService;
-import com.Validator.RegisterForm;
-import com.Validator.RegisterFormValidator;
-import com.model.NguoiDung;
+import com.Validator.*;
 import com.securityImpl.CustomUser;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import java.util.logging.*;
+import javax.ejb.CreateException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.web.authentication.WebAuthenticationDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.WebDataBinder;
-import org.springframework.web.bind.annotation.InitBinder;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 /**
  *
@@ -47,6 +45,8 @@ public class UserController {
     @Autowired
     RegisterFormValidator registerFormValidator;
     
+    @Autowired
+    protected AuthenticationManager authenticationManager;
     
     private static final Logger LOG = Logger.getLogger(UserController.class.getName());
     
@@ -95,13 +95,45 @@ public class UserController {
     public void LogOut(HttpServletRequest req,HttpServletResponse res) {
 
     }
+    
+    //https://stackoverflow.com/questions/3813028/auto-login-after-successful-registration(link function)
+    private void authenticateUserAndSetSession(RegisterForm user, HttpServletRequest request) {
+        String username = user.getEmail();
+        String password = user.getMatKhau();
+        UsernamePasswordAuthenticationToken token = new UsernamePasswordAuthenticationToken(username, password);
+
+        // generate session if one deosn't exist 
+        request.getSession();
+
+        token.setDetails(new WebAuthenticationDetails(request));
+        Authentication authenticatedUser = authenticationManager.authenticate(token);
+
+        SecurityContextHolder.getContext().setAuthentication(authenticatedUser);
+    }
+    
+    private boolean executeRegisterAndAutoLogin(RegisterForm form,HttpServletRequest req,HttpServletResponse res){
+        boolean bool = userServiceImpl.signUp(form.convertToNguoiDungClass());
+        if(bool){
+            authenticateUserAndSetSession(form,req);
+            Logger.getLogger(register).log(Level.SEVERE, "Đăng ký thành công! "+form.getEmail());
+        }
+        else{
+            Logger.getLogger(registerError).warning( "Đăng ký thất bại! "+form.getEmail());
+        }
+        return bool;
+    }
+    
     @RequestMapping(value="/Register",method=RequestMethod.POST,produces = "text/plain;charset=UTF-8")
-    public String Register(@Valid RegisterForm form,BindingResult binDing,HttpServletRequest req,HttpServletResponse res){
+    public void Register(@Valid RegisterForm form,BindingResult binDing,HttpServletRequest req,HttpServletResponse res){
         if(binDing.hasErrors())
         {
-            return "/Login";
+             forwardSRC(req, res, "/Login");
         }
-        forwardSRC(req, res, "/");
-        return null;
+        if(this.executeRegisterAndAutoLogin(form,req,res))
+            forwardSRC(req, res,"/") ;
+        else
+            forwardSRC(req, res,"/Login");
     }
+    
+
 }

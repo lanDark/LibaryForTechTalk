@@ -16,6 +16,6 @@ import java.util.ArrayList;
  */
 public interface UserDAO {
     public NguoiDung login(String email);
-    public boolean signIn(NguoiDung nguoiDung);
+    public boolean signUp(NguoiDung nguoiDung);
     public boolean datMuon(ArrayList<Cart> listSach,CustomUser maNguoiDung) throws Exception ;
 }

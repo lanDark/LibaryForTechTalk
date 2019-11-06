@@ -7,13 +7,9 @@ package com.ServiceImpl;
 
 import com.DAO.UserDAO;
 import com.Service.UserService;
-import com.model.Cart;
 import com.model.NguoiDung;
-import com.securityImpl.CustomUser;
-import java.util.ArrayList;
 import javax.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -43,8 +39,8 @@ public class UserServiceImpl implements UserService{
     }
 
     @Override
-    public boolean signIn() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public boolean signUp(NguoiDung nguoiDung) {
+        return  userDAOImpl.signUp(nguoiDung);
     }
 
     @Override
@@ -54,15 +50,6 @@ public class UserServiceImpl implements UserService{
 
     @Override
     public boolean datMuon(HttpServletRequest req) throws Exception {
-        ArrayList<Cart> cartItems = (ArrayList<Cart>) req.getSession().getAttribute("cartItems");
-        Object principal= SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        if(cartItems.size()>0)
-        {
-            if( userDAOImpl.datMuon(cartItems,(CustomUser)principal) ){
-                req.getSession().removeAttribute("cartItems");
-                return true;
-            }
-        }
-        return false;
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }
