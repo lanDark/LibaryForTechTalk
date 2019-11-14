@@ -120,51 +120,5 @@ public class UserDAOImpl implements UserDAO {
 
 
 
-    @Override
-    public boolean datMuon(ArrayList<Cart> listCart,CustomUser user) throws Exception {
-        Session session=sessionFactory.getCurrentSession();
-        PhieuMuon phieuMuon =this.createPhieuMuon( session.get(NguoiDung.class, user.getMaNguoiDung()));
-        session.save(phieuMuon);
-        LOG.info("Connect to method UserDAOIMPL.datMuon :  "+ user.getUsername());
-            if(phieuMuon != null)
-            {
-                for(Cart item:listCart){ 
-                    for(int  i = 1;i<=item.getSoLuong();i++){
-                          try {
-                            CtPhieumuon ctpm=new CtPhieumuon();
-                            ctpm.setSach(item.getSach());
-                            ctpm.setPhieuMuon(phieuMuon);
-                            ctpm.setSoLuong(item.getSoLuong());
-                            Query giamSoLuongSach=session.createQuery("update Sach set soLuong=soLuong-:soLuong where maSach=:maSach");
-                            giamSoLuongSach.setParameter("maSach", item.getSach().getMaSach());
-                            giamSoLuongSach.setParameter("soLuong", item.getSoLuong());
-                            giamSoLuongSach.executeUpdate();
-                            session.save(ctpm);
-                        } catch (Exception ex) {
-                            Logger.getLogger(UserDAOImpl.class.getName()).log(Level.SEVERE, null, ex);
-                            throw new Exception("Xin lỗi sách: \""+ item.getSach().getTenSach()+"\" tạm thời đã hết!");
-                        }
-                    }
-                }
-                return true;
-            }
-        return false;
-       
-    }
-    
-    public PhieuMuon createPhieuMuon(NguoiDung nguoiDung) {
-        PhieuMuon phieuMuon = new PhieuMuon();
-          LOG.info("Connect to method UserDAOIMPL.createPhieuMuon :  "+ nguoiDung.getMaNguoiDung());
-        Calendar c = Calendar.getInstance();
-        try {
-            phieuMuon.setTrangThai(1);
-            phieuMuon.setNgayDat(c.getTime());
-            phieuMuon.setNguoiDungByMaNguoiDung(nguoiDung);
-            return phieuMuon;
-        } catch (Exception ex) {
-            Logger.getLogger(UserDAOImpl.class.getName()).log(Level.SEVERE, null, ex);
-             return null;
-        }
-    }
 
 }

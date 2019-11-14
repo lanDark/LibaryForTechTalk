@@ -4,6 +4,7 @@ com\ServiceImpl\CartServiceImpl.class
 com\Service\CartService.class
 com\configuration\SpringSecurityInitializer.class
 com\Class\ForwardHandling.class
+com\DAO\CartDAO.class
 com\model\Rules.class
 com\model\LuotThich.class
 com\ServiceImpl\UserDetailsServiceImpl.class
@@ -37,6 +38,7 @@ com\DAO\ProductDAO.class
 com\model\NguoiDung.class
 com\Class\CacheMap.class
 com\model\Cart.class
+com\DAOImpl\CartDAOImpl.class
 com\model\DauSachCtpm.class
 com\Class\CreateNameLog.class
 com\configuration\HelloWorldConfig.class

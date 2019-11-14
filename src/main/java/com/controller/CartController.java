@@ -6,20 +6,26 @@
 package com.controller;
 import com.Service.CartService;
 import com.Service.ProductService;
-import com.model.Cart;
+import com.model.Sach;
 import com.securityImpl.CustomUser;
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import static org.springframework.web.bind.annotation.RequestMethod.GET;
-import static org.springframework.web.bind.annotation.RequestMethod.POST;
 import org.springframework.web.bind.annotation.ResponseBody;
 /**
  *
@@ -32,64 +38,48 @@ public class CartController {
     
     @Autowired
     CartService cartServiceImpl;
-    @RequestMapping(value="/CartView",method=RequestMethod.GET)
+
     
+    @RequestMapping(value="/CartView",method=RequestMethod.GET)
     public String CartView(HttpServletRequest request,Model model){
-        ArrayList<Cart> cartList=(ArrayList<Cart>) request.getSession().getAttribute("cartItems");
-        model.addAttribute("cartList",cartList);
         return "cart";
     }
     
-    @RequestMapping(value="/addToCart",method=POST)
-    public String addToCartItem(HttpServletRequest request,Model model,HttpServletResponse res) throws IOException {
+    
+    @RequestMapping(value="/datMuon",method=RequestMethod.POST,produces = {"application/json;charset=UTF-8"})
+    @ResponseBody
+    public ResponseEntity addToCartItem(@RequestBody ArrayList<Sach> cart,HttpServletRequest request,Model model,HttpServletResponse res) throws IOException {
         boolean bool;
+        Map<String,Object> result = new HashMap<String,Object>();
+        
         Object printical= SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        if(printical instanceof CustomUser)//Kiểm tra bạn đọc đã xác thực chưa
-        {
-            try {
-                bool = cartServiceImpl.addItem(request, productServiceImpl);
-                res.setContentType("text/html;charset=UTF-8");
-                if(bool)
-                {   model.addAttribute("messenger","Thêm vào giỏ thành công");
-                    return "ajax/ShowModal";
-                }else
-                {
-                      model.addAttribute("messenger","Thêm vào giỏ thất bại"); 
-                      return "ajax/ShowModal";
-                }
-            } catch (Exception ex) {
-                model.addAttribute("messenger",ex.getMessage());
-                return "ajax/ShowModal";
-            }
-        }
-        else // nếu chưa xác thực thì chuyển hướng đến trang đăng nhập
-        {
-            res.sendError(403);//Jquery bắt lỗi và tự động redirectt đến trang Login
-            return "index";
-        }
-    }
-    
-    
-    @RequestMapping(value="/deleteItemCart",method=GET,produces = "text/plain;charset=UTF-8")
-    @ResponseBody
-    public String deleteItem(HttpServletRequest req,HttpServletResponse res){
-       try{
-           this.cartServiceImpl.deleteItem(req);
-       }catch(Exception ex){
-           return "<pr> "+ex.getMessage()+" </p>";
-       }
-        return "";
-    }
-    
-    @RequestMapping(value="/updateItemCart",method=GET,produces = "text/plain;charset=UTF-8")
-    @ResponseBody
-   public String updateItem(HttpServletRequest req ) {
+        
         try {
-            cartServiceImpl.updateItem(req);
+            if(printical instanceof CustomUser)//Kiểm tra bạn đọc đã xác thực chưa
+            {
+
+                if(cartServiceImpl.datMuon(cart,((CustomUser) printical).getMaNguoiDung())){
+                    result.put("status",201);
+                    result.put("success", "Xử lý đặt thành công");
+                    return new ResponseEntity(result,HttpStatus.CREATED);
+                }
+
+            }
+            else // nếu chưa xác thực thì chuyển hướng đến trang đăng nhập
+            {
+                result.put("status",403);
+                result.put("messe", "bạn chưa đăng nhập");
+                return new ResponseEntity(result,HttpStatus.FORBIDDEN);
+            }
+        
+        }catch(SQLException sqlException){
+            result.put("error", sqlException.getMessage());
+            return new ResponseEntity(result,HttpStatus.INTERNAL_SERVER_ERROR);
+            
         } catch (Exception ex) {
-           return "<pr> "+ex.getMessage()+" </p>";
-           
+            result.put("SERVER", "Có lỗi xảy ra!");
         }
-        return "";
-   }
+        return new ResponseEntity(result,HttpStatus.CREATED);
+    }
+
 }

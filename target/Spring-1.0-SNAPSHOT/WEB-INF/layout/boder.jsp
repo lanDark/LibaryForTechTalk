@@ -45,7 +45,10 @@
 								<div class="action">
 									<div class="actions_inner">
 										<ul class="add_to_links">
-                                                                                    <li><a class="cart addToCart"  data-toggle="modal" data-target="#alertAddToCart"><p hidden>${newProduct.maSach}</p><i class="bi bi-shopping-bag4"></i></a></li>
+                                                                                    <li><a class="cart addToCart" tenSach="${newProduct.tenSach}" tacGia="${tacGiaHoTen}" url="<c:url value="Resource/images/books/${srcHinhAnh1}"/>" > 
+                                                                                            <p hidden>${newProduct.maSach}</p>
+                                                                                            <i class="bi bi-shopping-bag4"></i></a>
+                                                                                    </li>
 											<li><a class="wishlist" href="wishlist.html"><i class="bi bi-shopping-cart-full"></i></a></li>
                                                                                         <li class=""><a data-toggle="modal" title="Quick View" class="showProductModal quickview modal-view detail-link " data-target="#productmodal"><p hidden>${newProduct.maSach}</p><i class="bi bi-search"></i></a></li>
 										</ul>

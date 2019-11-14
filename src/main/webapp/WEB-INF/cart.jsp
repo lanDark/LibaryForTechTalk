@@ -3,6 +3,8 @@
 <jsp:include page="layout/header.jsp"/>
 <jsp:include page="layout/search.jsp"/>
 <jsp:include page="layout/slide.jsp"/>  
+<script type="module" src="<c:url value="Resource/js/modules/CartPage.js" />"></script>
+<script type="module" src="<c:url value="Resource/js/modules/Main.js" />"></script>
 <div class="cart-main-area section-padding--lg bg--white">
             <div class="container">
                 
@@ -20,20 +22,8 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <c:forEach var="items" items="${cartList}">
-                                            <c:forEach var="hinhAnhs" begin="0" end="0"  items="${items.sach.hinhAnhs}">
-                                                     <c:set var="srcHinhAnh" value="${hinhAnhs.src}"/>
-                                            </c:forEach>
-                                        <tr>
-                                            <td class="product-thumbnail"><a href="#"><img src="<c:url value="Resource/images/books/${srcHinhAnh}"/> " alt="product img"></a></td>
-                                            <td class="product-name"><a href="#">${items.sach.tenSach}</a></td>
-                                            <td class="product-quantity"><input class="soLuong" type="number" value="${items.soLuong}">
-                                                <input class="maSach" value="${items.sach.maSach}" hidden/>  
-                                            </td>
-                                             
-                                            <td class="product-remove"><a href="#" class="remove">X</a><input class="maSach" value="${items.sach.maSach}" hidden/></td>
-                                        </tr>
-                                        </c:forEach>     
+                                        
+                                    </tbody>
                                 </table>
                             </div>
                         </form> 
@@ -53,7 +43,7 @@
                                     <li>Tổng số lượng</li>
                                 </ul>
                                 <ul class="cart__total__tk">
-                                    <li>$70</li>
+                                    <li>0</li>
                                 </ul>
                             </div>
               
