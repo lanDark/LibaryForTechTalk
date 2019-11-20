@@ -29,6 +29,7 @@ import org.springframework.security.web.access.channel.ChannelProcessingFilter;
 public class SecurityConfig extends WebSecurityConfigurerAdapter{
     @Autowired
     private UserDetailsService userDetailsServiceImpl;
+    
     @Autowired
     public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
         auth.userDetailsService(userDetailsServiceImpl).passwordEncoder(passwordEncoder());
@@ -40,6 +41,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
             http.addFilterBefore(new EncodingFilter(), ChannelProcessingFilter.class);
 	    http.authorizeRequests()
                 .antMatchers("/admin/**").hasRole("ADMIN")
+                .antMatchers("/datMuon/").hasRole("USER")
                 .and()
                 .formLogin()
 		.loginPage("/Login")

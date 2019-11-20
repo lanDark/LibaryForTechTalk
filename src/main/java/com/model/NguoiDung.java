@@ -20,14 +20,13 @@ import javax.persistence.UniqueConstraint;
 @Entity
 @Table(name="nguoiDung"
     ,schema="dbo"
-    ,catalog="Libary"
+    ,catalog="ThuVien"
     , uniqueConstraints = @UniqueConstraint(columnNames="email") 
 )
 public class NguoiDung  implements java.io.Serializable {
 
 
      private String maNguoiDung;
-     private Rules rules;
      private String email;
      private String matKhau;
      private String hoTen;
@@ -35,6 +34,7 @@ public class NguoiDung  implements java.io.Serializable {
      private String diaChi;
      private String cmnd;
      private Integer tinhTrang;
+     private Set<Rules> rules  = new HashSet<Rules>(0);
      private Set<LuotThich> luotThiches = new HashSet<LuotThich>(0);
      private Set<PhieuMuon> phieuMuonsForMaThuThu = new HashSet<PhieuMuon>(0);
      private Set<PhieuMuon> phieuMuonsForMaNguoiDung = new HashSet<PhieuMuon>(0);
@@ -48,7 +48,7 @@ public class NguoiDung  implements java.io.Serializable {
     public NguoiDung(String maNguoiDung) {
         this.maNguoiDung = maNguoiDung;
     }
-    public NguoiDung(String maNguoiDung, Rules rules, String email, String matKhau, String hoTen, String sdt, String diaChi, String cmnd, Integer tinhTrang, Set<LuotThich> luotThiches, Set<PhieuMuon> phieuMuonsForMaThuThu, Set<PhieuMuon> phieuMuonsForMaNguoiDung, Set<PhieuMuon> phieuMuonsForNguoiNhanTra, Set<PhieuNhap> phieuNhaps) {
+    public NguoiDung(String maNguoiDung, Set<Rules> rules, String email, String matKhau, String hoTen, String sdt, String diaChi, String cmnd, Integer tinhTrang, Set<LuotThich> luotThiches, Set<PhieuMuon> phieuMuonsForMaThuThu, Set<PhieuMuon> phieuMuonsForMaNguoiDung, Set<PhieuMuon> phieuMuonsForNguoiNhanTra, Set<PhieuNhap> phieuNhaps) {
        this.maNguoiDung = maNguoiDung;
        this.rules = rules;
        this.email = email;
@@ -77,13 +77,12 @@ public class NguoiDung  implements java.io.Serializable {
         this.maNguoiDung = maNguoiDung;
     }
 
-@ManyToOne(fetch=FetchType.LAZY)
-    @JoinColumn(name="rules")
-    public Rules getRules() {
+    @OneToMany(fetch=FetchType.LAZY,mappedBy = "nguoiDung")
+    public Set<Rules> getRules() {
         return this.rules;
     }
     
-    public void setRules(Rules rules) {
+    public void setRules(Set<Rules> rules) {
         this.rules = rules;
     }
 
@@ -201,6 +200,8 @@ public class NguoiDung  implements java.io.Serializable {
     public void setPhieuNhaps(Set<PhieuNhap> phieuNhaps) {
         this.phieuNhaps = phieuNhaps;
     }
+
+  
 
 
 

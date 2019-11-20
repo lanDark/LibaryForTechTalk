@@ -15,6 +15,6 @@ import java.util.ArrayList;
  * @author vital
  */
 public interface UserDAO {
-    public NguoiDung login(String email);
+    public NguoiDung getUserByEmail(String email);
     public boolean signUp(NguoiDung nguoiDung);
 }

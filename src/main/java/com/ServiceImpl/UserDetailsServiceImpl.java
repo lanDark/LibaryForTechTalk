@@ -34,18 +34,16 @@ public class UserDetailsServiceImpl  implements UserDetailsService {
     @Override
     @Transactional
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
-        System.out.println("IN loadUserByUserName");
-        NguoiDung nguoiDung=userDAOImpl.login(email);
+        NguoiDung nguoiDung=userDAOImpl.getUserByEmail(email);
         
         if(nguoiDung==null)
             throw new UsernameNotFoundException("User not found");
-        
+        System.out.println(nguoiDung.getMatKhau());
         Set<GrantedAuthority> grantedAuthorities = new HashSet<>();
-        Set<Rules> rules = new HashSet();
-        rules.add(nguoiDung.getRules());// bởi vì một người dùng chỉ có một quyền duy nhất mà hibernate không hổ trợ sử dụng collection cho ManyToOne nên ta tự thiết lập
-        for(Rules rule:rules)
+        for(Rules rule:nguoiDung.getRules())
         {
-            grantedAuthorities.add(new SimpleGrantedAuthority(rule.getNameRules()));
+            System.out.println(rule.getRole());
+            grantedAuthorities.add(new SimpleGrantedAuthority(rule.getRole()));
         }
         return new CustomUser(
                 nguoiDung.getEmail(), nguoiDung.getMatKhau(), grantedAuthorities,nguoiDung.getHoTen(),nguoiDung.getMaNguoiDung(),nguoiDung.getSdt());

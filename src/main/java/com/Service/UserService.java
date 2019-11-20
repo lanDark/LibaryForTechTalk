@@ -17,4 +17,5 @@ public interface UserService {
     public boolean signUp(NguoiDung nguoiDung);
     public boolean logOut();
     public boolean datMuon(HttpServletRequest req) throws Exception;
+    public NguoiDung getUserByEmail(String email);
 }

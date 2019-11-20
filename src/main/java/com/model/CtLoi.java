@@ -17,13 +17,12 @@ import javax.persistence.Table;
 @Entity
 @Table(name="CT_Loi"
     ,schema="dbo"
-    ,catalog="Libary"
+    ,catalog="ThuVien"
 )
 public class CtLoi  implements java.io.Serializable {
 
 
      private int maCtl;
-     private CtPhieumuon ctPhieumuon;
      private DauSachCtpm dauSachCtpm;
      private Loi loi;
 
@@ -34,16 +33,13 @@ public class CtLoi  implements java.io.Serializable {
     public CtLoi(int maCtl) {
         this.maCtl = maCtl;
     }
-    public CtLoi(int maCtl, CtPhieumuon ctPhieumuon, DauSachCtpm dauSachCtpm, Loi loi) {
+    public CtLoi(int maCtl, DauSachCtpm dauSachCtpm, Loi loi) {
        this.maCtl = maCtl;
-       this.ctPhieumuon = ctPhieumuon;
        this.dauSachCtpm = dauSachCtpm;
        this.loi = loi;
     }
    
-     @Id 
-
-    
+    @Id 
     @Column(name="maCTL", unique=true, nullable=false)
     public int getMaCtl() {
         return this.maCtl;
@@ -53,20 +49,9 @@ public class CtLoi  implements java.io.Serializable {
         this.maCtl = maCtl;
     }
 
-@ManyToOne(fetch=FetchType.LAZY)
-    @JoinColumn(name="maCTPM")
-    public CtPhieumuon getCtPhieumuon() {
-        return this.ctPhieumuon;
-    }
-    
-    public void setCtPhieumuon(CtPhieumuon ctPhieumuon) {
-        this.ctPhieumuon = ctPhieumuon;
-    }
 
-@ManyToOne(fetch=FetchType.LAZY)
-    @JoinColumns( { 
-        @JoinColumn(name="maCTPM", referencedColumnName="maCTPM", insertable=false, updatable=false), 
-        @JoinColumn(name="barcode", referencedColumnName="barcode", insertable=false, updatable=false) } )
+    @ManyToOne(fetch=FetchType.LAZY)
+    @JoinColumn(name="ma_DauSach_CTPM", referencedColumnName="id", insertable=false, updatable=false) 
     public DauSachCtpm getDauSachCtpm() {
         return this.dauSachCtpm;
     }
@@ -75,7 +60,7 @@ public class CtLoi  implements java.io.Serializable {
         this.dauSachCtpm = dauSachCtpm;
     }
 
-@ManyToOne(fetch=FetchType.LAZY)
+    @ManyToOne(fetch=FetchType.LAZY)
     @JoinColumn(name="maLoi")
     public Loi getLoi() {
         return this.loi;

@@ -24,7 +24,7 @@ public class UserServiceImpl implements UserService{
     UserDAO userDAOImpl;
     @Override
     public boolean login(HttpServletRequest rq,String email,String password) {
-        NguoiDung nguoiDung= userDAOImpl.login(email);
+        NguoiDung nguoiDung= userDAOImpl.getUserByEmail(email);
         if(nguoiDung != null){
             if(nguoiDung.getEmail().equals(email) && nguoiDung.getMatKhau().equals(password))
             {
@@ -51,5 +51,10 @@ public class UserServiceImpl implements UserService{
     @Override
     public boolean datMuon(HttpServletRequest req) throws Exception {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public NguoiDung getUserByEmail(String email) {
+       return userDAOImpl.getUserByEmail(email);
     }
 }

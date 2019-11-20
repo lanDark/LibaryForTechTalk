@@ -17,7 +17,7 @@ import javax.persistence.Table;
 @Entity
 @Table(name="loi"
     ,schema="dbo"
-    ,catalog="Libary"
+    ,catalog="ThuVien"
 )
 public class Loi  implements java.io.Serializable {
 

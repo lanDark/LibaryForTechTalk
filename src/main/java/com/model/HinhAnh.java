@@ -17,7 +17,7 @@ import javax.persistence.UniqueConstraint;
 @Entity
 @Table(name="hinh_anh"
     ,schema="dbo"
-    ,catalog="Libary"
+    ,catalog="ThuVien"
     , uniqueConstraints = @UniqueConstraint(columnNames="src") 
 )
 public class HinhAnh  implements java.io.Serializable {

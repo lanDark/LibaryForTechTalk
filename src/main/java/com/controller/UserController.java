@@ -11,9 +11,9 @@ import static com.Class.ForwardHandling.*;
 import com.Service.DanhMucService;
 import com.Service.UserService;
 import com.Validator.*;
+import com.model.NguoiDung;
 import com.securityImpl.CustomUser;
 import java.util.logging.*;
-import javax.ejb.CreateException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
@@ -124,15 +124,25 @@ public class UserController {
     }
     
     @RequestMapping(value="/Register",method=RequestMethod.POST,produces = "text/plain;charset=UTF-8")
-    public void Register(@Valid RegisterForm form,BindingResult binDing,HttpServletRequest req,HttpServletResponse res){
+    public String Register(@Valid RegisterForm form,BindingResult binDing,HttpServletRequest req,HttpServletResponse res){
+        NguoiDung nguoiDung = null; 
+        nguoiDung = userServiceImpl.getUserByEmail(form.getEmail());
+        
         if(binDing.hasErrors())
         {
-             forwardSRC(req, res, "/Login");
+             return "/Login";
+        }else{ 
+            
+            if(nguoiDung != null){
+              binDing.rejectValue("email","", "Email này đã được đăng ký");
+              return "/Login";
+            }
+            if(this.executeRegisterAndAutoLogin(form,req,res))
+                forwardSRC(req, res,"/") ;
+            else
+                forwardSRC(req, res,"/Login");
         }
-        if(this.executeRegisterAndAutoLogin(form,req,res))
-            forwardSRC(req, res,"/") ;
-        else
-            forwardSRC(req, res,"/Login");
+        return null;
     }
     
 
