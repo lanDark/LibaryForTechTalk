@@ -15,6 +15,19 @@ import java.util.ArrayList;
  * @author vital
  */
 public interface UserDAO {
+
+    /**
+     * Xử lý chức năng lấy người dùng
+     * @param email
+     * @return NguoiDung
+     */
     public NguoiDung getUserByEmail(String email);
+
+    /**
+     *
+     * @param nguoiDung đối tượng người dùng
+     * @see NguoiDung
+     * @return true nếu đăng ký thành công - false nếu có lỗi hoặc đăng ký thất bại
+     */
     public boolean signUp(NguoiDung nguoiDung);
 }

@@ -60,38 +60,7 @@ public class UserDAOImpl implements UserDAO {
     }
 
     
-    private StringBuilder getMaNguoiDungBiggest(Session session){
-        String sql = 
-                "Select max(N.maNguoiDung) "
-                + "FROM NguoiDung as N "
-                + "inner join Rules as R ON N.maNguoiDung = R.nguoiDung.maNguoiDung "
-                + "inner join Rules as R2 on R2.role = 'ROLE_USER'";
-        
 
-        Query query = session.createQuery(sql);
-        query.setMaxResults(1);
-        List result = query.list();
-        
-        return  (result.size()>0)? new StringBuilder(result.get(0).toString()): new StringBuilder("BD0001"); 
-       
-    }   
-    
-    private int tachChuoiLaySo(String ma){
-        String temp = ma.substring(2);
-        int so = Integer.parseInt(temp);
-        
-        return so+1;
-    }
-    
-    private StringBuilder taoMaMoi(int so){
-        StringBuilder temp = new StringBuilder("BD"+so);
-        
-        while(temp.length()<6){
-            temp.insert(2, "0");
-        }
-        
-        return temp;
-    }
     
     @Override
     public boolean signUp(NguoiDung nguoiDung) {
@@ -124,8 +93,39 @@ public class UserDAOImpl implements UserDAO {
             
         }
     }
+    
+    private StringBuilder getMaNguoiDungBiggest(Session session){
+        String sql = 
+                "Select max(N.maNguoiDung) "
+                + "FROM NguoiDung as N "
+                + "inner join Rules as R ON N.maNguoiDung = R.nguoiDung.maNguoiDung "
+                + "WHERE R.role = 'ROLE_USER'";
+        
 
-
+        Query query = session.createQuery(sql);
+        query.setMaxResults(1);
+        List result = query.list();
+        
+        return  (result.size()>0)? new StringBuilder(result.get(0).toString()): new StringBuilder("BD0001"); 
+       
+    }   
+    
+    private int tachChuoiLaySo(String ma){
+        String temp = ma.substring(2);
+        int so = Integer.parseInt(temp);
+        
+        return so+1;
+    }
+    
+    private StringBuilder taoMaMoi(int so){
+        StringBuilder temp = new StringBuilder("BD"+so);
+        
+        while(temp.length()<6){
+            temp.insert(2, "0");
+        }
+        
+        return temp;
+    }
 
 
 }

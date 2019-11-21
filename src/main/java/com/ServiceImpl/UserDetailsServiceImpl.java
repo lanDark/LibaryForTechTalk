@@ -38,11 +38,9 @@ public class UserDetailsServiceImpl  implements UserDetailsService {
         
         if(nguoiDung==null)
             throw new UsernameNotFoundException("User not found");
-        System.out.println(nguoiDung.getMatKhau());
         Set<GrantedAuthority> grantedAuthorities = new HashSet<>();
         for(Rules rule:nguoiDung.getRules())
         {
-            System.out.println(rule.getRole());
             grantedAuthorities.add(new SimpleGrantedAuthority(rule.getRole()));
         }
         return new CustomUser(

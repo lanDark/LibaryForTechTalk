@@ -39,7 +39,7 @@
                                                                             </c:if>
                                                                             <button type="submit" form="executeLogin">Login</button>
 										<label class="label-for-checkbox">
-											<input id="rememberme" class="input-checkbox" name="rememberme" value="forever" type="checkbox">
+											<input id="rememberme" class="input-checkbox" name="rememberme"  type="checkbox">
 											<span>Remember me</span>
 										</label>
                                                         

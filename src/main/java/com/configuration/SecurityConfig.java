@@ -41,16 +41,18 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
             http.addFilterBefore(new EncodingFilter(), ChannelProcessingFilter.class);
 	    http.authorizeRequests()
                 .antMatchers("/admin/**").hasRole("ADMIN")
-                .antMatchers("/datMuon/").hasRole("USER")
+                .antMatchers("/datMuon**").hasRole("USER")
+                    .antMatchers("/CartView**").hasRole("USER")
                 .and()
                 .formLogin()
 		.loginPage("/Login")
-                
 		.usernameParameter("email")
 		.passwordParameter("password")
                 .defaultSuccessUrl("/Login")
                 .failureUrl("/Login?error=true")
 		.and().logout().logoutSuccessUrl("/login?logout")
+                .and().rememberMe().rememberMeParameter("rememberme").key("NguyenTheLan29051997").tokenValiditySeconds(1209600)
+
 		.and().exceptionHandling().accessDeniedPage("/403")
                 .and().csrf().disable();
     }
