@@ -11,9 +11,9 @@ import static com.Class.ForwardHandling.*;
 import com.Service.DanhMucService;
 import com.Service.UserService;
 import com.Validator.*;
+import com.model.NguoiDung;
 import com.securityImpl.CustomUser;
 import java.util.logging.*;
-import javax.ejb.CreateException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
@@ -80,15 +80,7 @@ public class UserController {
     @RequestMapping(value={"/Login"},method=RequestMethod.POST,produces = "text/plain;charset=UTF-8")
     public void exceCuteLogin(HttpServletRequest request,HttpServletResponse res,Model model)
     {
-        login(model, request, res);
-    }
-    
-    
-    @RequestMapping(value="/datMuon", method=RequestMethod.GET, produces = "text/plain;charset=UTF-8")
-    @ResponseBody
-    public String datMuon(HttpServletRequest request,HttpServletResponse res,Model model){
-        return null;
-
+        this.login(model, request, res);
     }
     
     @RequestMapping(value="/LogOut",method = RequestMethod.GET)
@@ -112,27 +104,37 @@ public class UserController {
     }
     
     private boolean executeRegisterAndAutoLogin(RegisterForm form,HttpServletRequest req,HttpServletResponse res){
-        boolean bool = userServiceImpl.signUp(form.convertToNguoiDungClass());
-        if(bool){
-            authenticateUserAndSetSession(form,req);
+        boolean checkRegisterSuccess = userServiceImpl.signUp(form.convertToNguoiDungClass());
+        if(checkRegisterSuccess){
+            this.authenticateUserAndSetSession(form,req);
             Logger.getLogger(register).log(Level.SEVERE, "Đăng ký thành công! "+form.getEmail());
+            return true;
         }
         else{
             Logger.getLogger(registerError).warning( "Đăng ký thất bại! "+form.getEmail());
+            return false;
         }
-        return bool;
     }
     
     @RequestMapping(value="/Register",method=RequestMethod.POST,produces = "text/plain;charset=UTF-8")
-    public void Register(@Valid RegisterForm form,BindingResult binDing,HttpServletRequest req,HttpServletResponse res){
+    public String Register(@Valid RegisterForm form,BindingResult binDing,HttpServletRequest req,HttpServletResponse res){
+        NguoiDung nguoiDung =  userServiceImpl.getUserByEmail(form.getEmail());
+        
         if(binDing.hasErrors())
         {
-             forwardSRC(req, res, "/Login");
+            return "/Login";
+        }else{ 
+            
+            if(nguoiDung != null){
+              binDing.rejectValue("email","", "Email này đã được đăng ký");
+              return "/Login";
+            }
+            if(this.executeRegisterAndAutoLogin(form,req,res))
+                forwardSRC(req, res,"/") ;
+            else
+                forwardSRC(req, res,"/Login");
         }
-        if(this.executeRegisterAndAutoLogin(form,req,res))
-            forwardSRC(req, res,"/") ;
-        else
-            forwardSRC(req, res,"/Login");
+        return null;
     }
     
 

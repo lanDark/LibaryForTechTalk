@@ -17,20 +17,20 @@ import org.springframework.web.servlet.DispatcherServlet;
  
 public class HelloWorldInitializer implements WebApplicationInitializer {
  
+    @Override
     public void onStartup(ServletContext container) throws ServletException {
- 
         AnnotationConfigWebApplicationContext ctx = new AnnotationConfigWebApplicationContext();
+        DispatcherServlet dispatcher;
+
         ctx.register(HelloWorldConfig.class);
         ctx.setServletContext(container);
-        
-         FilterRegistration.Dynamic filterRegistration = container.addFilter("encodingFilter",
-                new CharacterEncodingFilter());
-        ServletRegistration.Dynamic servlet = container.addServlet("dispatcher", new DispatcherServlet(ctx));
-        filterRegistration.setInitParameter("encoding", "UTF-8");
-        filterRegistration.setInitParameter("forceEncoding", "true");
+        dispatcher = new DispatcherServlet(ctx);
+        dispatcher.setThrowExceptionIfNoHandlerFound(true);
+        ServletRegistration.Dynamic servlet = container.addServlet("dispatcher", dispatcher);
         
         servlet.setLoadOnStartup(1);
         servlet.addMapping("/");
+        
     }
  
 }

@@ -39,7 +39,7 @@ public class UserDAOImpl implements UserDAO {
     private final Logger LOG=Logger.getLogger(UserDAOImpl.class.getName());
     
     @Override
-    public NguoiDung login(String email) {
+    public NguoiDung getUserByEmail(String email) {
         LOG.info("Connect to method UserDAOIMPL.login :  "+email);
         try
         {
@@ -51,9 +51,8 @@ public class UserDAOImpl implements UserDAO {
             session=sessionFactory.getCurrentSession();
             query = session.createQuery(hql);
             query.setParameter("ND_email", email);
-            nguoiDung = (NguoiDung) query.list().get(0);
             
-            return nguoiDung;
+            return (query.list().size() > 0) ? (NguoiDung) query.list().get(0) : null;
         }catch(Exception e){
               Logger.getLogger(UserDAOImpl.class.getName()).log(Level.SEVERE, null, e);
               return null;
@@ -61,11 +60,46 @@ public class UserDAOImpl implements UserDAO {
     }
 
     
+
+    
+    @Override
+    public boolean signUp(NguoiDung nguoiDung) {
+        int so;
+        Rules rule;
+        try{
+            Session session = sessionFactory.getCurrentSession();
+            StringBuilder maNguoiDung = new StringBuilder();
+            rule = new Rules();
+            
+            maNguoiDung = this.getMaNguoiDungBiggest(session);
+            so = this.tachChuoiLaySo(maNguoiDung.toString());
+            maNguoiDung = this.taoMaMoi(so);
+            
+            rule.setNguoiDung(nguoiDung);
+            rule.setRole("ROLE_USER");
+            
+            nguoiDung.setMatKhau(passwordEncoder.encode(nguoiDung.getMatKhau()));
+            nguoiDung.setMaNguoiDung(maNguoiDung.toString());
+            nguoiDung.setTinhTrang(1);
+            
+            session.save(nguoiDung);
+            session.save(rule);
+            
+            return true;
+        }catch(Exception e){
+            Logger.getLogger(UserDAOImpl.class.getName()).log(Level.SEVERE, null, e);
+            
+            return false;
+            
+        }
+    }
+    
     private StringBuilder getMaNguoiDungBiggest(Session session){
         String sql = 
-                "Select max(n.maNguoiDung) "
-                + "FROM NguoiDung as n "
-                + "WHERE n.rules.id=2";
+                "Select max(N.maNguoiDung) "
+                + "FROM NguoiDung as N "
+                + "inner join Rules as R ON N.maNguoiDung = R.nguoiDung.maNguoiDung "
+                + "WHERE R.role = 'ROLE_USER'";
         
 
         Query query = session.createQuery(sql);
@@ -74,7 +108,7 @@ public class UserDAOImpl implements UserDAO {
         
         return  (result.size()>0)? new StringBuilder(result.get(0).toString()): new StringBuilder("BD0001"); 
        
-    }
+    }   
     
     private int tachChuoiLaySo(String ma){
         String temp = ma.substring(2);
@@ -92,33 +126,6 @@ public class UserDAOImpl implements UserDAO {
         
         return temp;
     }
-    
-    @Override
-    public boolean signUp(NguoiDung nguoiDung) {
-        try{
-            Session session = sessionFactory.getCurrentSession();
-            StringBuilder maNguoiDung = new StringBuilder();
-            int so; 
-            
-            maNguoiDung = this.getMaNguoiDungBiggest(session);
-            so = this.tachChuoiLaySo(maNguoiDung.toString());
-            maNguoiDung = this.taoMaMoi(so);
-            nguoiDung.setMatKhau(passwordEncoder.encode(nguoiDung.getMatKhau()));
-            nguoiDung.setMaNguoiDung(maNguoiDung.toString());
-            nguoiDung.setRules(new Rules(2));
-            nguoiDung.setTinhTrang(1);
-            session.save(nguoiDung);
-            
-            return true;
-        }catch(Exception e){
-            Logger.getLogger(UserDAOImpl.class.getName()).log(Level.SEVERE, null, e);
-            
-            return false;
-            
-        }
-    }
-
-
 
 
 }

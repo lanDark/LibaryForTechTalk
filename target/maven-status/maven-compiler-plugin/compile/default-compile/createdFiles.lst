@@ -52,5 +52,6 @@ com\model\Sach.class
 com\ServiceImpl\ProductServiceImpl.class
 com\DAOImpl\DanhMucDAOImpl.class
 com\ServiceImpl\UserServiceImpl.class
+com\configuration\GlobalExceptionHandler.class
 com\model\Phat.class
 com\configuration\HelloWorldInitializer.class
