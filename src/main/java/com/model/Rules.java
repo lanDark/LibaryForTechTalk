@@ -19,7 +19,7 @@ import javax.persistence.UniqueConstraint;
 @Entity
 @Table(name="rules"
     ,schema="dbo"
-    ,catalog="ThuVien"
+    ,catalog="libary"
     ,uniqueConstraints ={@UniqueConstraint(columnNames = {"nameRules","maNguoiDung"})}
 )
 public class Rules  implements java.io.Serializable {

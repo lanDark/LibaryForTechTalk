@@ -20,7 +20,7 @@ import javax.persistence.UniqueConstraint;
 @Entity
 @Table(name="theLoai"
     ,schema="dbo"
-    ,catalog="ThuVien"
+    ,catalog="libary"
     , uniqueConstraints = @UniqueConstraint(columnNames="url") 
 )
 public class TheLoai  implements java.io.Serializable {
