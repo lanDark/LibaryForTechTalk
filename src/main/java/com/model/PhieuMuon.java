@@ -22,7 +22,7 @@ import javax.persistence.Table;
 @Entity
 @Table(name="phieuMuon"
     ,schema="dbo"
-    ,catalog="ThuVien"
+    ,catalog="libary"
 )
 public class PhieuMuon  implements java.io.Serializable {
 

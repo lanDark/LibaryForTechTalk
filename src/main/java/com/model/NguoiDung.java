@@ -20,7 +20,7 @@ import javax.persistence.UniqueConstraint;
 @Entity
 @Table(name="nguoiDung"
     ,schema="dbo"
-    ,catalog="ThuVien"
+    ,catalog="libary"
     , uniqueConstraints = @UniqueConstraint(columnNames="email") 
 )
 public class NguoiDung  implements java.io.Serializable {

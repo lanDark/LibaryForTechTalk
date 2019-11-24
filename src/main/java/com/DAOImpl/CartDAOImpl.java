@@ -46,10 +46,6 @@ public class CartDAOImpl implements CartDAO{
                         ctpm.setSach(sach);
                         ctpm.setPhieuMuon(phieuMuon);
                         ctpm.setSoLuong(sach.getSoLuong());
-//                        Query giamSoLuongSach=session.createQuery("update Sach set soLuong=soLuong-:soLuong where maSach=:maSach");
-//                        giamSoLuongSach.setParameter("maSach", sach.getMaSach());
-//                        giamSoLuongSach.setParameter("soLuong", sach.getSoLuong());
-//                        giamSoLuongSach.executeUpdate();
                         Sach sachPersistent=session.get(Sach.class, sach.getMaSach());
                         if(sachPersistent.getSoLuong    ()-sach.getSoLuong()<0)
                             throw new SQLException("Sách "+sach.getTenSach()+" không đủ số lượng");

@@ -24,7 +24,6 @@ public class EncodingFilter extends GenericFilterBean {
             ServletRequest request, 
             ServletResponse response,
             FilterChain chain) throws IOException, ServletException {
-        System.out.println("------------- FILTER ---------------------");
         request.setCharacterEncoding("UTF-8");
         response.setCharacterEncoding("UTF-8");
         chain.doFilter(request, response);

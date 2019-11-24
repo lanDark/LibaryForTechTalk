@@ -21,7 +21,7 @@ import javax.persistence.Table;
 @Entity
 @Table(name="CT_PHIEUMUON"
     ,schema="dbo"
-    ,catalog="ThuVien"
+    ,catalog="libary"
 )
 public class CtPhieumuon  implements java.io.Serializable {
 

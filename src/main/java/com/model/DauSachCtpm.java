@@ -25,7 +25,7 @@ import javax.persistence.UniqueConstraint;
 @Entity
 @Table(name="DauSach_CTPM"
     ,schema="dbo"
-    ,catalog="ThuVien"
+    ,catalog="libary"
     ,uniqueConstraints = {@UniqueConstraint(columnNames = {"barcode","maCTPM"})}
 )
 public class DauSachCtpm  implements java.io.Serializable {
