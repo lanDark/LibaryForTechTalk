@@ -18,10 +18,10 @@
                                     <c:forEach var="newProduct" items="${productNews}">
                                         <c:forEach var="hinhAnhs" begin="0" end="1"  items="${newProduct.hinhAnhs}">
                                                 <c:if test="${not empty srcHinhAnh1}">
-                                                     <c:set var="srcHinhAnh2" value="${hinhAnhs.src}"/>
+                                                     <c:set var="srcHinhAnh2" value="Resource/images/books/${hinhAnhs.src}"/>
                                                 </c:if>
                                                 <c:if test="${ empty srcHinhAnh1}">
-                                                     <c:set var="srcHinhAnh1" value="${hinhAnhs.src}"/>
+                                                     <c:set var="srcHinhAnh1" value="Resource/images/books/${hinhAnhs.src}"/>
                                                 </c:if>
                                             </c:forEach>
                                         <c:forEach var="tacGia" begin="0" end="0" items="${newProduct.tacgias}">
@@ -30,8 +30,8 @@
 					<div class="product product__style--3">
 						<div class="col-lg-3 col-md-4 col-sm-6 col-12">
 							<div class="product__thumb">
-                                                            <a class="first__img" href=""><img src='<c:url value="Resource/images/books/${srcHinhAnh1}"/>' alt="product image"></a>
-                                                                <a class="second__img animation1" href="singe-product.html"><img src='<c:url value= "Resource/images/books/${srcHinhAnh2}"/>' alt="product image" ></a>
+                                                            <a class="first__img" href=""><img src='<c:url value="${srcHinhAnh1}"/>' alt="product image"></a>
+                                                                <a class="second__img animation1" href="singe-product.html"><img src='<c:url value= "${srcHinhAnh2}"/>' alt="product image" ></a>
 								<div class="hot__box">
 									<span class="hot-label">NEW BOOK</span>
 								</div>
@@ -45,7 +45,7 @@
 								<div class="action">
 									<div class="actions_inner">
 										<ul class="add_to_links">
-                                                                                    <li><a class="cart addToCart" tenSach="${newProduct.tenSach}" tacGia="${tacGiaHoTen}" url="<c:url value="Resource/images/books/${srcHinhAnh1}"/>" > 
+                                                                                    <li><a class="cart addToCart" tenSach="${newProduct.tenSach}" tacGia="${tacGiaHoTen}" url="<c:url value="${srcHinhAnh1}"/>" > 
                                                                                             <p hidden>${newProduct.maSach}</p>
                                                                                             <i class="bi bi-shopping-bag4"></i></a>
                                                                                     </li>

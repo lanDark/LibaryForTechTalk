@@ -5,14 +5,14 @@ let cart = new Cart();
 let originURL = `${window.location.origin}/Spring/`;
 cart.callCartsInJSON();
 
-
+// -------------  Tính tổng số lượng sách đặt  ------------------
 let setTongSoLuong = () =>{
     let total_sach = cart._cart.reduce((tong,sach)=>{
         return tong+=sach.soLuong;
     },0);
     $('.cart__total__tk > li').html(total_sach);
 };
-
+// -------------  End tính tổng số lượng sách đặt  ------------------
 {
     let str="";
 
@@ -66,11 +66,15 @@ $("#datGiu").click(function(e) {
         success : function(data, status, settings)
         {
             let obj = JSON.parse(data);
-            if(status == 201){
+            if(obj.status == 201){
                 $('.modal-body').html(obj.success);
                 $('#alertAddToCart').modal('show');
                 $('tbody > tr > td').remove();
                 localStorage.removeItem('CART');
+                loadMiniCart();
+                $('.product_qun')[0].innerText = 0;
+                $('.cart__total__tk > li').html(0);
+                $('.modal-body').html("Đặt mượn thành công!");
             }
                 
         },

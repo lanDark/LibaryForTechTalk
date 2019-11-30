@@ -41,7 +41,6 @@ public class CartDAOImpl implements CartDAO{
             if(phieuMuon != null)
             {
                 for(Sach sach:saches){ 
-                    for(int  i = 0;i<sach.getSoLuong();i++){
                         CtPhieumuon ctpm=new CtPhieumuon();
                         ctpm.setSach(sach);
                         ctpm.setPhieuMuon(phieuMuon);
@@ -53,7 +52,6 @@ public class CartDAOImpl implements CartDAO{
                             sachPersistent.setSoLuong(sachPersistent.getSoLuong()-sach.getSoLuong());
                         }
                         session.save(ctpm);
-                    }
                 }
                 return true;
             }

@@ -6,7 +6,7 @@ let cart = new Cart();
 
 
 let setNumberMiniCart =  ()=> {
-    
+    cart.callCartsInJSON();
     let soLuong = cart._cart.length;
     $('.product_qun')[0].innerText = soLuong;
 };

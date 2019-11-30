@@ -32,8 +32,6 @@
         <link rel="stylesheet" href="<c:url value="Resource/css/custom.css" />">
 
 	<!-- Modernizer js -->
-	<script src="<c:url value="Resource/js/vendor/modernizr-3.5.0.min.js" />"></script>
-        <script src="<c:url value="Resource/js/vendor/jquery-3.2.1.min.js" />"></script>
 </head>
 <body>
 	<!--[if lte IE 9]>
@@ -178,11 +176,11 @@
 											<span>close</span>
 										</div>
 										<div class="items-total d-flex justify-content-between">
-											<span>3 items</span>
+											<span></span>
 											<span>Cart Subtotal</span>
 										</div>
 										<div class="total_amount text-right">
-											<span>$66.00</span>
+											<span></span>
 										</div>
 										<div class="mini_action checkout">
                                                                                     <a class="checkout__btn" href="<c:url value="CartView"/>">Go to Checkout</a>

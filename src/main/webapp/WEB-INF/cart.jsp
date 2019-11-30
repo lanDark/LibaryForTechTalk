@@ -4,7 +4,7 @@
 <jsp:include page="layout/search.jsp"/>
 <jsp:include page="layout/slide.jsp"/>  
 <script type="module" src="<c:url value="Resource/js/modules/CartPage.js" />"></script>
-<script type="module" src="<c:url value="Resource/js/modules/Main.js" />"></script>
+<!--<script type="module" src=""></script>-->
 <div class="cart-main-area section-padding--lg bg--white">
             <div class="container">
                 

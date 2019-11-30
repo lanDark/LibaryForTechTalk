@@ -37,7 +37,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
  
     @Override
     protected void configure(final HttpSecurity http) throws Exception {
-            System.out.println("IN configure");
             http.addFilterBefore(new EncodingFilter(), ChannelProcessingFilter.class);
 	    http.authorizeRequests()
                 .antMatchers("/admin/**").hasRole("ADMIN")
