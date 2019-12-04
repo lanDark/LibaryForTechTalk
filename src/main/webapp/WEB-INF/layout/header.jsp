@@ -219,7 +219,7 @@
                                                                                                                     <span><a href="<c:url value="Login" />">Tạo tài khoản</a></span>
                                                                                                                     </c:when>
                                                                                                                     <c:otherwise>
-                                                                                                                        <span><a href="<c:url value="LogOut" />">Đăng Xuất</a></span>
+                                                                                                                        <span><a href="<c:url value="Logout_User" />">Đăng Xuất</a></span>
                                                                                                                     </c:otherwise>                                                                                                                  
                                                                                                                 </c:choose>
 													</div>

@@ -50,7 +50,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
 		.passwordParameter("password")
                 .defaultSuccessUrl("/Login")
                 .failureUrl("/Login?error=true")
-		.and().logout().logoutSuccessUrl("/login?logout")
+		.and().logout().logoutUrl("/Logout_User").invalidateHttpSession(true).deleteCookies("JSESSIONID").logoutSuccessUrl("/")
                 .and().rememberMe().rememberMeParameter("rememberme").key("NguyenTheLan29051997").tokenValiditySeconds(1209600)
 
 		.and().exceptionHandling().accessDeniedPage("/403")

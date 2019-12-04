@@ -107,11 +107,9 @@ public class UserController {
         boolean checkRegisterSuccess = userServiceImpl.signUp(form.convertToNguoiDungClass());
         if(checkRegisterSuccess){
             this.authenticateUserAndSetSession(form,req);
-            Logger.getLogger(register).log(Level.SEVERE, "Đăng ký thành công! "+form.getEmail());
             return true;
         }
         else{
-            Logger.getLogger(registerError).warning( "Đăng ký thất bại! "+form.getEmail());
             return false;
         }
     }

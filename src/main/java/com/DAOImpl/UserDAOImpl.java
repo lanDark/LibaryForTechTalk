@@ -64,16 +64,16 @@ public class UserDAOImpl implements UserDAO {
     
     @Override
     public boolean signUp(NguoiDung nguoiDung) {
-        int so;
+        int soTrongChuoiDuocLay;
         Rules rule;
         try{
             Session session = sessionFactory.getCurrentSession();
             StringBuilder maNguoiDung = new StringBuilder();
             rule = new Rules();
             
-            maNguoiDung = this.getMaNguoiDungBiggest(session);
-            so = this.tachChuoiLaySo(maNguoiDung.toString());
-            maNguoiDung = this.taoMaMoi(so);
+            maNguoiDung = this.getMaNguoiDungLonNhat(session);
+            soTrongChuoiDuocLay = this.tachChuoiLaySo(maNguoiDung.toString());
+            maNguoiDung = this.taoMaMoi(soTrongChuoiDuocLay);
             
             rule.setNguoiDung(nguoiDung);
             rule.setRole("ROLE_USER");
@@ -94,7 +94,7 @@ public class UserDAOImpl implements UserDAO {
         }
     }
     
-    private StringBuilder getMaNguoiDungBiggest(Session session){
+    private StringBuilder getMaNguoiDungLonNhat(Session session){
         String sql = 
                 "Select max(N.maNguoiDung) "
                 + "FROM NguoiDung as N "
