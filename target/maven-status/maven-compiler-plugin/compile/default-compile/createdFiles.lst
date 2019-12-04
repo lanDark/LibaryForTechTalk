@@ -1,13 +1,12 @@
 com\Validator\RegisterFormValidator.class
-com\Class\Man.class
 com\ServiceImpl\CartServiceImpl.class
+com\Filter\PerformanceFilter.class
 com\Service\CartService.class
 com\configuration\SpringSecurityInitializer.class
 com\Class\ForwardHandling.class
 com\DAO\CartDAO.class
 com\model\Rules.class
 com\model\LuotThich.class
-com\ServiceImpl\UserDetailsServiceImpl.class
 com\model\Tacgia.class
 com\model\CtLoi.class
 com\Service\DanhMucService.class
@@ -18,7 +17,7 @@ com\ServiceImpl\DanhMucServiceImpl.class
 com\model\TheLoai.class
 com\Validator\RegisterForm.class
 com\model\PhieuMuon.class
-com\Class\FunctionCart.class
+com\Filter\EncodingFilter.class
 com\controller\AjaxController.class
 com\securityImpl\CustomUser.class
 com\DAOImpl\ProductDAOImpl.class
@@ -26,7 +25,7 @@ com\DAOImpl\UserDAOImpl.class
 com\model\Loi.class
 com\model\DauSach.class
 com\DAO\UserDAO.class
-com\configuration\PerformanceFilter.class
+com\securityImpl\UserDetailsServiceImpl.class
 com\controller\CartController.class
 com\configuration\SecurityConfig.class
 com\controller\UserController.class
@@ -47,7 +46,6 @@ com\model\HinhAnh.class
 com\Service\UserService.class
 com\model\CtPhieuNhap.class
 com\Service\ProductService.class
-com\configuration\EncodingFilter.class
 com\model\Sach.class
 com\ServiceImpl\ProductServiceImpl.class
 com\DAOImpl\DanhMucDAOImpl.class

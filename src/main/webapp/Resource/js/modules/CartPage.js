@@ -21,8 +21,8 @@ let setTongSoLuong = () =>{
                 <tr>
                     <td class="product-thumbnail"><a href="#"><img src="${cart._cart[i].url}" alt="product img"></a></td>
                     <td class="product-name"><a href="#">${cart._cart[i].tenSach}</a></td>
-                    <td class="product-quantity"><input disabled class="soLuong" type="number" value="${cart._cart[i].soLuong}">
-                        <input class="maSach" value="${cart._cart[i].maSach}" hidden/>  
+                    <td class="product-quantity">
+                        <input maSach="${cart._cart[i].maSach}" class="soLuong" type="number" value="${cart._cart[i].soLuong}">
                     </td>
 
                     <td class="product-remove"><a href="#" class="remove" maSach="${cart._cart[i].maSach}">X</a></td>
@@ -32,7 +32,16 @@ let setTongSoLuong = () =>{
     $('#tblParticipantList tbody').html(str);
     setTongSoLuong();
 }
-
+//--------------  Cập nhật số lượng sách    -----------------
+$(document).on("change",".soLuong",function(e){
+    let maSach = $(this).attr('maSach');
+    let soLuong = $(this).val();
+    let sach = cart.getBookInCart(maSach);
+    sach.soLuong = soLuong;
+    cart.updateCart(sach);
+    cart.callCartsInJSON();
+    setTongSoLuong();
+});
 
 // -------------  Xoá item trong Cart List  ------------------
 $(document).on("click",'#tblParticipantList tbody .remove',function(e){
