@@ -36,7 +36,7 @@ $(".addToCart").click(function(e) {
     let tenSach = $(this).attr("tenSach");
     let url = $(this).attr("url");
     
-    let sach = new Sach.Builder(maSach).setTacGia(tacGia).setTenSach(tenSach).setURL(url).build();
+    let sach = new Sach.Builder(maSach).setTenSach(tenSach).setURL(url).build();
     {
         if(!(cart.checkItemInLocalStoreIsExists(maSach))){
             let str =

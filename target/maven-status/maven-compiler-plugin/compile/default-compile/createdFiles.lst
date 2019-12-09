@@ -5,6 +5,7 @@ com\Service\CartService.class
 com\configuration\SpringSecurityInitializer.class
 com\Class\ForwardHandling.class
 com\DAO\CartDAO.class
+com\DAOImpl\LibaryanDAOImpl.class
 com\model\Rules.class
 com\model\LuotThich.class
 com\model\Tacgia.class
@@ -14,9 +15,11 @@ com\model\NhaCungCap.class
 com\configuration\HibernateConfig.class
 com\model\DanhMuc.class
 com\ServiceImpl\DanhMucServiceImpl.class
+com\controller\LibarianController.class
 com\model\TheLoai.class
 com\Validator\RegisterForm.class
 com\model\PhieuMuon.class
+com\DAO\LibaryanDAO.class
 com\Filter\EncodingFilter.class
 com\controller\AjaxController.class
 com\securityImpl\CustomUser.class

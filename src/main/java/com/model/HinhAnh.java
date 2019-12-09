@@ -26,7 +26,7 @@ public class HinhAnh  implements java.io.Serializable {
 
 
      private int id;
-     private Sach sach;
+     private String sach;
      private String src;
 
     public HinhAnh() {
@@ -36,7 +36,7 @@ public class HinhAnh  implements java.io.Serializable {
     public HinhAnh(int id) {
         this.id = id;
     }
-    public HinhAnh(int id, Sach sach, String src) {
+    public HinhAnh(int id, String sach, String src) {
        this.id = id;
        this.sach = sach;
        this.src = src;
@@ -53,13 +53,12 @@ public class HinhAnh  implements java.io.Serializable {
         this.id = id;
     }
 
-@ManyToOne(fetch=FetchType.LAZY)
-    @JoinColumn(name="maSach")
-    public Sach getSach() {
+    @Column(name="maSach")
+    public String getSach() {
         return this.sach;
     }
     
-    public void setSach(Sach sach) {
+    public void setSach(String sach) {
         this.sach = sach;
     }
 

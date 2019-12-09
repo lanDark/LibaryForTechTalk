@@ -66,7 +66,7 @@ public class CtPhieumuon  implements java.io.Serializable {
         this.phieuMuon = phieuMuon;
     }
 
-@ManyToOne(fetch=FetchType.LAZY)
+@ManyToOne(fetch=FetchType.EAGER)
     @JoinColumn(name="maSach")
     public Sach getSach() {
         return this.sach;

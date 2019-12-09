@@ -10,7 +10,6 @@ export default  class Sach{
     constructor(build) {
        this.maSach = build.maSach;
        this.tenSach = build.tenSach;
-       this.tacGia = build.tacGia;
        this.soLuong = 1;
        this.url = build.url;
     }
@@ -23,8 +22,6 @@ export default  class Sach{
     get _tenSach() {return this.tenSach;}
     set _tenSach(tenSach){this.tenSach=tenSach;}    
     
-    get _tacGia() {return this.tacGia;}
-    set _tacGia(tacGia){this.tacGia=tacGia;}
     
     get _soLuong() {return this.soLuong;}
     set _soLuong(soLuong){this.soLuong=soLuong;}
@@ -48,10 +45,6 @@ export default  class Sach{
             setMaSach(maSach){
                 this.maSach = maSach;
                 return this;    
-            }
-            setTacGia(tacGia) {
-               this.tacGia = tacGia;
-               return this;
             }
             setTenSach(tenSach) {
                this.tenSach = tenSach;

@@ -1,4 +1,4 @@
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <sec:authorize access="not isAnonymous()">
@@ -15,8 +15,8 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 
 	<!-- Favicons -->
-	<link rel="shortcut icon" href="<c:url value="Resource/images/favicon.ico" />">
-	<link rel="apple-touch-icon" href="<c:url value="Resource/images/icon.png" />">
+	<link rel="shortcut icon" href="${pageContext.request.contextPath}/Resource/images/favicon.ico">
+	<link rel="apple-touch-icon" href="${pageContext.request.contextPath}/Resource/images/icon.png">
 
 	<!-- Google font (font-family: 'Roboto', sans-serif; Poppins ; Satisfy) -->
 	<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800" rel="stylesheet"> 
@@ -24,12 +24,12 @@
 	<link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900" rel="stylesheet"> 
 
 	<!-- Stylesheets -->
-	<link rel="stylesheet" href="<c:url value="Resource/css/bootstrap.min.css" />">
-	<link rel="stylesheet" href="<c:url value="Resource/css/plugins.css" />">
-        <link rel="stylesheet" href="<c:url value="Resource/style.css" />">
+	<link rel="stylesheet" href="${pageContext.request.contextPath}/Resource/css/bootstrap.min.css">
+	<link rel="stylesheet" href="${pageContext.request.contextPath}/Resource/css/plugins.css">
+        <link rel="stylesheet" href="${pageContext.request.contextPath}/Resource/style.css">
 
 	<!-- Cusom css -->
-        <link rel="stylesheet" href="<c:url value="Resource/css/custom.css" />">
+        <link rel="stylesheet" href="${pageContext.request.contextPath}/Resource/css/custom.css">
 
 	<!-- Modernizer js -->
 </head>

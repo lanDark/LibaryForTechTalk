@@ -2,6 +2,7 @@ package com.model;
 // Generated Aug 24, 2019 11:38:04 PM by Hibernate Tools 4.3.1
 
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
@@ -109,7 +110,7 @@ public class PhieuMuon  implements java.io.Serializable {
         this.trangThai = trangThai;
     }
 
-    
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy,HH:mm:ss")
     @Column(name="ngayMuon", length=10)
     public Date getNgayMuon() {
         return this.ngayMuon;
@@ -119,7 +120,7 @@ public class PhieuMuon  implements java.io.Serializable {
         this.ngayMuon = ngayMuon;
     }
 
-    
+     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy,HH:mm:ss")
     @Column(name="ngay_Phai_tra", length=10)
     public Date getNgayPhaiTra() {
         return this.ngayPhaiTra;
@@ -129,7 +130,7 @@ public class PhieuMuon  implements java.io.Serializable {
         this.ngayPhaiTra = ngayPhaiTra;
     }
 
-    
+     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy,HH:mm:ss")
     @Column(name="ngay_dat", length=10)
     public Date getNgayDat() {
         return this.ngayDat;
@@ -139,7 +140,7 @@ public class PhieuMuon  implements java.io.Serializable {
         this.ngayDat = ngayDat;
     }
 
-    
+     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy,HH:mm:ss")
     @Column(name="ngayTra", length=10)
     public Date getNgayTra() {
         return this.ngayTra;
