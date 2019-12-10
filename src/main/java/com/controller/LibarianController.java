@@ -19,6 +19,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 /**
@@ -44,28 +45,33 @@ public class LibarianController {
         return new ResponseEntity(result,HttpStatus.OK);
     }
     
-    @RequestMapping(value = "api/v1/PhieuMuons/request-holds/",method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+    @RequestMapping(value = "api/v1/PhieuMuons/request-holds/count",method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
     public @ResponseBody ResponseEntity getRequestHolds(){
         Map<String,Object> result = new HashMap<String,Object>();
-        List<PhieuMuon> yeuCauDatGiuList = libaryanDAOImpl.getYeuCauGiuMoiNhat();
+
         Object soLuongRequestHold = libaryanDAOImpl.getNumberRequestHold();
-        
-        result.put("soLuong", soLuongRequestHold);
-        result.put("list",yeuCauDatGiuList);
+        result.put("number", soLuongRequestHold);
+       
         
         return new ResponseEntity(result,HttpStatus.OK);
     }
     
-    @RequestMapping(value = "api/v1/PhieuMuons/request-holds/page/{id}",method = RequestMethod.GET)
-    public @ResponseBody ResponseEntity getRequestHoldPagination(@PathVariable int id){
+    @RequestMapping(value = "api/v1/PhieuMuons/request-holds",method = RequestMethod.GET)
+    public @ResponseBody ResponseEntity getRequestHoldPagination(@RequestParam int page,@RequestParam int limit){
         Map<String,Object> result = new HashMap<String,Object>();
+        StringBuilder mess = new StringBuilder("");
         
-        if(id <= 0){
-            result.put("error", "Lỗi Input/Output");
+        if(page <= 0 || limit <= 0){
+            
+            mess.append("Page phải lớn hơn 0");
+            
+            if(limit <= 0 )
+                mess.append(", Limit phải lớn hơn 0"); 
+            result.put("error", mess);
             return new ResponseEntity(result,HttpStatus.BAD_REQUEST);
         }
-           
-        List<PhieuMuon> yeuCauDatGiuList = libaryanDAOImpl.getPaginationRequestHold(id);
+        
+        List<PhieuMuon> yeuCauDatGiuList = libaryanDAOImpl.getPaginationRequestHold(page,limit);
         
       
        return new ResponseEntity(yeuCauDatGiuList,HttpStatus.OK);

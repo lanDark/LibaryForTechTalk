@@ -46,7 +46,7 @@ public class LibaryanDAOImpl implements LibaryanDAO{
         String hql = "FROM PhieuMuon as PM WHERE PM.trangThai = 1 ORDER BY PM.ngayDat DESC";
 
         Query query = session.createQuery(hql);
-        query.setFirstResult(1);
+        query.setFirstResult(0);
         query.setMaxResults(10);
         
         List<PhieuMuon> yeuCauDatGiuList = query.list();
@@ -60,18 +60,22 @@ public class LibaryanDAOImpl implements LibaryanDAO{
     
     @Override
     @Transactional
-    public List<PhieuMuon> getPaginationRequestHold(int page){
+    public List<PhieuMuon> getPaginationRequestHold(int page,int limit){
         Session session = sessionFactory.getCurrentSession();
         String hql = "FROM PhieuMuon as PM WHERE PM.trangThai = 1 ORDER BY PM.ngayDat DESC";
         
         Query query = session.createQuery(hql);
-        if(page == 1){
-            query.setFirstResult(page);
-            query.setMaxResults(page*10);
+        if(page == 1 && limit ==1){
+            query.setFirstResult(0);
+            query.setMaxResults(limit);
+        }
+        else if(page == 1 && limit > 1){
+            query.setFirstResult(0);
+            query.setMaxResults(limit);
         }
         else{
-            query.setFirstResult(page*10);
-            query.setMaxResults((page+1)*10);    
+            query.setFirstResult(limit*(page-1)); 
+            query.setMaxResults((limit*page)-1);    
         }
         List<PhieuMuon> yeuCauDatGiuList = query.list();
         for(PhieuMuon phieuMuon : yeuCauDatGiuList)

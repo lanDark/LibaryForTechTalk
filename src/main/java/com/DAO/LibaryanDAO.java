@@ -16,6 +16,6 @@ import java.util.List;
 public interface LibaryanDAO {
     public List<CtPhieumuon> getChiTietPhieuMuon(int idPhieuMuon);
     public List<PhieuMuon> getYeuCauGiuMoiNhat();
-    public List<PhieuMuon> getPaginationRequestHold(int page);
+    public List<PhieuMuon> getPaginationRequestHold(int page,int limit);
     public Object getNumberRequestHold();
 }
