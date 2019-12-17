@@ -32,7 +32,6 @@ $(".addToCart").click(function(e) {
     e.stopImmediatePropagation(); 
     
     let maSach = $(this).children("p").text();
-    let tacGia = $(this).attr("tacGia");
     let tenSach = $(this).attr("tenSach");
     let url = $(this).attr("url");
     
@@ -47,7 +46,6 @@ $(".addToCart").click(function(e) {
                </div>
                <div class="content">
                        <h6><a href="product-details.html">${tenSach}</a></h6>
-                       <span class="prize">${tacGia}</span>
                        <div class="product_prize d-flex justify-content-between">
                                <span class="qun"></span>
                                <ul class="d-flex justify-content-end">
@@ -83,7 +81,6 @@ let loadMiniCart = () => {
                </div>
                <div class="content">
                        <h6><a href="product-details.html">${cart._cart[i].tenSach}</a></h6>
-                       <span class="prize">${cart._cart[i].tacGia}</span>
                        <div class="product_prize d-flex justify-content-between">
                                <span class="qun"></span>
                                <ul class="d-flex justify-content-end">

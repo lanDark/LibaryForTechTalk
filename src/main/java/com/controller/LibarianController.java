@@ -32,9 +32,10 @@ import org.springframework.web.bind.annotation.ResponseBody;
 public class LibarianController {
     @Autowired
     LibaryanDAO libaryanDAOImpl;
+    
     @RequestMapping(value = "/home")
     public String home(){
-        return "Admin/index";
+        return "Libarian/index";
     }
     
     @RequestMapping(value = "api/v1/PhieuMuons/{id}/CtphieuMuons/",method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
