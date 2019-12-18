@@ -86,7 +86,21 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Send message</button>
+       
+      </div>
+    </div>
+  </div>
+</div>
+  <div class="modal fade" id="showModalDuyetYeuCau" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+    
+      <div class="modal-body">
+          <div><p>Bạn đã chắc chắn ?</p></div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Đóng</button>
+        <button type="button" class="btn btn-primary">Xác nhận</button>
       </div>
     </div>
   </div>

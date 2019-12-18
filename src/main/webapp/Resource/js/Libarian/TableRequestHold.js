@@ -9,7 +9,7 @@ export default  class TableRequestHold{
                      <td>${item.nguoiDungByMaNguoiDung.email}</td>   
                      <td>${item.ngayDat}</td>
                              <td>
-                               <a  class='btn  btn-primary btn-sm' data-toggle="modal" data-target="#mymodal">
+                               <a  class='btn  btn-primary btn-sm duyetYeuCauMuon' maPM="${item.maPm}">
                                    <i class='fas fa-edit d-block'></i>
                                        Duyệt yêu cầu 
                                </a>
@@ -22,6 +22,7 @@ export default  class TableRequestHold{
              `);                  
         });
         this.eventShowChiTietPhieuMuonClick();
+        this.eventShowTaleDuyetYeuCauClick();
     }
     eventShowChiTietPhieuMuonClick(){
         $('.showCTPM').click(function(){
@@ -42,5 +43,11 @@ export default  class TableRequestHold{
             $('#mymodal').modal();
         });  
         
+    }
+    eventShowTaleDuyetYeuCauClick(){
+        $('.duyetYeuCauMuon').click(function(){
+            let maPM = $(this).attr('maPM');
+            $('#showModalDuyetYeuCau').modal();
+        });
     }
 }
