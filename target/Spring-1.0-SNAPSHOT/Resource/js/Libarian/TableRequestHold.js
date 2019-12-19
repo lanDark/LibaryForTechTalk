@@ -23,6 +23,7 @@ export default  class TableRequestHold{
         });
         this.eventShowChiTietPhieuMuonClick();
         this.eventShowTaleDuyetYeuCauClick();
+        this.eventClickButtonAcceptCTPM();
     }
     eventShowChiTietPhieuMuonClick(){
         $('.showCTPM').click(function(){
@@ -46,8 +47,24 @@ export default  class TableRequestHold{
     }
     eventShowTaleDuyetYeuCauClick(){
         $('.duyetYeuCauMuon').click(function(){
-            let maPM = $(this).attr('maPM');
+            let maPm = $(this).attr('maPM');
             $('#showModalDuyetYeuCau').modal();
+            $('#buttonAcceptCTPM').attr('maPm',maPm);
+            
+
+        });
+    }
+    eventClickButtonAcceptCTPM(){
+        $('#buttonAcceptCTPM').click(function(){
+            let maPm = $(this).attr('mapm');
+            let clone_phieuMuonObj = window.pagination.getCtpmFromThisObjectPhieuMuonList(maPm)[0];
+            
+            
+            if(clone_phieuMuonObj.maPm == null) 
+                throw "Không tìm thấy Phiếu Mượn";
+            clone_phieuMuonObj.trangThai = 2 ;
+            $('#showModalDuyetYeuCau').modal('toggle');
+            console.log(clone_phieuMuonObj);
         });
     }
 }

@@ -94,13 +94,19 @@
   <div class="modal fade" id="showModalDuyetYeuCau" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
-    
-      <div class="modal-body">
-          <div><p>Bạn đã chắc chắn ?</p></div>
+      <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
       </div>
-      <div class="modal-footer">
+      <div class="modal-body">
+          <div style="color: #E2940B" class="float-left col-sm-2">
+            <i class="fas fa-exclamation-circle fa-2x"></i>     
+          </div>
+         
+         <p class="h5 font-weight-bold text-warning">Are you sure ?</p>
+      </div>
+      <div class="modal-footer warning">
+        <button type="button" class="btn btn-primary btn-warning" id="buttonAcceptCTPM">Xác nhận</button>
         <button type="button" class="btn btn-default" data-dismiss="modal">Đóng</button>
-        <button type="button" class="btn btn-primary">Xác nhận</button>
       </div>
     </div>
   </div>

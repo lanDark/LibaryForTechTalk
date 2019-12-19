@@ -1,8 +1,8 @@
 import Pagination from './Pagination.js';
 
-{
-    let pagination  = new Pagination();
-    pagination.pagination(1,5);
+window.pagination  = new Pagination();
+
+    pagination.pagination(1);
     $.ajax({
         type: "get",
         url:`/Spring/Libarian/api/v1/PhieuMuons/request-holds/count`,
@@ -14,4 +14,3 @@ import Pagination from './Pagination.js';
            pagination.buildPageButton(objDataSucess.number);
         }
     });   
-}
