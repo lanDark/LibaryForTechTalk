@@ -15,12 +15,7 @@ export default class Cart{
         this._cart = [];
     }
     
-    toJson(){
-         return{
-             cart : this._cart
-         };
-    }    
-    
+ 
     // Các hàm xử lý local storage
 
     checkLocalStoreIsExist(value){

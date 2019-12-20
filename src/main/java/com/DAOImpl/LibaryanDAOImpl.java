@@ -65,18 +65,10 @@ public class LibaryanDAOImpl implements LibaryanDAO{
         String hql = "FROM PhieuMuon as PM WHERE PM.trangThai = 1 ORDER BY PM.ngayDat DESC";
         
         Query query = session.createQuery(hql);
-        if(page == 1 && limit ==1){
-            query.setFirstResult(0);
-            query.setMaxResults(limit);
-        }
-        else if(page == 1 && limit > 1){
-            query.setFirstResult(0);
-            query.setMaxResults(limit);
-        }
-        else{
-            query.setFirstResult(limit*(page-1)); 
-            query.setMaxResults((limit*page)-1);    
-        }
+
+        query.setFirstResult(limit*(page-1)); 
+        query.setMaxResults(limit);    
+
         List<PhieuMuon> yeuCauDatGiuList = query.list();
         for(PhieuMuon phieuMuon : yeuCauDatGiuList)
         {

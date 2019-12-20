@@ -28,15 +28,7 @@ export default  class Sach{
     
     get _url() {return this._url;}
     set _url(url){this.url=url;}
-    toJson(){
-         return{
-            maSach : this.maSach,
-            tenSach : this.tenSach,
-            tacGia : this.tacGia,
-            soLuong : this.soLuong,
-            url : this.url
-         };
-    }
+    
     static get Builder() {
         class Builder {
             constructor(maSach) {
