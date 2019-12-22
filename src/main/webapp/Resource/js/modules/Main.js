@@ -94,7 +94,26 @@ let loadMiniCart = () => {
     $('.miniproduct').html(str);
     addEventClick();
 };
-
+$(".showProductModal").on('click', function(event){
+    event.stopPropagation();
+    event.stopImmediatePropagation();
+    var maSach=$(this).children("p").text();
+    console.log(maSach);
+    //(... rest of your JS code)
+    $.ajax({
+        type:'post',
+        url:'/Spring/quickview',
+        data : {
+            maSach : maSach
+        },
+        dataType : 'html',
+        timeout:10000,
+        success : function(data){
+            $("#quickview-wrapper").html(data);
+            $("#productmodal").modal('show');
+        }
+    });
+});
 cart.callCartsInJSON();
 
 

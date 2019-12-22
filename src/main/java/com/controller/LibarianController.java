@@ -16,6 +16,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -73,8 +74,10 @@ public class LibarianController {
         }
         
         List<PhieuMuon> yeuCauDatGiuList = libaryanDAOImpl.getPaginationRequestHold(page,limit);
-        
-      
+        for(PhieuMuon phieuMuon : yeuCauDatGiuList)
+        {
+            phieuMuon.getNguoiDungByMaNguoiDung().setMatKhau(null);
+        }
        return new ResponseEntity(yeuCauDatGiuList,HttpStatus.OK);
     }
 

@@ -46,14 +46,10 @@ public class LibaryanDAOImpl implements LibaryanDAO{
         String hql = "FROM PhieuMuon as PM WHERE PM.trangThai = 1 ORDER BY PM.ngayDat DESC";
 
         Query query = session.createQuery(hql);
-        query.setFirstResult(0);
-        query.setMaxResults(10);
+
         
         List<PhieuMuon> yeuCauDatGiuList = query.list();
-        for(PhieuMuon phieuMuon : yeuCauDatGiuList)
-        {
-            phieuMuon.getNguoiDungByMaNguoiDung().setMatKhau("");
-        }
+
        return yeuCauDatGiuList;
        
     }
@@ -72,7 +68,7 @@ public class LibaryanDAOImpl implements LibaryanDAO{
         List<PhieuMuon> yeuCauDatGiuList = query.list();
         for(PhieuMuon phieuMuon : yeuCauDatGiuList)
         {
-            phieuMuon.getNguoiDungByMaNguoiDung().setMatKhau("");
+            phieuMuon.getNguoiDungByMaNguoiDung();
         }
         return yeuCauDatGiuList;
     }

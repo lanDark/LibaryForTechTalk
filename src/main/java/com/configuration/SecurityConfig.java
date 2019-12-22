@@ -26,7 +26,7 @@ import org.springframework.security.web.access.channel.ChannelProcessingFilter;
  */
 @Configuration
 @EnableWebSecurity
-@ComponentScan(basePackages = "com")    
+@ComponentScan(basePackages = {"com.ServiceImpl","com.securityImpl"})    
 public class SecurityConfig extends WebSecurityConfigurerAdapter{
     @Autowired
     private UserDetailsService userDetailsServiceImpl;

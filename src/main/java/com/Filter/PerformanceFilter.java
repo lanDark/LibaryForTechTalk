@@ -29,8 +29,13 @@ public class PerformanceFilter implements Filter{
     @Override
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
         logger.info("IP:" + request.getRemoteAddr() +"connect to: "+request.getLocale());
+        logger.info("getLocalName: "+request.getLocalName());
+        logger.info("getRemoteAddr "+request.getRemoteAddr());
+        logger.info("getRemoteHost "+request.getRemoteHost());
+        logger.info("getScheme "+request.getScheme());
+        logger.info("getServerName "+request.getServerName());
         chain.doFilter(request, response);
-
+        
     }
 
     @Override

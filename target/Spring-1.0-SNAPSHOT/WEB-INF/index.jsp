@@ -12,4 +12,3 @@
 <jsp:include page="layout/slide.jsp"/>
 <jsp:include page="layout/boder.jsp"/>
 <jsp:include page="layout/footer.jsp"/>
-<script defer    type="module" src="<c:url value="Resource/js/modules/Main.js" />"></script>

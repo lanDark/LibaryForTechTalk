@@ -24,12 +24,12 @@ import org.springframework.transaction.annotation.Transactional;
 @Transactional(rollbackFor = SQLException.class)
 public class CartServiceImpl implements CartService{
     @Autowired 
-    CartDAO cartDAO;
+    CartDAO cartDAOImpl;
     
     @Override
     public boolean datMuon(List<Sach> saches, String maNguoiDung) throws Exception {
         try{
-            if(cartDAO.datMuon(saches, maNguoiDung)){
+            if(cartDAOImpl.datMuon(saches, maNguoiDung)){
                 return true;
             } 
         }catch(SQLException sql){

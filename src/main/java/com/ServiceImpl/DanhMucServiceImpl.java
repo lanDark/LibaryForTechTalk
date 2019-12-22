@@ -17,7 +17,7 @@ import org.springframework.transaction.annotation.Transactional;
  *
  * @author vital
  */
-    @Service(value = "danhMucService")
+    @Service
     @Transactional
 public class DanhMucServiceImpl implements DanhMucService{
     @Autowired

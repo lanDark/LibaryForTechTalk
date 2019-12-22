@@ -37,7 +37,7 @@
 					<div class="col-lg-12">
 						<div class="error__inner text-center">
 							<div class="error__logo">
-                                                            <a href="#"><img src="<c:url value="Resource/images/others/404.png" />" alt="error images"></a>
+                                                            <a href="#"><img src="${pageContext.request.contextPath}/Resource/images/others/404.png" alt="error images"></a>
 							</div>
 							<div class="error__content">
 								<h2><c:out value="${messenger}"/></h2>

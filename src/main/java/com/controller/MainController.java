@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;  
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.context.request.WebRequest;
 @Controller  
 public class MainController {  
     
@@ -19,7 +20,8 @@ public class MainController {
 
     
     @RequestMapping("/")
-    public String home(Model map) {
+    public String home(Model map,WebRequest swr) {
+
         this.getCache(map);
         return "index";
     }

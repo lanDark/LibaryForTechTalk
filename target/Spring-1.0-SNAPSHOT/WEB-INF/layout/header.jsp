@@ -6,17 +6,19 @@
     <c:set var="nguoiDung" value="true" />
 </sec:authorize>
 <!doctype html>
-<html class="no-js" lang="zxx" xmlns:th="http://www.thymeleaf.org">
+<html class="no-js" lang="zxx">
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="x-ua-compatible" content="ie=edge">
 	<title>Home | Bookshop Responsive Bootstrap4 Template</title>
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<!-- Cusom css -->
+        <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/custom.css">
 
 	<!-- Favicons -->
-	<link rel="shortcut icon" href="${pageContext.request.contextPath}/Resource/images/favicon.ico">
-	<link rel="apple-touch-icon" href="${pageContext.request.contextPath}/Resource/images/icon.png">
+	<link rel="shortcut icon" href="${pageContext.request.contextPath}/static/images/favicon.ico">
+	<link rel="apple-touch-icon" href="${pageContext.request.contextPath}/static/images/icon.png">
 
 	<!-- Google font (font-family: 'Roboto', sans-serif; Poppins ; Satisfy) -->
 	<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800" rel="stylesheet"> 
@@ -24,12 +26,10 @@
 	<link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900" rel="stylesheet"> 
 
 	<!-- Stylesheets -->
-	<link rel="stylesheet" href="${pageContext.request.contextPath}/Resource/css/bootstrap.min.css">
-	<link rel="stylesheet" href="${pageContext.request.contextPath}/Resource/css/plugins.css">
-        <link rel="stylesheet" href="${pageContext.request.contextPath}/Resource/style.css">
+	<link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/bootstrap.min.css">
+	<link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/plugins.css">
+        <link rel="stylesheet" href="${pageContext.request.contextPath}/static/style.css">
 
-	<!-- Cusom css -->
-        <link rel="stylesheet" href="${pageContext.request.contextPath}/Resource/css/custom.css">
 
 	<!-- Modernizer js -->
 </head>
@@ -47,7 +47,7 @@
 					<div class="col-md-6 col-sm-6 col-6 col-lg-2">
 						<div class="logo">
                                                     <a href="<c:url value="/"/>">
-                                                            <img src="<c:url value="Resource/images/logo/logo.png" />" alt="logo images">
+                                                            <img src="${pageContext.request.contextPath}/Resource/images/logo/logo.png" alt="logo images">
 							</a>
 						</div>
 					</div>

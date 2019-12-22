@@ -80,7 +80,7 @@ public class PhieuMuon  implements java.io.Serializable {
         this.nguoiDungByMaThuThu = nguoiDungByMaThuThu;
     }
 
-@ManyToOne(fetch=FetchType.LAZY)
+@ManyToOne(fetch=FetchType.EAGER)
     @JoinColumn(name="maNguoiDung")
     public NguoiDung getNguoiDungByMaNguoiDung() {
         return this.nguoiDungByMaNguoiDung;
