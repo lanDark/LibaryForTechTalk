@@ -6,27 +6,18 @@
 package com.controller;
 
 import com.Class.CacheMap;
-import static com.Class.CreateNameLog.*;
 import static com.Class.ForwardHandling.*;
 import com.Service.DanhMucService;
 import com.Service.UserService;
 import com.Validator.*;
-import com.model.NguoiDung;
 import com.securityImpl.CustomUser;
 import java.util.logging.*;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.authentication.AuthenticationManager;
-import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
-import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.web.authentication.WebAuthenticationDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
 
 /**
@@ -41,19 +32,10 @@ public class UserController {
     
     @Autowired
     DanhMucService danhMucServiceImpl;
-
-    @Autowired
-    RegisterFormValidator registerFormValidator;
-    
-    @Autowired
-    protected AuthenticationManager authenticationManager;
     
     private static final Logger LOG = Logger.getLogger(UserController.class.getName());
     
-    @InitBinder
-    protected void initBinder(WebDataBinder binder) {
-            binder.setValidator(registerFormValidator);
-    }
+
     
     public void getCacheForLoginPage(Model map){
         map.addAttribute("category", danhMucServiceImpl.getDanhMucAll(CacheMap.getDanhMucAll));
@@ -83,57 +65,8 @@ public class UserController {
         this.login(model, request, res);
     }
     
-    @RequestMapping(value="/LogOut",method = RequestMethod.GET)
-    public void LogOut(HttpServletRequest req,HttpServletResponse res) {
-
-    }
     
-    //https://stackoverflow.com/questions/3813028/auto-login-after-successful-registration(link function)
-    private void authenticateUserAndSetSession(RegisterForm user, HttpServletRequest request) {
-        String username = user.getEmail();
-        String password = user.getMatKhau();
-        UsernamePasswordAuthenticationToken token = new UsernamePasswordAuthenticationToken(username, password);
 
-        // generate session if one deosn't exist 
-        request.getSession();
-
-        token.setDetails(new WebAuthenticationDetails(request));
-        Authentication authenticatedUser = authenticationManager.authenticate(token);
-
-        SecurityContextHolder.getContext().setAuthentication(authenticatedUser);
-    }
-    
-    private boolean executeRegisterAndAutoLogin(RegisterForm form,HttpServletRequest req,HttpServletResponse res){
-        boolean checkRegisterSuccess = userServiceImpl.signUp(form.convertToNguoiDungClass());
-        if(checkRegisterSuccess){
-            this.authenticateUserAndSetSession(form,req);
-            return true;
-        }
-        else{
-            return false;
-        }
-    }
-    
-    @RequestMapping(value="/Register",method=RequestMethod.POST,produces = "text/plain;charset=UTF-8")
-    public String Register(@Valid RegisterForm form,BindingResult binDing,HttpServletRequest req,HttpServletResponse res){
-        NguoiDung nguoiDung =  userServiceImpl.getUserByEmail(form.getEmail());
-        
-        if(binDing.hasErrors())
-        {
-            return "/Login";
-        }else{ 
-            
-            if(nguoiDung != null){
-              binDing.rejectValue("email","", "Email này đã được đăng ký");
-              return "/Login";
-            }
-            if(this.executeRegisterAndAutoLogin(form,req,res))
-                forwardSRC(req, res,"/") ;
-            else
-                forwardSRC(req, res,"/Login");
-        }
-        return null;
-    }
     
 
 }

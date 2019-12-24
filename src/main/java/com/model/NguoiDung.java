@@ -3,6 +3,7 @@ package com.model;
 
 
 import java.util.HashSet;
+import java.util.Objects;
 import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -199,6 +200,65 @@ public class NguoiDung  implements java.io.Serializable {
     
     public void setPhieuNhaps(Set<PhieuNhap> phieuNhaps) {
         this.phieuNhaps = phieuNhaps;
+    }
+
+
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final NguoiDung other = (NguoiDung) obj;
+        if (!Objects.equals(this.maNguoiDung, other.maNguoiDung)) {
+            return false;
+        }
+        if (!Objects.equals(this.email, other.email)) {
+            return false;
+        }
+        if (!Objects.equals(this.matKhau, other.matKhau)) {
+            return false;
+        }
+        if (!Objects.equals(this.hoTen, other.hoTen)) {
+            return false;
+        }
+        if (!Objects.equals(this.sdt, other.sdt)) {
+            return false;
+        }
+        if (!Objects.equals(this.diaChi, other.diaChi)) {
+            return false;
+        }
+        if (!Objects.equals(this.cmnd, other.cmnd)) {
+            return false;
+        }
+        if (!Objects.equals(this.tinhTrang, other.tinhTrang)) {
+            return false;
+        }
+        if (!Objects.equals(this.rules, other.rules)) {
+            return false;
+        }
+        if (!Objects.equals(this.luotThiches, other.luotThiches)) {
+            return false;
+        }
+        if (!Objects.equals(this.phieuMuonsForMaThuThu, other.phieuMuonsForMaThuThu)) {
+            return false;
+        }
+        if (!Objects.equals(this.phieuMuonsForMaNguoiDung, other.phieuMuonsForMaNguoiDung)) {
+            return false;
+        }
+        if (!Objects.equals(this.phieuMuonsForNguoiNhanTra, other.phieuMuonsForNguoiNhanTra)) {
+            return false;
+        }
+        if (!Objects.equals(this.phieuNhaps, other.phieuNhaps)) {
+            return false;
+        }
+        return true;
     }
 
   

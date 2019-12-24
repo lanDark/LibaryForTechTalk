@@ -84,4 +84,11 @@ public class LibaryanDAOImpl implements LibaryanDAO{
         
         return (Long) itr.next();
     }
+    
+    @Transactional
+    public PhieuMuon read(int maPm){
+        Session session = sessionFactory.getCurrentSession();
+        PhieuMuon phieuMuon = session.get(PhieuMuon.class,maPm);
+        return phieuMuon;
+    }
 }

@@ -1,8 +1,8 @@
 
 package com.Service;
 
+import com.Interface.CRUD;
 import com.model.NguoiDung;
-import javax.servlet.http.HttpServletRequest;
 
 /**
  *
@@ -11,11 +11,8 @@ import javax.servlet.http.HttpServletRequest;
  * @return      the image at the specified URL
  * @see         Image
  */
-public interface UserService {
-    public boolean login(HttpServletRequest req,String email,String password);
+public interface UserService extends CRUD<NguoiDung,String>{
     public boolean signUp(NguoiDung nguoiDung);
-    public boolean logOut();
-    public boolean datMuon(HttpServletRequest req) throws Exception;
     /**
      *
      * @author vital

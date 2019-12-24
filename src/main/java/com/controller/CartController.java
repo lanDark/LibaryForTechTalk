@@ -5,7 +5,7 @@
  */
 package com.controller;
 import com.Service.CartService;
-import com.Service.ProductService;
+import com.Service.SachService;
 import com.model.Sach;
 import com.securityImpl.CustomUser;
 import java.io.IOException;
@@ -13,8 +13,6 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,7 +32,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @Controller
 public class CartController {
     @Autowired
-    ProductService productServiceImpl;
+    SachService sachServiceImpl;
     
     @Autowired
     CartService cartServiceImpl;
@@ -48,7 +46,7 @@ public class CartController {
     
     @RequestMapping(value="/datMuon",method=RequestMethod.POST,produces = {"application/json;charset=UTF-8"})
     @ResponseBody
-    public ResponseEntity addToCartItem(@RequestBody ArrayList<Sach> cart,HttpServletRequest request,Model model,HttpServletResponse res) throws IOException {
+    public ResponseEntity addToCartItem(@RequestBody ArrayList<Sach> cart,HttpServletRequest request,Model model,HttpServletResponse res) throws IOException, Exception {
         boolean bool;
         Map<String,Object> result = new HashMap<String,Object>();
         
@@ -73,12 +71,9 @@ public class CartController {
             }
         
         }catch(SQLException sqlException){
-            result.put("error", sqlException.getMessage());
-            return new ResponseEntity(result,HttpStatus.INTERNAL_SERVER_ERROR);
+            throw new SQLException(sqlException.getMessage());
             
-        } catch (Exception ex) {
-            result.put("SERVER", "Có lỗi xảy ra!");
-        }
+        } 
         return new ResponseEntity(result,HttpStatus.CREATED);
     }
 

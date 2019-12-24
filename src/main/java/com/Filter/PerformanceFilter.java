@@ -13,6 +13,7 @@ import javax.servlet.ServletException;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 import javax.servlet.annotation.WebFilter;
+import javax.servlet.http.HttpServletRequest;
 import org.apache.log4j.Logger;
 
 /**
@@ -28,13 +29,15 @@ public class PerformanceFilter implements Filter{
 
     @Override
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
-        logger.info("IP:" + request.getRemoteAddr() +"connect to: "+request.getLocale());
-        logger.info("getLocalName: "+request.getLocalName());
-        logger.info("getRemoteAddr "+request.getRemoteAddr());
-        logger.info("getRemoteHost "+request.getRemoteHost());
-        logger.info("getScheme "+request.getScheme());
-        logger.info("getServerName "+request.getServerName());
-        chain.doFilter(request, response);
+        try{
+            HttpServletRequest req = (HttpServletRequest) request;
+            logger.info("IP:" + request.getRemoteAddr() +"connect to: "+req.getPathInfo());
+
+            chain.doFilter(request, response);
+            
+        }catch(Exception e){
+            
+        }
         
     }
 

@@ -4,6 +4,7 @@ package com.model;
 
 import java.math.BigDecimal;
 import java.util.HashSet;
+import java.util.Objects;
 import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -23,8 +24,8 @@ import javax.persistence.UniqueConstraint;
 @Table(name="sach"
     ,schema="dbo"
     ,catalog="libary"
-    , uniqueConstraints = @UniqueConstraint(columnNames="url") 
-)
+    , uniqueConstraints = @UniqueConstraint(columnNames="url") )
+
 public class Sach  implements java.io.Serializable {
 
 
@@ -261,6 +262,80 @@ public class Sach  implements java.io.Serializable {
     
     public void setCtPhieuNhaps(Set<CtPhieuNhap> ctPhieuNhaps) {
         this.ctPhieuNhaps = ctPhieuNhaps;
+    }
+
+  
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Sach other = (Sach) obj;
+        if (!Objects.equals(this.maSach, other.maSach)) {
+            return false;
+        }
+        if (!Objects.equals(this.tenSach, other.tenSach)) {
+            return false;
+        }
+        if (!Objects.equals(this.loaiBia, other.loaiBia)) {
+            return false;
+        }
+        if (!Objects.equals(this.kichThuoc, other.kichThuoc)) {
+            return false;
+        }
+        if (!Objects.equals(this.namXuatBan, other.namXuatBan)) {
+            return false;
+        }
+        if (!Objects.equals(this.url, other.url)) {
+            return false;
+        }
+        if (!Objects.equals(this.ngayTao, other.ngayTao)) {
+            return false;
+        }
+        if (!Objects.equals(this.nhaCungCap, other.nhaCungCap)) {
+            return false;
+        }
+        if (!Objects.equals(this.theLoai, other.theLoai)) {
+            return false;
+        }
+        if (!Objects.equals(this.trongLuong, other.trongLuong)) {
+            return false;
+        }
+        if (!Objects.equals(this.soTrang, other.soTrang)) {
+            return false;
+        }
+        if (!Objects.equals(this.gia, other.gia)) {
+            return false;
+        }
+        if (!Objects.equals(this.soLuong, other.soLuong)) {
+            return false;
+        }
+        if (!Objects.equals(this.luotThiches, other.luotThiches)) {
+            return false;
+        }
+        if (!Objects.equals(this.tacgias, other.tacgias)) {
+            return false;
+        }
+        if (!Objects.equals(this.ctPhieumuons, other.ctPhieumuons)) {
+            return false;
+        }
+        if (!Objects.equals(this.hinhAnhs, other.hinhAnhs)) {
+            return false;
+        }
+        if (!Objects.equals(this.dauSaches, other.dauSaches)) {
+            return false;
+        }
+        if (!Objects.equals(this.ctPhieuNhaps, other.ctPhieuNhaps)) {
+            return false;
+        }
+        return true;
     }
 
 

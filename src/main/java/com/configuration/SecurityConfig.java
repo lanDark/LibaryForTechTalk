@@ -40,7 +40,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
     protected void configure(final HttpSecurity http) throws Exception {
             http.addFilterBefore(new EncodingFilter(), ChannelProcessingFilter.class);
 	    http.authorizeRequests()
-                .antMatchers("/admin/**").hasRole("ADMIN")
+                .antMatchers("/libarian/**","/Libarian/**").hasRole("LIBARIAN")
                 .antMatchers("/datMuon**").hasRole("USER")
                     .antMatchers("/CartView**").hasRole("USER")
                 .and()

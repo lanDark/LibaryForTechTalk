@@ -5,16 +5,13 @@
  */
 package com.DAO;
 
-import com.model.Cart;
+import com.Interface.CRUD;
 import com.model.NguoiDung;
-import com.securityImpl.CustomUser;
-import java.util.ArrayList;
-
 /**
  *
  * @author vital
  */
-public interface UserDAO {
+public interface UserDAO extends CRUD<NguoiDung,String>{
 
     /**
      * Xử lý chức năng lấy người dùng

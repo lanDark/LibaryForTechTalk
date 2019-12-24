@@ -30,6 +30,44 @@
     <div class="container-fluid">
         <div class="card card-primary">
                 <div class ="card-body">
+                    <div class="row mb-2">
+                        <div class="col-sm-6 col-md-6 align-self-end">
+                                <label>LIMIT</label>
+                                <select id="selectLimit">
+                                    <option value="5">5</option>
+                                    <option value="10">10</option>
+                                    <option value="25">25</option>
+                                    <option value="50">50</option>
+                                </select>
+                        </div> 
+                        <div class="col-sm-6 col-md-6 ">
+                            <div class="float-right ">
+                                
+                                <div class=" container">
+
+                                    <div class="clearfix position-relative">
+                                        
+                                        <div class="input-group ">
+                                            <div class="input-group-prepend">
+                                                 <span class="input-group-text" id="basic-addon1">
+                                                     <i class="fas fa-search-plus fa-flip-horizontal fa-1x"></i>
+                                                 </span>
+                                            </div>
+                                            <input type="search" id="searchTable" class="form-control"/>
+
+                                        </div>
+                                        <div id='test'class=' bg-light col-md-12 position-absolute' style="z-index:1;border-radius: 10px;">
+           
+                                         </div>        
+                                    </div>
+
+
+                                </div>
+
+                            </div>
+
+                        </div>
+                    </div>
                     <table class="table table-bordered" id="tableYeuCauDatGiuSach">
                       <thead>
                           <tr>
@@ -70,6 +108,7 @@
             <h4 class="modal-title" id="exampleModalLabel">New message</h4>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
       </div>
+        <div
       <div class="modal-body">
             <table class="table table-bordered" id="tableModalRequestHold">
                 <thead>

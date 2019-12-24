@@ -6,14 +6,8 @@
 package com.DAOImpl;
 
 import com.DAO.UserDAO;
-import com.model.Cart;
-import com.model.CtPhieumuon;
 import com.model.NguoiDung;
-import com.model.PhieuMuon;
 import com.model.Rules;
-import com.securityImpl.CustomUser;
-import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -23,6 +17,7 @@ import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 /**
  *
@@ -37,10 +32,47 @@ public class UserDAOImpl implements UserDAO {
     PasswordEncoder passwordEncoder;
     
     private final Logger LOG=Logger.getLogger(UserDAOImpl.class.getName());
+    /**
+     *
+     * Hàm xử lý riêng của lớp
+     */
+    private int tachChuoiLaySo(String ma){
+        String temp = ma.substring(2);
+        int so = Integer.parseInt(temp);
+        
+        return so+1;
+    }
     
+    private StringBuilder taoMaMoi(int so){
+        StringBuilder temp = new StringBuilder("BD"+so);
+        
+        while(temp.length()<6){
+            temp.insert(2, "0");
+        }
+        
+        return temp;
+    }
+    private StringBuilder getMaNguoiDungLonNhat(Session session){
+        String sql = 
+                "Select max(N.maNguoiDung) "
+                + "FROM NguoiDung as N "
+                + "inner join Rules as R ON N.maNguoiDung = R.nguoiDung.maNguoiDung "
+                + "WHERE R.role = 'ROLE_USER'";
+        
+
+        Query query = session.createQuery(sql);
+        query.setMaxResults(1);
+        List result = query.list();
+        
+        return  !(result.isEmpty()) ? new StringBuilder(result.get(0).toString()): new StringBuilder("BD0001"); 
+       
+    }  
+    /**
+     *
+     * Các overide của interface
+     */
     @Override
     public NguoiDung getUserByEmail(String email) {
-        LOG.info("Connect to method UserDAOIMPL.login :  "+email);
         try
         {
             String hql="From NguoiDung ND where ND.email= :ND_email";
@@ -63,7 +95,7 @@ public class UserDAOImpl implements UserDAO {
 
     
     @Override
-    public boolean signUp(NguoiDung nguoiDung) {
+    public boolean signUp(NguoiDung nguoiDung){
         int soTrongChuoiDuocLay;
         Rules rule;
         try{
@@ -88,44 +120,84 @@ public class UserDAOImpl implements UserDAO {
             return true;
         }catch(Exception e){
             Logger.getLogger(UserDAOImpl.class.getName()).log(Level.SEVERE, null, e);
-            
             return false;
+        }
+    }
+   
+    @Override
+    public boolean create(NguoiDung nguoiDung) {
+        Session session = sessionFactory.getCurrentSession();
+        try{
+        
+            session.saveOrUpdate(nguoiDung);
             
+            return true;
+        }catch(Exception e){
+            Logger.getLogger(UserDAOImpl.class.getName()).log(Level.SEVERE, null, e);
+            return false;
         }
     }
-    
-    private StringBuilder getMaNguoiDungLonNhat(Session session){
-        String sql = 
-                "Select max(N.maNguoiDung) "
-                + "FROM NguoiDung as N "
-                + "inner join Rules as R ON N.maNguoiDung = R.nguoiDung.maNguoiDung "
-                + "WHERE R.role = 'ROLE_USER'";
-        
 
-        Query query = session.createQuery(sql);
-        query.setMaxResults(1);
-        List result = query.list();
-        
-        return  (result.size()>0)? new StringBuilder(result.get(0).toString()): new StringBuilder("BD0001"); 
-       
-    }   
-    
-    private int tachChuoiLaySo(String ma){
-        String temp = ma.substring(2);
-        int so = Integer.parseInt(temp);
-        
-        return so+1;
-    }
-    
-    private StringBuilder taoMaMoi(int so){
-        StringBuilder temp = new StringBuilder("BD"+so);
-        
-        while(temp.length()<6){
-            temp.insert(2, "0");
+    @Override
+    public List<NguoiDung> findAll() {
+        Session session = sessionFactory.getCurrentSession();
+        try{
+            String hql =  "SELECT nd FROM NguoiDung nd "
+                    + "INNER JOIN nd.rules rule"
+                    + "on rule.role.nguoiDung.maNguoiDung = nd.maNguoiDung "
+                    + "and role != :stringRole";
+            Query query = session.createQuery(hql);
+            List<NguoiDung> nguoiDungList;
+            query.setParameter("stringRole", "ROLE_ADMIN");
+
+            nguoiDungList = query.list();
+            return nguoiDungList;   
+        }catch(Exception e){
+            Logger.getLogger(UserDAOImpl.class.getName()).log(Level.SEVERE, null, e);
+            return null;
         }
-        
-        return temp;
+
     }
 
+    @Override
+    public NguoiDung find(String id) {
+        try{
+            Session session = sessionFactory.getCurrentSession();
+            NguoiDung nguoiDung = session.get(NguoiDung.class, id);
 
+            return nguoiDung;
+        }catch(Exception e){
+            Logger.getLogger(UserDAOImpl.class.getName()).log(Level.SEVERE, null, e);
+            return null;
+        }
+    }
+
+    @Override
+    public boolean update(NguoiDung object) {
+        try{
+            Session session = sessionFactory.getCurrentSession();
+            session.saveOrUpdate(object);
+            
+            return true;
+        }catch(Exception e){
+            Logger.getLogger(UserDAOImpl.class.getName()).log(Level.SEVERE, null, e);
+            return false;
+        }
+    }
+
+    @Override
+    public boolean delete(String id) {
+        try{
+            Session session = sessionFactory.getCurrentSession();
+            NguoiDung nguoiDung = session.get(NguoiDung.class, id);
+            session.delete(nguoiDung);
+            
+            return true;
+        }catch(Exception e){
+            Logger.getLogger(UserDAOImpl.class.getName()).log(Level.SEVERE, null, e);
+            return false;
+        }
+    }
+
+    
 }

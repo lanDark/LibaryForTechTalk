@@ -84,18 +84,15 @@ $("#datGiu").click(function(e) {
                 $('.product_qun')[0].innerText = 0;
                 $('.cart__total__tk > li').html(0);
                 $('.modal-body').html("Đặt mượn thành công!");
+                $('#alertAddToCart').modal('show');
             }
                 
         },
         error: function (xhr, ajaxOptions, error) {
             let obj = JSON.parse(xhr.responseText);
             if(xhr.status == 500){
-                $('.modal-body').html(obj.error);
+                $('.modal-body').html(obj.messeenger);
                 $('#alertAddToCart').modal('show');
-            }
-            if(xhr.status == 403){
-                let origin =  window.location.origin;
-                window.location.href = `${originURL}Login`;
             }
         }
         

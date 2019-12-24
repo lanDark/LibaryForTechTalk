@@ -40,7 +40,7 @@
                                                             <a href="#"><img src="${pageContext.request.contextPath}/Resource/images/others/404.png" alt="error images"></a>
 							</div>
 							<div class="error__content">
-								<h2><c:out value="${messenger}"/></h2>
+								<h2><c:out value="${messeenger}"/></h2>
 								<p>It looks like you are lost! Try searching here</p>
 								<div class="search_form_wrapper">
 									<form action="#">

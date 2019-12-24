@@ -5,27 +5,19 @@
  */
 package com.Service;
 
+import com.Interface.CRUD;
 import com.model.Sach;
 import java.util.List;
 
 /**
  * @author vital
  */
-public interface ProductService {
+public interface SachService extends CRUD<Sach,String>{
     /**
      * Lấy sách mới nhất
      */
     public List getNewProductView(String getNewProductView);
-    /**
-     * Lấy sách theo danh mục
-     */
-    public List getProductByCategoryView();
-    /**
-     * Lấy sách theo loại của danh mục
-     */
-    public List getProductByKindView();
-    public Sach getSach(String maSach);
-    public boolean updateProduct();
-    public boolean insertProduct();
-    public boolean deleteProduct();
+
+
+
 }

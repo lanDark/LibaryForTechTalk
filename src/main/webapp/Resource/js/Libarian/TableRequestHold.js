@@ -9,14 +9,21 @@ export default  class TableRequestHold{
                      <td>${item.nguoiDungByMaNguoiDung.email}</td>   
                      <td>${item.ngayDat}</td>
                              <td>
-                               <a  class='btn  btn-primary btn-sm duyetYeuCauMuon' maPM="${item.maPm}">
-                                   <i class='fas fa-edit d-block'></i>
-                                       Duyệt yêu cầu 
-                               </a>
-                                 <a class ='btn btn-primary btn-sm showCTPM'  maPM="${item.maPm}">
-                                     <i class='fas fa-eye d-block'></i>
-                                     Xem sách đặt
-                                 </a>  
+                                <class class="row">
+                                    
+                                        <a  class='btn  btn-primary btn-sm duyetYeuCauMuon' maPM="${item.maPm}">
+                                            <i class='fas fa-edit d-block'></i> Duyệt yêu cầu 
+                                        </a>
+                                   
+                                    <div class="col-sm-6 col-md-6">
+                                        <a class ='btn btn-primary btn-sm showCTPM'  maPM="${item.maPm}">
+                                            <i class='fas fa-eye d-block'></i>
+                                            Xem sách đặt
+                                        </a>  
+                                    </div>
+                                </class>
+
+
                              </td>
                  </tr>
              `);                  

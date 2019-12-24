@@ -45,7 +45,7 @@
 								<div class="action">
 									<div class="actions_inner">
 										<ul class="add_to_links">
-                                                                                    <li><a class="cart addToCart" tenSach="${newProduct.tenSach}" tacGia="${tacGiaHoTen}" url="<c:url value="${srcHinhAnh1}"/>" > 
+                                                                                    <li><a class="cart addToCart" tenSach="${newProduct.tenSach}" tacGia="${tacGiaHoTen}" url="<c:out value="${pageContext.request.contextPath}/${srcHinhAnh1}"/>" > 
                                                                                             <p hidden>${newProduct.maSach}</p>
                                                                                             <i class="bi bi-shopping-bag4"></i></a>
                                                                                     </li>

@@ -1,58 +1,64 @@
-D:\Documents\NetBeansProjects\Qu?n Lý Th? Vi?n\LibaryForTechTalk\src\main\java\com\configuration\HelloWorldInitializer.java
-D:\Documents\NetBeansProjects\Qu?n Lý Th? Vi?n\LibaryForTechTalk\src\main\java\com\DAOImpl\ProductDAOImpl.java
-D:\Documents\NetBeansProjects\Qu?n Lý Th? Vi?n\LibaryForTechTalk\src\main\java\com\ServiceImpl\ProductServiceImpl.java
-D:\Documents\NetBeansProjects\Qu?n Lý Th? Vi?n\LibaryForTechTalk\src\main\java\com\configuration\HelloWorldConfig.java
-D:\Documents\NetBeansProjects\Qu?n Lý Th? Vi?n\LibaryForTechTalk\src\main\java\com\DAOImpl\DanhMucDAOImpl.java
-D:\Documents\NetBeansProjects\Qu?n Lý Th? Vi?n\LibaryForTechTalk\src\main\java\com\Class\CacheMap.java
-D:\Documents\NetBeansProjects\Qu?n Lý Th? Vi?n\LibaryForTechTalk\src\main\java\com\model\NguoiDung.java
-D:\Documents\NetBeansProjects\Qu?n Lý Th? Vi?n\LibaryForTechTalk\src\main\java\com\ServiceImpl\CartServiceImpl.java
-D:\Documents\NetBeansProjects\Qu?n Lý Th? Vi?n\LibaryForTechTalk\src\main\java\com\DAO\CartDAO.java
-D:\Documents\NetBeansProjects\Qu?n Lý Th? Vi?n\LibaryForTechTalk\src\main\java\com\model\Sach.java
-D:\Documents\NetBeansProjects\Qu?n Lý Th? Vi?n\LibaryForTechTalk\src\main\java\com\Class\ForwardHandling.java
-D:\Documents\NetBeansProjects\Qu?n Lý Th? Vi?n\LibaryForTechTalk\src\main\java\com\controller\CartController.java
-D:\Documents\NetBeansProjects\Qu?n Lý Th? Vi?n\LibaryForTechTalk\src\main\java\com\controller\CategoryController.java
-D:\Documents\NetBeansProjects\Qu?n Lý Th? Vi?n\LibaryForTechTalk\src\main\java\com\controller\MainController.java
-D:\Documents\NetBeansProjects\Qu?n Lý Th? Vi?n\LibaryForTechTalk\src\main\java\com\DAO\UserDAO.java
-D:\Documents\NetBeansProjects\Qu?n Lý Th? Vi?n\LibaryForTechTalk\src\main\java\com\securityImpl\CustomUser.java
-D:\Documents\NetBeansProjects\Qu?n Lý Th? Vi?n\LibaryForTechTalk\src\main\java\com\Validator\RegisterFormValidator.java
-D:\Documents\NetBeansProjects\Qu?n Lý Th? Vi?n\LibaryForTechTalk\src\main\java\com\DAO\ProductDAO.java
-D:\Documents\NetBeansProjects\Qu?n Lý Th? Vi?n\LibaryForTechTalk\src\main\java\com\model\Cart.java
-D:\Documents\NetBeansProjects\Qu?n Lý Th? Vi?n\LibaryForTechTalk\src\main\java\com\model\HinhAnh.java
-D:\Documents\NetBeansProjects\Qu?n Lý Th? Vi?n\LibaryForTechTalk\src\main\java\com\model\Tacgia.java
-D:\Documents\NetBeansProjects\Qu?n Lý Th? Vi?n\LibaryForTechTalk\src\main\java\com\model\DanhMuc.java
-D:\Documents\NetBeansProjects\Qu?n Lý Th? Vi?n\LibaryForTechTalk\src\main\java\com\model\PhieuMuon.java
-D:\Documents\NetBeansProjects\Qu?n Lý Th? Vi?n\LibaryForTechTalk\src\main\java\com\model\DauSachCtpm.java
-D:\Documents\NetBeansProjects\Qu?n Lý Th? Vi?n\LibaryForTechTalk\src\main\java\com\model\TheLoai.java
-D:\Documents\NetBeansProjects\Qu?n Lý Th? Vi?n\LibaryForTechTalk\src\main\java\com\Filter\PerformanceFilter.java
-D:\Documents\NetBeansProjects\Qu?n Lý Th? Vi?n\LibaryForTechTalk\src\main\java\com\model\PhieuNhap.java
-D:\Documents\NetBeansProjects\Qu?n Lý Th? Vi?n\LibaryForTechTalk\src\main\java\com\model\LuotThich.java
-D:\Documents\NetBeansProjects\Qu?n Lý Th? Vi?n\LibaryForTechTalk\src\main\java\com\DAO\LibaryanDAO.java
-D:\Documents\NetBeansProjects\Qu?n Lý Th? Vi?n\LibaryForTechTalk\src\main\java\com\Validator\RegisterForm.java
-D:\Documents\NetBeansProjects\Qu?n Lý Th? Vi?n\LibaryForTechTalk\src\main\java\com\controller\LibarianController.java
-D:\Documents\NetBeansProjects\Qu?n Lý Th? Vi?n\LibaryForTechTalk\src\main\java\com\model\Rules.java
-D:\Documents\NetBeansProjects\Qu?n Lý Th? Vi?n\LibaryForTechTalk\src\main\java\com\configuration\SecurityConfig.java
-D:\Documents\NetBeansProjects\Qu?n Lý Th? Vi?n\LibaryForTechTalk\src\main\java\com\securityImpl\UserDetailsServiceImpl.java
-D:\Documents\NetBeansProjects\Qu?n Lý Th? Vi?n\LibaryForTechTalk\src\main\java\com\model\NhaCungCap.java
-D:\Documents\NetBeansProjects\Qu?n Lý Th? Vi?n\LibaryForTechTalk\src\main\java\com\controller\UserController.java
-D:\Documents\NetBeansProjects\Qu?n Lý Th? Vi?n\LibaryForTechTalk\src\main\java\com\DAOImpl\CartDAOImpl.java
-D:\Documents\NetBeansProjects\Qu?n Lý Th? Vi?n\LibaryForTechTalk\src\main\java\com\model\Phat.java
-D:\Documents\NetBeansProjects\Qu?n Lý Th? Vi?n\LibaryForTechTalk\src\main\java\com\DAOImpl\UserDAOImpl.java
-D:\Documents\NetBeansProjects\Qu?n Lý Th? Vi?n\LibaryForTechTalk\src\main\java\com\Service\DanhMucService.java
-D:\Documents\NetBeansProjects\Qu?n Lý Th? Vi?n\LibaryForTechTalk\src\main\java\com\ServiceImpl\DanhMucServiceImpl.java
-D:\Documents\NetBeansProjects\Qu?n Lý Th? Vi?n\LibaryForTechTalk\src\main\java\com\DAO\DanhMucDAO.java
-D:\Documents\NetBeansProjects\Qu?n Lý Th? Vi?n\LibaryForTechTalk\src\main\java\com\model\Loi.java
-D:\Documents\NetBeansProjects\Qu?n Lý Th? Vi?n\LibaryForTechTalk\src\main\java\com\model\CtLoi.java
-D:\Documents\NetBeansProjects\Qu?n Lý Th? Vi?n\LibaryForTechTalk\src\main\java\com\Service\CartService.java
-D:\Documents\NetBeansProjects\Qu?n Lý Th? Vi?n\LibaryForTechTalk\src\main\java\com\ServiceImpl\UserServiceImpl.java
-D:\Documents\NetBeansProjects\Qu?n Lý Th? Vi?n\LibaryForTechTalk\src\main\java\com\DAOImpl\LibaryanDAOImpl.java
-D:\Documents\NetBeansProjects\Qu?n Lý Th? Vi?n\LibaryForTechTalk\src\main\java\com\model\DauSach.java
-D:\Documents\NetBeansProjects\Qu?n Lý Th? Vi?n\LibaryForTechTalk\src\main\java\com\Service\UserService.java
-D:\Documents\NetBeansProjects\Qu?n Lý Th? Vi?n\LibaryForTechTalk\src\main\java\com\configuration\SpringSecurityInitializer.java
-D:\Documents\NetBeansProjects\Qu?n Lý Th? Vi?n\LibaryForTechTalk\src\main\java\com\model\CtPhieumuon.java
-D:\Documents\NetBeansProjects\Qu?n Lý Th? Vi?n\LibaryForTechTalk\src\main\java\com\configuration\GlobalExceptionHandler.java
-D:\Documents\NetBeansProjects\Qu?n Lý Th? Vi?n\LibaryForTechTalk\src\main\java\com\Service\ProductService.java
-D:\Documents\NetBeansProjects\Qu?n Lý Th? Vi?n\LibaryForTechTalk\src\main\java\com\Filter\EncodingFilter.java
-D:\Documents\NetBeansProjects\Qu?n Lý Th? Vi?n\LibaryForTechTalk\src\main\java\com\controller\AjaxController.java
-D:\Documents\NetBeansProjects\Qu?n Lý Th? Vi?n\LibaryForTechTalk\src\main\java\com\configuration\HibernateConfig.java
-D:\Documents\NetBeansProjects\Qu?n Lý Th? Vi?n\LibaryForTechTalk\src\main\java\com\Class\CreateNameLog.java
-D:\Documents\NetBeansProjects\Qu?n Lý Th? Vi?n\LibaryForTechTalk\src\main\java\com\model\CtPhieuNhap.java
+D:\Documents\NetBeansProjects\QuanLyThuVien\LibaryForTechTalk\src\main\java\com\DAO\CartDAO.java
+D:\Documents\NetBeansProjects\QuanLyThuVien\LibaryForTechTalk\src\main\java\com\DAOImpl\UserDAOImpl.java
+D:\Documents\NetBeansProjects\QuanLyThuVien\LibaryForTechTalk\src\main\java\com\DAO\DanhMucDAO.java
+D:\Documents\NetBeansProjects\QuanLyThuVien\LibaryForTechTalk\src\main\java\com\Class\CacheMap.java
+D:\Documents\NetBeansProjects\QuanLyThuVien\LibaryForTechTalk\src\main\java\com\DAO\SachDAO.java
+D:\Documents\NetBeansProjects\QuanLyThuVien\LibaryForTechTalk\src\main\java\com\controller\RegisterController.java
+D:\Documents\NetBeansProjects\QuanLyThuVien\LibaryForTechTalk\src\main\java\com\controller\CartController.java
+D:\Documents\NetBeansProjects\QuanLyThuVien\LibaryForTechTalk\src\main\java\com\Service\UserService.java
+D:\Documents\NetBeansProjects\QuanLyThuVien\LibaryForTechTalk\src\main\java\com\securityImpl\CustomUser.java
+D:\Documents\NetBeansProjects\QuanLyThuVien\LibaryForTechTalk\src\main\java\com\model\PhieuMuon.java
+D:\Documents\NetBeansProjects\QuanLyThuVien\LibaryForTechTalk\src\main\java\com\controller\HomeController.java
+D:\Documents\NetBeansProjects\QuanLyThuVien\LibaryForTechTalk\src\main\java\com\controller\LibarianController.java
+D:\Documents\NetBeansProjects\QuanLyThuVien\LibaryForTechTalk\src\main\java\com\model\CtLoi.java
+D:\Documents\NetBeansProjects\QuanLyThuVien\LibaryForTechTalk\src\main\java\com\model\Loi.java
+D:\Documents\NetBeansProjects\QuanLyThuVien\LibaryForTechTalk\src\main\java\com\DAO\UserDAO.java
+D:\Documents\NetBeansProjects\QuanLyThuVien\LibaryForTechTalk\src\main\java\com\DAOImpl\PhieuMuonDAOImpl.java
+D:\Documents\NetBeansProjects\QuanLyThuVien\LibaryForTechTalk\src\main\java\com\Filter\EncodingFilter.java
+D:\Documents\NetBeansProjects\QuanLyThuVien\LibaryForTechTalk\src\main\java\com\model\NguoiDung.java
+D:\Documents\NetBeansProjects\QuanLyThuVien\LibaryForTechTalk\src\main\java\com\configuration\SpringSecurityInitializer.java
+D:\Documents\NetBeansProjects\QuanLyThuVien\LibaryForTechTalk\src\main\java\com\model\HinhAnh.java
+D:\Documents\NetBeansProjects\QuanLyThuVien\LibaryForTechTalk\src\main\java\com\model\Sach.java
+D:\Documents\NetBeansProjects\QuanLyThuVien\LibaryForTechTalk\src\main\java\com\model\Cart.java
+D:\Documents\NetBeansProjects\QuanLyThuVien\LibaryForTechTalk\src\main\java\com\configuration\HibernateConfig.java
+D:\Documents\NetBeansProjects\QuanLyThuVien\LibaryForTechTalk\src\main\java\com\model\DanhMuc.java
+D:\Documents\NetBeansProjects\QuanLyThuVien\LibaryForTechTalk\src\main\java\com\model\Tacgia.java
+D:\Documents\NetBeansProjects\QuanLyThuVien\LibaryForTechTalk\src\main\java\com\DAOImpl\LibaryanDAOImpl.java
+D:\Documents\NetBeansProjects\QuanLyThuVien\LibaryForTechTalk\src\main\java\com\DAOImpl\PhieuMuonSearchQueryCriteriaConsumer.java
+D:\Documents\NetBeansProjects\QuanLyThuVien\LibaryForTechTalk\src\main\java\com\model\DauSachCtpm.java
+D:\Documents\NetBeansProjects\QuanLyThuVien\LibaryForTechTalk\src\main\java\com\securityImpl\UserDetailsServiceImpl.java
+D:\Documents\NetBeansProjects\QuanLyThuVien\LibaryForTechTalk\src\main\java\com\Service\CartService.java
+D:\Documents\NetBeansProjects\QuanLyThuVien\LibaryForTechTalk\src\main\java\com\model\NhaCungCap.java
+D:\Documents\NetBeansProjects\QuanLyThuVien\LibaryForTechTalk\src\main\java\com\Interface\CRUD.java
+D:\Documents\NetBeansProjects\QuanLyThuVien\LibaryForTechTalk\src\main\java\com\model\LuotThich.java
+D:\Documents\NetBeansProjects\QuanLyThuVien\LibaryForTechTalk\src\main\java\com\Class\SearchCriteria.java
+D:\Documents\NetBeansProjects\QuanLyThuVien\LibaryForTechTalk\src\main\java\com\DAO\LibaryanDAO.java
+D:\Documents\NetBeansProjects\QuanLyThuVien\LibaryForTechTalk\src\main\java\com\DAOImpl\CartDAOImpl.java
+D:\Documents\NetBeansProjects\QuanLyThuVien\LibaryForTechTalk\src\main\java\com\model\PhieuNhap.java
+D:\Documents\NetBeansProjects\QuanLyThuVien\LibaryForTechTalk\src\main\java\com\ServiceImpl\CartServiceImpl.java
+D:\Documents\NetBeansProjects\QuanLyThuVien\LibaryForTechTalk\src\main\java\com\model\TheLoai.java
+D:\Documents\NetBeansProjects\QuanLyThuVien\LibaryForTechTalk\src\main\java\com\ServiceImpl\DanhMucServiceImpl.java
+D:\Documents\NetBeansProjects\QuanLyThuVien\LibaryForTechTalk\src\main\java\com\Validator\RegisterFormValidator.java
+D:\Documents\NetBeansProjects\QuanLyThuVien\LibaryForTechTalk\src\main\java\com\configuration\GlobalExceptionHandler.java
+D:\Documents\NetBeansProjects\QuanLyThuVien\LibaryForTechTalk\src\main\java\com\controller\AjaxController.java
+D:\Documents\NetBeansProjects\QuanLyThuVien\LibaryForTechTalk\src\main\java\com\DAOImpl\DanhMucDAOImpl.java
+D:\Documents\NetBeansProjects\QuanLyThuVien\LibaryForTechTalk\src\main\java\com\Filter\PerformanceFilter.java
+D:\Documents\NetBeansProjects\QuanLyThuVien\LibaryForTechTalk\src\main\java\com\ServiceImpl\UserServiceImpl.java
+D:\Documents\NetBeansProjects\QuanLyThuVien\LibaryForTechTalk\src\main\java\com\model\Phat.java
+D:\Documents\NetBeansProjects\QuanLyThuVien\LibaryForTechTalk\src\main\java\com\Class\CreateNameLog.java
+D:\Documents\NetBeansProjects\QuanLyThuVien\LibaryForTechTalk\src\main\java\com\Service\SachService.java
+D:\Documents\NetBeansProjects\QuanLyThuVien\LibaryForTechTalk\src\main\java\com\Class\ForwardHandling.java
+D:\Documents\NetBeansProjects\QuanLyThuVien\LibaryForTechTalk\src\main\java\com\configuration\SecurityConfig.java
+D:\Documents\NetBeansProjects\QuanLyThuVien\LibaryForTechTalk\src\main\java\com\DAO\PhieuMuonDAO.java
+D:\Documents\NetBeansProjects\QuanLyThuVien\LibaryForTechTalk\src\main\java\com\model\CtPhieuNhap.java
+D:\Documents\NetBeansProjects\QuanLyThuVien\LibaryForTechTalk\src\main\java\com\configuration\HelloWorldConfig.java
+D:\Documents\NetBeansProjects\QuanLyThuVien\LibaryForTechTalk\src\main\java\com\model\CtPhieumuon.java
+D:\Documents\NetBeansProjects\QuanLyThuVien\LibaryForTechTalk\src\main\java\com\configuration\HelloWorldInitializer.java
+D:\Documents\NetBeansProjects\QuanLyThuVien\LibaryForTechTalk\src\main\java\com\model\Rules.java
+D:\Documents\NetBeansProjects\QuanLyThuVien\LibaryForTechTalk\src\main\java\com\controller\UserController.java
+D:\Documents\NetBeansProjects\QuanLyThuVien\LibaryForTechTalk\src\main\java\com\Validator\RegisterForm.java
+D:\Documents\NetBeansProjects\QuanLyThuVien\LibaryForTechTalk\src\main\java\com\controller\CategoryController.java
+D:\Documents\NetBeansProjects\QuanLyThuVien\LibaryForTechTalk\src\main\java\com\model\DauSach.java
+D:\Documents\NetBeansProjects\QuanLyThuVien\LibaryForTechTalk\src\main\java\com\Service\DanhMucService.java
+D:\Documents\NetBeansProjects\QuanLyThuVien\LibaryForTechTalk\src\main\java\com\ServiceImpl\SachServiceImpl.java
+D:\Documents\NetBeansProjects\QuanLyThuVien\LibaryForTechTalk\src\main\java\com\DAOImpl\SachDAOImpl.java
