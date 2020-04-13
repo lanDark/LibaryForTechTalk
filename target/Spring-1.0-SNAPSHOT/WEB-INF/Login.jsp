@@ -10,6 +10,11 @@
 <jsp:include page="layout/header.jsp"/>
 <jsp:include page="layout/search.jsp"/>
 <jsp:include page="layout/slide.jsp"/>
+<style>
+  .error {
+    color: red;
+  }
+</style>
 		<section class="my_account_area pt--80 pb--55 bg--white">
 			<div class="container">
 				<div class="row">
@@ -34,7 +39,7 @@
                                                                             </c:if>
                                                                             <button type="submit" form="executeLogin">Login</button>
 										<label class="label-for-checkbox">
-											<input id="rememberme" class="input-checkbox" name="rememberme" value="forever" type="checkbox">
+											<input id="rememberme" class="input-checkbox" name="rememberme"  type="checkbox">
 											<span>Remember me</span>
 										</label>
                                                         

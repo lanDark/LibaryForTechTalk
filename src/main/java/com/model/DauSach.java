@@ -19,7 +19,7 @@ import javax.persistence.Table;
 @Entity
 @Table(name="DauSach"
     ,schema="dbo"
-    ,catalog="Libary"
+    ,catalog="libary"
 )
 public class DauSach  implements java.io.Serializable {
 

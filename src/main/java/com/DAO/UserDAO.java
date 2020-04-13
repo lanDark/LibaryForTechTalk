@@ -5,17 +5,26 @@
  */
 package com.DAO;
 
-import com.model.Cart;
+import com.Interface.CRUD;
 import com.model.NguoiDung;
-import com.securityImpl.CustomUser;
-import java.util.ArrayList;
-
 /**
  *
  * @author vital
  */
-public interface UserDAO {
-    public NguoiDung login(String email);
-    public boolean signIn(NguoiDung nguoiDung);
-    public boolean datMuon(ArrayList<Cart> listSach,CustomUser maNguoiDung) throws Exception ;
+public interface UserDAO extends CRUD<NguoiDung,String>{
+
+    /**
+     * Xử lý chức năng lấy người dùng
+     * @param email
+     * @return NguoiDung
+     */
+    public NguoiDung getUserByEmail(String email);
+
+    /**
+     *
+     * @param nguoiDung đối tượng người dùng
+     * @see NguoiDung
+     * @return true nếu đăng ký thành công - false nếu có lỗi hoặc đăng ký thất bại
+     */
+    public boolean signUp(NguoiDung nguoiDung);
 }

@@ -3,6 +3,7 @@ package com.model;
 
 
 import java.util.HashSet;
+import java.util.Objects;
 import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -20,14 +21,13 @@ import javax.persistence.UniqueConstraint;
 @Entity
 @Table(name="nguoiDung"
     ,schema="dbo"
-    ,catalog="Libary"
+    ,catalog="libary"
     , uniqueConstraints = @UniqueConstraint(columnNames="email") 
 )
 public class NguoiDung  implements java.io.Serializable {
 
 
      private String maNguoiDung;
-     private Rules rules;
      private String email;
      private String matKhau;
      private String hoTen;
@@ -35,6 +35,7 @@ public class NguoiDung  implements java.io.Serializable {
      private String diaChi;
      private String cmnd;
      private Integer tinhTrang;
+     private Set<Rules> rules  = new HashSet<Rules>(0);
      private Set<LuotThich> luotThiches = new HashSet<LuotThich>(0);
      private Set<PhieuMuon> phieuMuonsForMaThuThu = new HashSet<PhieuMuon>(0);
      private Set<PhieuMuon> phieuMuonsForMaNguoiDung = new HashSet<PhieuMuon>(0);
@@ -48,7 +49,7 @@ public class NguoiDung  implements java.io.Serializable {
     public NguoiDung(String maNguoiDung) {
         this.maNguoiDung = maNguoiDung;
     }
-    public NguoiDung(String maNguoiDung, Rules rules, String email, String matKhau, String hoTen, String sdt, String diaChi, String cmnd, Integer tinhTrang, Set<LuotThich> luotThiches, Set<PhieuMuon> phieuMuonsForMaThuThu, Set<PhieuMuon> phieuMuonsForMaNguoiDung, Set<PhieuMuon> phieuMuonsForNguoiNhanTra, Set<PhieuNhap> phieuNhaps) {
+    public NguoiDung(String maNguoiDung, Set<Rules> rules, String email, String matKhau, String hoTen, String sdt, String diaChi, String cmnd, Integer tinhTrang, Set<LuotThich> luotThiches, Set<PhieuMuon> phieuMuonsForMaThuThu, Set<PhieuMuon> phieuMuonsForMaNguoiDung, Set<PhieuMuon> phieuMuonsForNguoiNhanTra, Set<PhieuNhap> phieuNhaps) {
        this.maNguoiDung = maNguoiDung;
        this.rules = rules;
        this.email = email;
@@ -77,13 +78,12 @@ public class NguoiDung  implements java.io.Serializable {
         this.maNguoiDung = maNguoiDung;
     }
 
-@ManyToOne(fetch=FetchType.LAZY)
-    @JoinColumn(name="rules")
-    public Rules getRules() {
+    @OneToMany(fetch=FetchType.LAZY,mappedBy = "nguoiDung")
+    public Set<Rules> getRules() {
         return this.rules;
     }
     
-    public void setRules(Rules rules) {
+    public void setRules(Set<Rules> rules) {
         this.rules = rules;
     }
 
@@ -201,6 +201,67 @@ public class NguoiDung  implements java.io.Serializable {
     public void setPhieuNhaps(Set<PhieuNhap> phieuNhaps) {
         this.phieuNhaps = phieuNhaps;
     }
+
+
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final NguoiDung other = (NguoiDung) obj;
+        if (!Objects.equals(this.maNguoiDung, other.maNguoiDung)) {
+            return false;
+        }
+        if (!Objects.equals(this.email, other.email)) {
+            return false;
+        }
+        if (!Objects.equals(this.matKhau, other.matKhau)) {
+            return false;
+        }
+        if (!Objects.equals(this.hoTen, other.hoTen)) {
+            return false;
+        }
+        if (!Objects.equals(this.sdt, other.sdt)) {
+            return false;
+        }
+        if (!Objects.equals(this.diaChi, other.diaChi)) {
+            return false;
+        }
+        if (!Objects.equals(this.cmnd, other.cmnd)) {
+            return false;
+        }
+        if (!Objects.equals(this.tinhTrang, other.tinhTrang)) {
+            return false;
+        }
+        if (!Objects.equals(this.rules, other.rules)) {
+            return false;
+        }
+        if (!Objects.equals(this.luotThiches, other.luotThiches)) {
+            return false;
+        }
+        if (!Objects.equals(this.phieuMuonsForMaThuThu, other.phieuMuonsForMaThuThu)) {
+            return false;
+        }
+        if (!Objects.equals(this.phieuMuonsForMaNguoiDung, other.phieuMuonsForMaNguoiDung)) {
+            return false;
+        }
+        if (!Objects.equals(this.phieuMuonsForNguoiNhanTra, other.phieuMuonsForNguoiNhanTra)) {
+            return false;
+        }
+        if (!Objects.equals(this.phieuNhaps, other.phieuNhaps)) {
+            return false;
+        }
+        return true;
+    }
+
+  
 
 
 

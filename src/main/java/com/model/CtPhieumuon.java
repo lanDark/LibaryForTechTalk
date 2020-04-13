@@ -21,17 +21,16 @@ import javax.persistence.Table;
 @Entity
 @Table(name="CT_PHIEUMUON"
     ,schema="dbo"
-    ,catalog="Libary"
+    ,catalog="libary"
 )
 public class CtPhieumuon  implements java.io.Serializable {
 
 
-     private int maCtpm;
-     private PhieuMuon phieuMuon;
-     private Sach sach;
-     private Integer soLuong;
-     private Set<CtLoi> ctLois = new HashSet<CtLoi>(0);
-
+    private int maCtpm;
+    private PhieuMuon phieuMuon;
+    private Sach sach;
+    private Integer soLuong;
+    private Set<DauSachCtpm> dauSachCtpm =  new HashSet<DauSachCtpm>(0);
     public CtPhieumuon() {
     }
 
@@ -44,7 +43,6 @@ public class CtPhieumuon  implements java.io.Serializable {
        this.phieuMuon = phieuMuon;
        this.sach = sach;
        this.soLuong = soLuong;
-       this.ctLois = ctLois;
     }
    
      @Id 
@@ -68,7 +66,7 @@ public class CtPhieumuon  implements java.io.Serializable {
         this.phieuMuon = phieuMuon;
     }
 
-@ManyToOne(fetch=FetchType.LAZY)
+@ManyToOne(fetch=FetchType.EAGER)
     @JoinColumn(name="maSach")
     public Sach getSach() {
         return this.sach;
@@ -88,13 +86,15 @@ public class CtPhieumuon  implements java.io.Serializable {
         this.soLuong = soLuong;
     }
 
-@OneToMany(fetch=FetchType.LAZY, mappedBy="ctPhieumuon")
-    public Set<CtLoi> getCtLois() {
-        return this.ctLois;
-    }
+
     
-    public void setCtLois(Set<CtLoi> ctLois) {
-        this.ctLois = ctLois;
+    @OneToMany(fetch=FetchType.LAZY, mappedBy="cTPhieuMuon")
+    public Set<DauSachCtpm> getDauSachCtpm() {
+        return dauSachCtpm;
+    }
+
+    public void setDauSachCtpm(Set<DauSachCtpm> dauSachCtpm) {
+        this.dauSachCtpm = dauSachCtpm;
     }
 
 

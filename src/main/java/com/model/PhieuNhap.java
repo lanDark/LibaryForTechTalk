@@ -19,7 +19,7 @@ import javax.persistence.Table;
 @Entity
 @Table(name="phieuNhap"
     ,schema="dbo"
-    ,catalog="Libary"
+    ,catalog="libary"
 )
 public class PhieuNhap  implements java.io.Serializable {
 

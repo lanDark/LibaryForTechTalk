@@ -5,14 +5,13 @@
  */
 package com.Service;
 
-import javax.servlet.http.HttpServletRequest;
+import com.model.Sach;
+import java.util.List;
 
 /**
  *
  * @author vital
  */
 public interface CartService {
-    public boolean addItem(HttpServletRequest request, ProductService productServiceImpl) throws Exception;
-    public void deleteItem(HttpServletRequest req) throws Exception;
-    public void updateItem(HttpServletRequest req) throws Exception;
+    public boolean datMuon(List<Sach> saches,String maNguoiDung) throws Exception;
 }

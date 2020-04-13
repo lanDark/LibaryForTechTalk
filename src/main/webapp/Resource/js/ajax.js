@@ -1,34 +1,7 @@
 
 
 // -------------  Thêm sản phẩm vào giỏ hàng ------------------
-                                            // this is the id of the form
-$(".addToCart").click(function(e) {
 
-    e.preventDefault(); 
-    e.stopPropagation();
-    e.stopImmediatePropagation(); 
-    var maSach=$(this).children("p").text();
-    $.ajax({
-        type: "post",
-        url:'/Spring/addToCart',
-        data : {
-            maSach : maSach
-        },
-        dataType : 'html',
-        timeout:10000,
-        success : function(data,xhr)
-        {
-            $('.modal-body').html(data);
-            $('#alertAddToCart').modal('show');
-        },
-        error: function (xhr, ajaxOptions, thrownError) {
-          if(xhr.status==403)
-          {
-              window.location.href=window.location.pathname="Login";
-          }
-        }
-    });
-});
 
 $("#addToCartInQuickView").click(function(e) {
 
@@ -37,7 +10,7 @@ $("#addToCartInQuickView").click(function(e) {
     e.stopImmediatePropagation(); 
     var maSach=$(this).children("p").text();
     $.ajax({
-        type: "post",
+        type: "get",
         url:'/Spring/addToCart',
         data : {
             maSach : maSach
@@ -53,27 +26,27 @@ $("#addToCartInQuickView").click(function(e) {
     });
 });
 // -------------  Xác nhận đặt ------------------
-$("#datGiu").click(function(e) {
-
-    e.preventDefault(); 
-    e.stopPropagation();
-    e.stopImmediatePropagation(); 
-    $.ajax({
-        type: "GET",
-        url:'/Spring/datMuon',
-        dataType : 'html',
-        timeout:10000,
-        success : function(data)
-        {
-             $('.modal-body').html(data);
-             if(data.search(" Xin lỗi") == -1 ){
-                $('tbody > tr > td').remove();
-             }
-             $('#alertAddToCart').modal('show');
-        }
-        
-    });
-});
+//$("#datGiu").click(function(e) {
+//
+//    e.preventDefault(); 
+//    e.stopPropagation();
+//    e.stopImmediatePropagation(); 
+//    $.ajax({
+//        type: "GET",
+//        url:'/Spring/datMuon',
+//        dataType : 'html',
+//        timeout:10000,
+//        success : function(data)
+//        {
+//             $('.modal-body').html(data);
+//             if(data.search(" Xin lỗi") == -1 ){
+//                $('tbody > tr > td').remove();
+//             }
+//             $('#alertAddToCart').modal('show');
+//        }
+//        
+//    });
+//});
 // -------------  Show quickView ------------------
 $(".showProductModal").on('click', function(event){
     event.stopPropagation();
@@ -113,24 +86,6 @@ $("tbody tr td ").on("change", "input", function(event) {
         timeout:10000,
         success : function(data){
            
-        }
-    });
-});
-// -------------  Xoá item trong Cart List  ------------------
-$("tbody tr td ").on("click", ".remove", function(event) {
-     event.preventDefault();
-    var maSach=$(this).next(".maSach").val();
-    $(this).parent().parent().remove();
-    $.ajax({
-        type:'GET',
-        url:'/Spring/deleteItemCart',
-        data : {
-            maSach : maSach
-        },
-        dataType : 'html',
-        timeout:10000,
-        success : function(data){
-         
         }
     });
 });

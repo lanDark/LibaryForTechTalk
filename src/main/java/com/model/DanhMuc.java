@@ -7,6 +7,8 @@ import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
@@ -18,7 +20,7 @@ import javax.persistence.UniqueConstraint;
 @Entity
 @Table(name="danhMuc"
     ,schema="dbo"
-    ,catalog="Libary"
+    ,catalog="libary"
     , uniqueConstraints = @UniqueConstraint(columnNames="url") 
 )
 public class DanhMuc  implements java.io.Serializable {
@@ -44,8 +46,7 @@ public class DanhMuc  implements java.io.Serializable {
     }
    
      @Id 
-
-    
+     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="id_danhMuc", unique=true, nullable=false)
     public int getIdDanhMuc() {
         return this.idDanhMuc;

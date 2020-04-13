@@ -22,7 +22,7 @@ public final class ForwardHandling {
             RequestDispatcher dispatcher = req.getServletContext().getRequestDispatcher(src);
             dispatcher.forward(req, res);
         } catch (Exception ex) {
-            Logger.getLogger(UserController.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(UserController.class.getName()).log(Level.INFO, null, ex);
         }
     }
 }

@@ -1,4 +1,4 @@
-/*
+    /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
@@ -6,6 +6,7 @@
 package com.Validator;
 
 
+import java.util.regex.Pattern;
 import org.springframework.stereotype.Component;
 import org.springframework.validation.Errors;
 import org.springframework.validation.ValidationUtils;
@@ -40,37 +41,36 @@ public class RegisterFormValidator implements Validator {
     
     void regex(Object target,Errors erros){
         RegisterForm form = (RegisterForm) target;
-        String emailRegex = "[a-z]*(@[a-z]*)+([.][a-z]{2,4}){1,2}";
+        String emailRegex = "[a-zA-Z0-9]*(@[a-z]*)+([.][a-z]{2,4}){1,2}";
         String sdtRegex = "[0-9]{10}";
-        String diaChiRegex = "[a-z,.]{5,50}";
-        String cmndRegex = "[0-9]{10}";
-        String matKhauRegex = "[a-zA-z]{6,16}";
-        String hoTenRegex = "[a-zA-Z ]{5,16}";
-        
+        String diaChiRegex = "[\\p{L}0-9,. ]{5,100}";
+        String cmndRegex = "[0-9]{9}";
+        String matKhauRegex = "[a-zA-z0-9]{6,16}";
+        String hoTenRegex = "[\\p{L} ]{5,100}";
         
         if(!form.getEmail().matches(emailRegex))
-            erros.reject("email","Email không hợp lệ");
+            erros.rejectValue("email","","Email không hợp lệ");
 
         if(!(form.getSdt().matches(sdtRegex)) )
-            erros.reject("sdt","Số điện thoại không hợp lệ");
+            erros.rejectValue("sdt","","Số điện thoại không hợp lệ");
         
         if(!(form.getDiaChi().matches(diaChiRegex)) )
-            erros.reject("diaChi","Địa chỉ không hợp lệ");
+            erros.rejectValue("diaChi","","Địa chỉ không hợp lệ");
         
         if(!(form.getCmnd().matches(cmndRegex)) )
-            erros.reject("cmnd","cmnd không hợp lệ");
+            erros.rejectValue("cmnd","","cmnd không hợp lệ");
         
         if(!(form.getHoTen().matches(hoTenRegex)) )
-            erros.reject("hoTen","cmnd không hợp lệ");
+            erros.rejectValue("hoTen","","Họ tên không hợp lệ");
         
         if(!(form.getMatKhau().equals(form.getMatKhau2() ) ))
-            erros.reject("matKhau","mật khẩu không giống nhau");
+            erros.rejectValue("matKhau","","mật khẩu không giống nhau");
         else{
             if(!(form.getMatKhau().matches(matKhauRegex))){
-                 erros.reject("matKhau","Mật khẩu không hợp lệ");
+                 erros.rejectValue("matKhau","","Mật khẩu không hợp lệ");
             }
             if(!(form.getMatKhau2().matches(matKhauRegex))){
-                 erros.reject("matKhau2","Mật khẩu không hợp lệ");
+                 erros.rejectValue("matKhau2","","Mật khẩu không hợp lệ");
             }    
         }
         

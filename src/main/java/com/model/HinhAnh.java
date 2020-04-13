@@ -5,6 +5,8 @@ package com.model;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -17,14 +19,14 @@ import javax.persistence.UniqueConstraint;
 @Entity
 @Table(name="hinh_anh"
     ,schema="dbo"
-    ,catalog="Libary"
+    ,catalog="libary"
     , uniqueConstraints = @UniqueConstraint(columnNames="src") 
 )
 public class HinhAnh  implements java.io.Serializable {
 
 
      private int id;
-     private Sach sach;
+     private String sach;
      private String src;
 
     public HinhAnh() {
@@ -34,15 +36,14 @@ public class HinhAnh  implements java.io.Serializable {
     public HinhAnh(int id) {
         this.id = id;
     }
-    public HinhAnh(int id, Sach sach, String src) {
+    public HinhAnh(int id, String sach, String src) {
        this.id = id;
        this.sach = sach;
        this.src = src;
     }
    
      @Id 
-
-    
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="id", unique=true, nullable=false)
     public int getId() {
         return this.id;
@@ -52,13 +53,12 @@ public class HinhAnh  implements java.io.Serializable {
         this.id = id;
     }
 
-@ManyToOne(fetch=FetchType.LAZY)
-    @JoinColumn(name="maSach")
-    public Sach getSach() {
+    @Column(name="maSach")
+    public String getSach() {
         return this.sach;
     }
     
-    public void setSach(Sach sach) {
+    public void setSach(String sach) {
         this.sach = sach;
     }
 

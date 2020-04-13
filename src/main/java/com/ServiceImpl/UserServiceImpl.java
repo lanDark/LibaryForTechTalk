@@ -1,19 +1,10 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.ServiceImpl;
 
 import com.DAO.UserDAO;
 import com.Service.UserService;
-import com.model.Cart;
 import com.model.NguoiDung;
-import com.securityImpl.CustomUser;
-import java.util.ArrayList;
-import javax.servlet.http.HttpServletRequest;
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -23,46 +14,52 @@ import org.springframework.transaction.annotation.Transactional;
  */
 @Service
 @Transactional
+
 public class UserServiceImpl implements UserService{
     @Autowired
     UserDAO userDAOImpl;
+
     @Override
-    public boolean login(HttpServletRequest rq,String email,String password) {
-        NguoiDung nguoiDung= userDAOImpl.login(email);
-        if(nguoiDung != null){
-            if(nguoiDung.getEmail().equals(email) && nguoiDung.getMatKhau().equals(password))
-            {
-                rq.getSession().setAttribute("nguoiDung", nguoiDung);
-                return true;
-            }
-        }
-        else{
-            return false;
-        }
-        return false;
+    public boolean signUp(NguoiDung nguoiDung) {
+        return  userDAOImpl.signUp(nguoiDung);
     }
 
     @Override
-    public boolean signIn() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public NguoiDung getUserByEmail(String email) {
+       return userDAOImpl.getUserByEmail(email);
     }
 
     @Override
-    public boolean logOut() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public boolean create(NguoiDung object) {
+        return userDAOImpl.create(object);
     }
 
     @Override
-    public boolean datMuon(HttpServletRequest req) throws Exception {
-        ArrayList<Cart> cartItems = (ArrayList<Cart>) req.getSession().getAttribute("cartItems");
-        Object principal= SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        if(cartItems.size()>0)
-        {
-            if( userDAOImpl.datMuon(cartItems,(CustomUser)principal) ){
-                req.getSession().removeAttribute("cartItems");
-                return true;
-            }
-        }
-        return false;
+    public List<NguoiDung> findAll() {
+        return userDAOImpl.findAll();
+    }
+
+    @Override
+    public NguoiDung find(String id) {
+        return userDAOImpl.find(id);
+    }
+
+    @Override
+    public boolean update(NguoiDung object) {
+        NguoiDung nguoiDungDetached = userDAOImpl.find(object.getMaNguoiDung());
+        
+        nguoiDungDetached.setEmail(object.getEmail());
+        nguoiDungDetached.setMatKhau(object.getMatKhau());
+        nguoiDungDetached.setDiaChi(object.getDiaChi());
+        nguoiDungDetached.setCmnd(object.getCmnd());
+        nguoiDungDetached.setSdt(object.getSdt());
+        nguoiDungDetached.setHoTen(object.getHoTen());
+        
+        return nguoiDungDetached.equals(object) ? userDAOImpl.update(nguoiDungDetached): false;
+    }
+
+    @Override
+    public boolean delete(String id) {
+        return userDAOImpl.delete(id);
     }
 }
